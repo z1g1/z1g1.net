@@ -1,12 +1,13 @@
-Title: 5by5's In Beta and the Need for Rage Giving
-Date: 2012-06-26 15:00:00
-Category: Blog 
-Tags: 5by5, podcasts
-Author: Zack Glick
-Summary:  Review of the new podcast In Beta on 5by5.tv
-Slug: blog/rage-giving
-Image: in_beta_logo.jpg
-
+---
+layout: post
+title: 5by5s In Beta and the Need for Rage Giving
+date: 2012-06-26 15:00:00
+categories: 5by5, podcasts
+author: Zack Glick
+summary:  Review of the new podcast In Beta on 5by5.tv
+slug: blog/rage-giving
+image: in_beta_logo.jpg
+---
 <p>I am a big fan of <a href="http://smarterware.org/">Gina Tripani</a> from her work on <a href="http://twit.tv/twig">TWIG</a> and when she announced that she was teaming up with Kevin Purdy of <a href="http://Lifehacker.com">LifeHacker</a> fame to work on a podcast that would focus more on development and on the agile development process I knew that it would be worth adding it to my BeyondPod feed.</p>
 
 <p>Their show <a href="http://5by5.tv/inbeta/">In Beta</a> has been around for four episodes now and they really have found a good grove and both hosts have an excellent flow together.  In addition to both host's great input on the application development process the feature of the show I appreciate the most have been the host's commitment to keeping the show tight on time.  You can really tell that both Gina and Kevin put a lot of preparation into the show before the recording track starts.</p>

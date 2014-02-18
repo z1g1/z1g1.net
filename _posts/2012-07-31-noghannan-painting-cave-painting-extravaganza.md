@@ -1,12 +1,13 @@
-Title: Noghannan's Painting Cave Painting Extravaganza
-Date: 2012-07-31 15:00:00
-Category: Blog 
-Tags: warmachine, Noghannan, painting
-Author: Zack Glick
-Summary: Getting ready for Noghannan's Painting Cave August Painting Extravaganza. I'm not sure what we are playing for, who in total is in the little arangement but I do know that its time to put in work
-Slug: blog/noghannans-painting-cave-painting-extravaganza
-Image: privateer-logo.png
-
+---
+layout: post
+title: Noghannans Painting Cave Painting Extravaganza
+date: 2012-07-31 15:00:00
+categories: warmachine, Noghannan, painting
+author: Zack Glick
+summary: Getting ready for Noghannans Painting Cave August Painting Extravaganza
+slug: blog/noghannans-painting-cave-painting-extravaganza
+image: privateer-logo.png
+---
 Getting ready for <a href="http://nogspaintingcave.blogspot.com/">Noghannan's Painting Cave August Painting Extravaganza</a>.  I'm not sure what we are playing for, who in total is in the little arangement but I do know that its time to put in work!
 
 <ul>

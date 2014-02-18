@@ -1,11 +1,13 @@
-Title:  Yahoo's Information Security Tips Leave Something Desired
-Date: 2012-08-30 15:00:00
-Category: Blog 
-Tags: Info Sec
-Author: Zack Glick
-Summary:  Review of Yahoo Info Sec Article
-Slug: blog/yahoo-info-sec
-Image: Yahoo-not-for-Info-Sec.JPG
+---
+layout: post
+title:  Yahoo's Information Security Tips Leave Something Desired
+date: 2012-08-30 15:00:00
+categories: Info Sec
+author: Zack Glick
+summary:  Review of Yahoo Info Sec Article
+slug: blog/yahoo-info-sec
+image: Yahoo-not-for-Info-Sec.JPG
+---
 
 I read <a href="http://twitter.com/bworley">Becky Worley's</a> piece this afternoon <a href="http://news.yahoo.com/blogs/upgrade-your-life/being-monitored-114944170.html">Are You Being Monitored At Work?</a> wanted to flesh out some of the ideas put forth in the piece. 
 

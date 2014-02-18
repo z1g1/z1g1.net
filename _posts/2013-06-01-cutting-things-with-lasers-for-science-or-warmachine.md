@@ -1,12 +1,13 @@
-Title: Cutting Things With Lasers for Science...or Warmachine
-Date: 2013-06-01 16:00
-Category: Blog
-Tags: Warmachine, Laser Cutting
-Slug: blog/cutting-things-with-lasers-for-science-or-warmachine
-Author: Zack
-Summary: My Journey Cutting Things With Lasers for Science...or Warmachine
-Image: Epilog-Laser.jpg
-
+---
+layout: post
+title: Cutting Things With Lasers for Science...or Warmachine
+date: 2013-06-01 16:00
+categories: Warmachine, Laser Cutting
+slug: blog/cutting-things-with-lasers-for-science-or-warmachine
+author: Zack
+summary: My Journey Cutting Things With Lasers for Science...or Warmachine
+image: Epilog-Laser.jpg
+---
  
 
 When the average nerd hears the word laser the image that comes to their mind might involve something completely ridiculous like Death Stars, or Light Sabres.  However, for a table top gamer when we hear it we conjure all of the templates, terrain and tokens that we could make with such a technological terror.  I had the opportunity to take classes at [AS220 Labs](http://www.as220.org/labs/about/) on their [Epilog Mini 24 Laser](http://www.epiloglaser.com/mini24_overview.htm) and prepare to carve my presence into history...or into some acrylic plastic. 
