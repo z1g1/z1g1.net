@@ -5,13 +5,29 @@ title: z1g1.net
 
 <div id="home">
   <h1>Latest Posts</h1>
-    {% for post in site.posts %}
+    {% for post in paginator.posts %}
 	  <div class="blog-post">
 		<h2 class="blog-post-title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
-        <p class="blog-post-meta">{{ post.date | date_to_string }}</p>
+		<p class="blog-post-meta"><span class="glyphicon glyphicon-tags"></span> {% for tag in post.tags %} {{ tag }} {% endfor %} | <span class="glyphicon glyphicon-calendar"></span> {{ post.date | date_to_string }} </p>
 		<img src="/assets/img/{{ post.image }}" style="max-width: 50px; float: left; margin-right: 10px;"></img>
 		{{ post.excerpt }}
 		<a href="{{ post.url }}"><button type="button" class="btn btn-default btn-xs">More...</button></a>
       </div><!--/blog-post-->
     {% endfor %}
+
+	<!-- Pagination links -->
+	<div class="pagination">
+	  {% if paginator.previous_page %}
+	    <a href="/page{{ paginator.previous_page }}" class="previous">Previous</a>
+	  {% else %}
+	    <span class="previous">Previous</span>
+	  {% endif %}
+	  <span class="page_number ">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
+	  {% if paginator.next_page %}
+	    <a href="/page{{ paginator.next_page }}" class="next">Next</a>
+	  {% else %}
+	    <span class="next ">Next</span>
+	  {% endif %}
+	</div> <!-- /Pagination links -->
+
 </div>

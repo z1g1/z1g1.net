@@ -1,9 +1,21 @@
 ---
 layout: default
 ---
-<h2>{{ page.title }}</h2>
-<p class="meta">{{ page.date | date_to_string }}</p>
-
-<div class="post">
-{{ content }}
+<div class="blog-post">
+	<div class="row">
+		<div class="col-md-12">
+			<h2 class="blog-post-title"><a href="{{ page.url }}">{{ page.title }}</a></h2>
+			<p class="blog-post-meta"><span class="glyphicon glyphicon-tags"></span> {% for tag in page.tags %} {{ tag }} {% endfor %} | <span class="glyphicon glyphicon-calendar"></span> {{ page.date | date_to_string }} </p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<img src="/assets/img/{{ page.image }}" class="image-responsive"></img>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			{{ content }}
+		</div>
+	</div>
 </div>

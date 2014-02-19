@@ -2,7 +2,8 @@
 layout: post
 title: 5by5s In Beta and the Need for Rage Giving
 date: 2012-06-26 15:00:00
-categories: 5by5, podcasts
+categories: Blog
+tags: 5by5, Podcasts
 author: Zack Glick
 summary:  Review of the new podcast In Beta on 5by5.tv
 slug: blog/rage-giving

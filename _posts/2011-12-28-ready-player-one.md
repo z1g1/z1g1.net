@@ -2,7 +2,8 @@
 layout: post
 title: "Book Review Ready Player 1"
 date: 2011-12-28 15:37:51
-categories: book review
+categories: Blog
+tags: Book Review
 author: Zack Glick
 summary: Book Review of Earnest Clines Ready Player One 
 slug: blog/ready-player-one

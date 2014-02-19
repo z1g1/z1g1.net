@@ -2,7 +2,8 @@
 layout: post
 title: Noghannans Painting Cave Painting Extravaganza
 date: 2012-07-31 15:00:00
-categories: warmachine, Noghannan, painting
+categories: Blog
+tags: Warmachine, Noghannan Painting Cave
 author: Zack Glick
 summary: Getting ready for Noghannans Painting Cave August Painting Extravaganza
 slug: blog/noghannans-painting-cave-painting-extravaganza

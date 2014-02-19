@@ -2,7 +2,8 @@
 layout: post
 title: Cutting Things With Lasers for Science...or Warmachine
 date: 2013-06-01 16:00
-categories: Warmachine, Laser Cutting
+categories: Blog
+tags: Warmachine, Laser Cutting
 slug: blog/cutting-things-with-lasers-for-science-or-warmachine
 author: Zack
 summary: My Journey Cutting Things With Lasers for Science...or Warmachine

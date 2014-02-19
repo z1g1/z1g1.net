@@ -2,7 +2,8 @@
 layout: post
 title:  Yahoo's Information Security Tips Leave Something Desired
 date: 2012-08-30 15:00:00
-categories: Info Sec
+categories: Blog
+tags: Info Sec
 author: Zack Glick
 summary:  Review of Yahoo Info Sec Article
 slug: blog/yahoo-info-sec
