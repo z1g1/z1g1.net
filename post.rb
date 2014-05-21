@@ -3,7 +3,7 @@ require 'date'
 puts "[INFO] Create new post"
 
 def gather_header()
-	images = ["Default","facebook-logo.jpg","github-logo.jpg","Good-Reads-Logo.png","google-plus-logo.jpg","Netrunner_logo.jpg","privateer-logo.png","Reddit-logo.jpg","Twitter-logo.jpg"]
+	images = ["Default","facebook-logo.jpg","github-logo.jpg","Good-Reads-Logo.png","google-plus-logo.jpg","Netrunner_logo.jpg","Netrunner_logo_criminals.jpg", "Netrunner_logo_anarchs.jpg", "Netrunner_logo_nbn.jpg", "Netrunner_logo_jinteki.jpg", "Netrunner_logo_weyland.jpg","Netrunner_logo_hb.jpg", "Netrunner_logo_shapers.jpg", "privateer-logo.png","Reddit-logo.jpg","Twitter-logo.jpg"]
 
 	puts "[INFO] Post title?"
 	post_date = DateTime.now.strftime("%Y-%m-%d")
@@ -14,7 +14,7 @@ def gather_header()
 	post_tags =  STDIN.gets.chomp()
 
 	puts "[INFO] Post Image? Defualt value blank"
-	images.each_with_index do |image,key|
+	images.sort.each_with_index do |image,key|
 		puts "#{key}. #{image}"
 	end
 	post_image_selection =  STDIN.gets.chomp()
@@ -36,6 +36,11 @@ def create_post(post)
 	post_file.write("image: #{post[3]}\n")
 	post_file.write("tags: #{post[2]}\n")
 	post_file.write("---\n\n")
+	
+	puts "[INFO] Post #{post[4]} created"
+
+	return 
+
 end
 
 
