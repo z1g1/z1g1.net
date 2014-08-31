@@ -6,13 +6,15 @@ image: privateer-logo.png
 tags: warmachine, Privateer Press
 ---
 
-[Privateer Press](http://privateerpress.com/) creatd the application Warroom to allow people who play the game to create Army Lists on their mobile devices.  One of the features that this application lacks is a way share your lists except via email.  I wanted to create a way where I could esily share my army lists.  I decided to on the service [IFTTT](https://ifttt.com) (If This Then That).  This is a free service which allows you to, as it's name implies, take action on one service when triggered by another.  IFTTT alllows you to create "recepies" which contain these actions. 
+[Privateer Press](http://privateerpress.com/) created the application Warroom to allow people who play the game to create Army Lists on their mobile devices.  One of the features that this application lacks is a way share your lists except via email.  I wanted to create a way where I could easily share my army lists.  I decided to on the service [IFTTT](https://ifttt.com) (If This Then That).  This is a free service which allows you to, as it's name implies, take action on one service when triggered by another.  IFTTT's service allows you to create "recipes" which contain these actions. 
 
-I created two receipies:
-* [Save WarRoom Armies to Dropbox](https://ifttt.com/recipes/199663-save-warroom-armies-to-dropbox)
-* [Save WarRoom Armies to Google Drive Spreadsheet](https://ifttt.com/recipes/199664-save-warroom-armies-to-google-drive-spreadsheet)
+I created two recipes:
+<ul>
+<li>[Save WarRoom Armies to Dropbox](https://ifttt.com/recipes/199663-save-warroom-armies-to-dropbox)</li>
+<li>[Save WarRoom Armies to Google Drive Spreadsheet](https://ifttt.com/recipes/199664-save-warroom-armies-to-google-drive-spreadsheet)</li>
+</ul>
 
-Both of these recepies are triggered off of a new email matching a search for "War Room Army" in the subject line of an email.  Then append the body of the email to a text file which can then be modified and shared in a normal way.  This is a bit of a work around since WarRoom does not allow any sort of bulk exporting or and mass export.  Hopefully in the future [Privateer Press](http://privateerpress.com/) and their partner [Tinkerhouse Games](http://tinkerhousegames.com/) will update the software with these features.  
+Both of these recipes are triggered off of a new email matching a search for "War Room Army" in the subject line of an email.  Then append the body of the email to a text file which can then be modified and shared in a normal way.  This is a bit of a work around since WarRoom does not allow any sort of bulk exporting or and mass export.  Hopefully in the future [Privateer Press](http://privateerpress.com/) and their partner [Tinkerhouse Games](http://tinkerhousegames.com/) will update the software with these features.  
 
 	Example of the text output
 	May 07, 2014 at 03:22PM, War Room Army - 50 Drake Pirates,
