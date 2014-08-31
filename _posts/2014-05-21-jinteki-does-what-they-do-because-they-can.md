@@ -2,7 +2,7 @@
 layout: post
 title: "Jinteki Does What They do Because They Can"
 date: 2014-05-21
-image: Netrunner_logo_criminals.jpg
+image: Netrunner_logo_jinteki.jpg
 tags: Netrunner, Jinteki, Harmony Medtech
 ---
 
