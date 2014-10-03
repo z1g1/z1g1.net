@@ -73,15 +73,35 @@ def parseLinks(file,links,header)
 	end
 end
 
+def getYears(links,years)
+	links.each do |link|
+		puts link.inspect
+##########################################
+## To Do: try and caluculagte the dates ##
+##########################################
+
+
+		puts Date.parse(link["date"]).year
+	end
+
+	return years
+
+end
+
 links = Array.new
 inputFile = "./links.csv.txt"
 header = Hash.new
 template = "./_layouts/links-index.html.erb"
 target = File.open("./links/index.html", 'w')
+years = Array.new
 
 #getLinks()
 
 parseLinks(inputFile,links,header)
+
+years = getYears(links,years)
+
+puts years.inspect
 
 linkPage = LinkPage.new(links)
 
