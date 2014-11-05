@@ -2,7 +2,7 @@
 layout: post
 title: "Warmachine Weekend Army Pair"
 date: 2014-10-31
-image: Twitter-logo.jpg
+image: privateer-logo.png 
 tags: Warmachine, Mercenaries
 ---
 
