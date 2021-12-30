@@ -1,5 +1,8 @@
 # z1g1.net README
 
+## Jekyll
+1. If you need to run Jekyll on a new computer you need to [install](http://jekyllrb.com/docs/installation/ubuntu/) it
+
 ## Website 
 1. Website is created via [Jekyll](http://jekyllrb.com/)
 1. You can write an ```.html```` page and host it in the root
