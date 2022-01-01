@@ -7,6 +7,14 @@
 1. Website is created via [Jekyll](http://jekyllrb.com/)
 1. You can write an ```.html```` page and host it in the root
 1. You can write a blog post into the ```_posts``` folder with the filename ```YEAR-MONTH-DAY-title.md```
+    1. Posts start with
+    ```---
+        layout: post
+        title:  "TITLE"
+        tags: list of tags
+        ---
+        body text in md
+        ```
 1. Use the command ```jekyll build``` in the terminal to build the site then upload the contents of the ```_site``` folder
 
 ## Hosting / DNS / TLS
