@@ -16,7 +16,7 @@
         body text in md
         ```
 1. Use the command ```jekyll build``` in the terminal to build the site then upload the contents of the ```_site``` folder
-
+1. Use the command ```jekyll serve``` to see things locally
 ## Hosting / DNS / TLS
 1. All Assets are hosted in AWS Account ```125180430749```
 1. Website is hosted in the S3 bucket ```arn:aws:s3:::www.z1g1.net```
