@@ -3,7 +3,7 @@ category: Pelican
 
 The site here is built using [Pelican](https://docs.getpelican.com/) which is a static website generator. It allowed you to write webpages in markdown, then build them along with a config file and theme to HTML files. These files are then stored in an S3 bucket without having to run any webserver. To be able to serve the site via https the site has a certificate created via Amazon Certificate manager and hosted out of CloudFront. To top things off the site is routed over the Cloudflare CDN. I got a good start on this process from a post on Aaron Asaro's blog about [Serving a static site from S3 using Cloudflare Full SSL](https://blog.anotherstarburst.com/posts/s3-static-site-cloudflare-ssl/). I had to make some tweaks to get SSL full up and working. 
 
-1. You need a command line system to run the commands below. I will be using my [Ubuntu system]({filename}2022-01-01-setup-dev-system.md)
+You need a command line system to run the commands below. I will be using my [Ubuntu system]({filename}2022-01-01-setup-dev-system.md)
 
 ## Creating the site
 1. To install [Pelican](https://docs.getpelican.com/en/latest/quickstart.html) you will need to have Python and Pip installed.
@@ -39,9 +39,44 @@ The site here is built using [Pelican](https://docs.getpelican.com/) which is a 
 	11. Use a tupple within ```MENUITEMS = (('Posts', 'blog_index.html'),)``` to add the blog index to the menu bar. You can add additional arbitraty menu items with additional tupples in the ```MENUITEMS``` setting option
 	 11. To ensure that the articles have a url structure that maps to post/yyyy/mm/d/title include two of the lines. ``` 43 ARTICLE_URL = 'posts/{date.year}/{date.month}/{date.day}/{slug}.html'``` and ```ARTICLE_SAVE_AS = 'posts/{date.year}/{date.month}/{date.day}/{slug}.html'``` 
 1. To create a page to act as the front page create a file in ```content/pages/index.md```. To ensure it shows as the front page set the following metadata at the top of the page. ```URL: ```, ```save_as: index.html```, ```status: hidden```
-1. 
+1. At this point you will have the skelton of a site, which as you add content will be written to HTML files in the ```output``` directory when you run the ```pelican``` command. These files can be uploaded to your object store of choice to act as your website. This site is hosted in Amazon S3. 
 
-## Uploading the files
+## Uploading the site
+
+These files could be manauly uploaded to S3, or sent via the S3 CLI. However, this adds friction to the writting process. When the files are sent to Github via the ```git push``` command they should be automatically be sent to Amazon S3. This will be setup using [GitHub Actions](https://docs.github.com/en/actions) for continuous Deployment/ Continuous Intergration (CI/CD). When working with any type of system like this ensure you review the [security](https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions) and [pricing](https://docs.github.com/en/actions/learn-github-actions/usage-limits-billing-and-administration). 
+
+1. In the Amazon S3 console locate the ARN of the bucket where you will store the files. It will look something like ```arn:aws:s3:::www.z1g1.net```
+1. In the [AWS IAM Console](https://console.aws.amazon.com/iamv2/home#/policies) Create a new IAM policy which only has the PutObject permission to the specific bucket ARN you captured above. Sample policy below.
+	11. ![Screenshot of json file with bucket policy](github-actions-z1g1-net-write-only-policy.png)
+	11. Note that the ```Resource``` entry on line 8 ends with a ```*```. This is key because if you don't inclue this your user will not be able to actually overwrite any existing objects
+1. To allow Github Action to make authenticated calls to Amazon S3 an AWS IAM user with limited permissions will be created. 
+	11. In the [AWS IAM console](https://console.aws.amazon.com/iam/home#/users) create a new user, select the "Access Key - Programatic Access" option.
+	11. Attach the policy that you created above to this user.
+	11. Once you complete this wizard you will be prompted to download credetnaisl for the user. The Access Key ID (AKID) is not sensitive alone. However, the "Secret Access Key" **needs to be kept secret**. Capture this secret for future steps but do not put it in a source code file, or any file which might get uploaded to GitHub. Once you leave this page you will not be able to retreive this information again. 
+	11. A future hardening step for this infrastrcuture would be to move away from [IAM users to IAM roles](https://github.com/aws-actions/configure-aws-credentials).
+1. Following the GitHub [Creating encrypted secrets for a repository](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository) documentation store the AKID and secret in the Github Repository for your static site. 
+
+
+### Sample IAM policy for Github Actions
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutObject",
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "arn:aws:s3:::www.z1g1.net/*",
+                "arn:aws:s3:::www.z1g1.net"
+            ]
+        }
+    ]
+}
+```
 
 
 ## Serving the site
