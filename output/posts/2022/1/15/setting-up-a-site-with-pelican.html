@@ -37,9 +37,7 @@
 <p>In <a href="/category/pelican.html">Pelican</a>.</p>
 
 </footer><!-- /.post-info -->      <p>The site here is built using <a href="https://docs.getpelican.com/">Pelican</a> which is a static website generator. It allowed you to write webpages in markdown, then build them along with a config file and theme to HTML files. These files are then stored in an S3 bucket without having to run any webserver. To be able to serve the site via https the site has a certificate created via Amazon Certificate manager and hosted out of CloudFront. To top things off the site is routed over the Cloudflare CDN. I got a good start on this process from a post on Aaron Asaro's blog about <a href="https://blog.anotherstarburst.com/posts/s3-static-site-cloudflare-ssl/">Serving a static site from S3 using Cloudflare Full SSL</a>. I had to make some tweaks to get SSL full up and working. </p>
-<ol>
-<li>You need a command line system to run the commands below. I will be using my <a href="/posts/2022/1/1/setting-up-wsl-and-ubuntu-on-windows.html">Ubuntu system</a></li>
-</ol>
+<p>You need a command line system to run the commands below. I will be using my <a href="/posts/2022/1/1/setting-up-wsl-and-ubuntu-on-windows.html">Ubuntu system</a></p>
 <h2>Creating the site</h2>
 <ol>
 <li>To install <a href="https://docs.getpelican.com/en/latest/quickstart.html">Pelican</a> you will need to have Python and Pip installed.<ol>
@@ -91,9 +89,85 @@
 </ol>
 </li>
 <li>To create a page to act as the front page create a file in <code>content/pages/index.md</code>. To ensure it shows as the front page set the following metadata at the top of the page. <code>URL:</code>, <code>save_as: index.html</code>, <code>status: hidden</code></li>
-<li></li>
+<li>At this point you will have the skelton of a site, which as you add content will be written to HTML files in the <code>output</code> directory when you run the <code>pelican</code> command. These files can be uploaded to your object store of choice to act as your website. This site is hosted in Amazon S3. </li>
 </ol>
-<h2>Uploading the files</h2>
+<h2>Uploading the site</h2>
+<p>These files could be manauly uploaded to S3, or sent via the S3 CLI. However, this adds friction to the writting process. When the files are sent to Github via the <code>git push</code> command they should be automatically be sent to Amazon S3. This will be setup using <a href="https://docs.github.com/en/actions">GitHub Actions</a> for continuous Deployment/ Continuous Intergration (CI/CD). When working with any type of system like this ensure you review the <a href="https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions">security</a> and <a href="https://docs.github.com/en/actions/learn-github-actions/usage-limits-billing-and-administration">pricing</a>. I got a good start using GitHub Actions based on a great post by <a href="https://johnkevinlosito.com/posts/deploy-static-website-to-s3-using-github-actions">johnkevinlosito@</a>. </p>
+<ol>
+<li>In the Amazon S3 console locate the ARN of the bucket where you will store the files. It will look something like <code>arn:aws:s3:::www.z1g1.net</code></li>
+<li>In the <a href="https://console.aws.amazon.com/iamv2/home#/policies">AWS IAM Console</a> Create a new IAM policy which only has the PutObject permission to the specific bucket ARN you captured above. Sample policy below.<ol>
+<li><img alt="Screenshot of json file with bucket policy" src="/images/github-actions-z1g1-net-write-only-policy.png"></li>
+<li>Note that the <code>Resource</code> entry on line 8 ends with a <code>*</code>. This is key because if you don't inclue this your user will not be able to actually overwrite any existing objects</li>
+</ol>
+</li>
+<li>To allow Github Action to make authenticated calls to Amazon S3 an AWS IAM user with limited permissions will be created. <ol>
+<li>In the <a href="https://console.aws.amazon.com/iam/home#/users">AWS IAM console</a> create a new user, select the "Access Key - Programatic Access" option.</li>
+<li>Attach the policy that you created above to this user.</li>
+<li>Once you complete this wizard you will be prompted to download credetnaisl for the user. The Access Key ID (AKID) is not sensitive alone. However, the "Secret Access Key" <strong>needs to be kept secret</strong>. Capture this secret for future steps but do not put it in a source code file, or any file which might get uploaded to GitHub. Once you leave this page you will not be able to retreive this information again. </li>
+<li>A future hardening step for this infrastrcuture would be to move away from <a href="https://github.com/aws-actions/configure-aws-credentials">IAM users to IAM roles</a>.</li>
+</ol>
+</li>
+<li>Following the GitHub <a href="https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository">Creating encrypted secrets for a repository</a> documentation store the access key's secret in the Github Repository for your static site. </li>
+<li>In the root of the static site project create a folder called <code>.github</code> which will store the .yml file which defines our GitHub Action <code>mkdir -p .github/workflows</code>. Within this folder create a file called <code>main.yml</code><ol>
+<li><img alt="Screenshot of main.yml file" src="/images/github-actions-main-yml.png"> </li>
+<li>Lines 3-6 are the trigger for this GitHub Action. Reads as "When there's a push to the master branch"</li>
+<li>Lines 8-9 starts the deployment job. If there were other actions defined in this file they would be at the same level of indention as line 9</li>
+<li>Line 10 declares what OS will run our deployment action. This files uses the latest Ubuntu image but there are <a href="https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idruns-on">other options</a></li>
+<li>Line 11 starts the steps which will be run on the OS image selected above. <a href="https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions">GitHub action's purpose</a> is to reduce repettive deployment actions.</li>
+<li>Lines 12 - 13 says to use the second version of the <a href="https://github.com/actions/checkout">checkout action</a>. This action checks-out your repository under $GITHUB_WORKSPACE, so your workflow can access it. If you want to learn what an <code>action/*</code> does you can look it up under the <code>https://github.com/ACTION_NAME</code> path. </li>
+<li>Lines 15-20 setup the use of the AWS CLI for use by our worker. These are setup via <a href="https://github.com/aws-actions/configure-aws-credentials">configure-aws-credentials</a></li>
+<li>Line 18 includes the AKID to be used for the upload process. An AKID alone should not be considered a secret. However, this does introduces an Avaliblity issue as this workflow is now tied directly to this AKID. If it's ever disabled/loses permissions the job will fail.</li>
+<li>Line 19 makes use of the <a href="">GitHub Actions Secrets API</a> to get the value of the <code>Z1G1_NEW_WRITE_ONLY</code> secret created above. You never want to include the Secret Key for an AWS IAM user within a GitHub repo, or any source code</li>
+<li>Lines 22-23 declare that we will run the <a href="https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/sync.html">S3 Sync command</a> to upload the <code>output</code> directory to the s3 bucket used to host the site</li>
+</ol>
+</li>
+</ol>
+<h3>Sample IAM policy for Github Actions</h3>
+<div class="highlight"><pre><span></span><code>{
+    &quot;Version&quot;: &quot;2012-10-17&quot;,
+    &quot;Statement&quot;: [
+        {
+            &quot;Sid&quot;: &quot;VisualEditor0&quot;,
+            &quot;Effect&quot;: &quot;Allow&quot;,
+            &quot;Action&quot;: [
+                &quot;s3:PutObject&quot;,
+                &quot;s3:ListBucket&quot;
+            ],
+            &quot;Resource&quot;: [
+                &quot;arn:aws:s3:::www.z1g1.net/*&quot;,
+                &quot;arn:aws:s3:::www.z1g1.net&quot;
+            ]
+        }
+    ]
+}
+</code></pre></div>
+
+<h3>Sample main.yml for GitHub Actions</h3>
+<div class="highlight"><pre><span></span><code><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="n">Upload</span><span class="w"> </span><span class="n">Website</span><span class="w"> </span><span class="n">via</span><span class="w"> </span><span class="n">GitHub</span><span class="w"> </span><span class="n">Actions</span><span class="w"></span>
+
+<span class="n">on</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="n">push</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">branches</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="o">-</span><span class="w"> </span><span class="k">master</span><span class="w"></span>
+
+<span class="n">jobs</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="n">deploy</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">runs</span><span class="o">-</span><span class="n">on</span><span class="p">:</span><span class="w"> </span><span class="n">ubuntu</span><span class="o">-</span><span class="n">latest</span><span class="w"></span>
+<span class="w">    </span><span class="n">steps</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="o">-</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="n">Checkout</span><span class="w"></span>
+<span class="w">      </span><span class="n">uses</span><span class="p">:</span><span class="w"> </span><span class="n">actions</span><span class="o">/</span><span class="n">checkout</span><span class="err">@</span><span class="n">v2</span><span class="w"></span>
+
+<span class="w">    </span><span class="o">-</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="n">Configure</span><span class="w"> </span><span class="n">AWS</span><span class="w"> </span><span class="n">Credentials</span><span class="w"></span>
+<span class="w">      </span><span class="n">uses</span><span class="p">:</span><span class="w"> </span><span class="n">aws</span><span class="o">-</span><span class="n">actions</span><span class="o">/</span><span class="n">configure</span><span class="o">-</span><span class="n">aws</span><span class="o">-</span><span class="n">credentials</span><span class="err">@</span><span class="n">v1</span><span class="w"></span>
+<span class="w">      </span><span class="n">with</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">aws</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="n">key</span><span class="o">-</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="n">AKIAR2JKVZGO665RVFMT</span><span class="w"></span>
+<span class="w">        </span><span class="n">aws</span><span class="o">-</span><span class="n">secret</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="n">key</span><span class="p">:</span><span class="w"> </span><span class="o">$</span><span class="p">{{</span><span class="w"> </span><span class="n">secrets</span><span class="o">.</span><span class="n">Z1G1_NET_WRITE_ONLY</span><span class="w"> </span><span class="p">}}</span><span class="w"></span>
+<span class="w">        </span><span class="n">aws</span><span class="o">-</span><span class="n">region</span><span class="p">:</span><span class="w"> </span><span class="n">us</span><span class="o">-</span><span class="n">east</span><span class="o">-</span><span class="mi">1</span><span class="w"></span>
+
+<span class="w">    </span><span class="o">-</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="n">Deploy</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">site</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">S3</span><span class="w"> </span><span class="n">bucket</span><span class="w"></span>
+<span class="w">      </span><span class="n">run</span><span class="p">:</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="n">s3</span><span class="w"> </span><span class="n">sync</span><span class="w"> </span><span class="o">./</span><span class="n">output</span><span class="o">/</span><span class="w"> </span><span class="n">s3</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">z1g1</span><span class="o">.</span><span class="n">net</span><span class="w"> </span><span class="o">--</span><span class="n">delete</span><span class="w"></span>
+</code></pre></div>
+
 <h2>Serving the site</h2>
     </div><!-- /.entry-content -->
 
