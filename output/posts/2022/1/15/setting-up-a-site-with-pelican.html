@@ -118,7 +118,7 @@
 <li>Lines 15-20 setup the use of the AWS CLI for use by our worker. These are setup via <a href="https://github.com/aws-actions/configure-aws-credentials">configure-aws-credentials</a></li>
 <li>Line 18 includes the AKID to be used for the upload process. An AKID alone should not be considered a secret. However, this does introduces an Avaliblity issue as this workflow is now tied directly to this AKID. If it's ever disabled/loses permissions the job will fail.</li>
 <li>Line 19 makes use of the <a href="">GitHub Actions Secrets API</a> to get the value of the <code>Z1G1_NEW_WRITE_ONLY</code> secret created above. You never want to include the Secret Key for an AWS IAM user within a GitHub repo, or any source code</li>
-<li>Lines 22-23 declare that we will run the <a href="https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/sync.html">S3 Sync command</a> to upload the <code>output</code> directory to the s3 bucket used to host the site</li>
+<li>Lines 22-23 declare that we will run the <a href="https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/sync.html">S3 Sync command</a> to upload the <code>output</code> directory to the s3 bucket used to host the site. The <code>--delete</code> at the end of the command will remove files that exist in the destination but not in the source are deleted during sync</li>
 </ol>
 </li>
 <li>When you run a <code>git push</code> to this repository your output folder will be written to the specified S3 bucket.</li>
@@ -126,7 +126,7 @@
 <h3>Debugging Deployment</h3>
 <ol>
 <li>You need to ensure that your IAM User has permssions to:<ol>
-<li>Both the <code>PutObject`` and</code>ListObject``` permissions. Both of these are required to run the <a href="https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/sync.html">S3 Sync command</a> </li>
+<li>The <code>PutObject`` and</code>ListObject<code>permissions. Both of these are required to run the [S3 Sync command](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/sync.html). In addtion as you want to be able to remove posts from the site, the GitHub action used in this example includes the</code>--delete<code>option. To acomplish this your IAM user needs to have the</code>s3:DeleteObject``` permission as well.</li>
 <li>Has access to both the bucket <code>"arn:aws:s3:::www.z1g1.net"</code>, and the objects inside it <code>"arn:aws:s3:::www.z1g1.net/*",</code></li>
 </ol>
 </li>
@@ -150,7 +150,8 @@
             &quot;Effect&quot;: &quot;Allow&quot;,
             &quot;Action&quot;: [
                 &quot;s3:PutObject&quot;,
-                &quot;s3:ListBucket&quot;
+                &quot;s3:ListBucket&quot;,
+                &quot;s3:DeleteObject&quot;
             ],
             &quot;Resource&quot;: [
                 &quot;arn:aws:s3:::www.z1g1.net/*&quot;,
