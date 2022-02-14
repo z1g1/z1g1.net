@@ -116,6 +116,24 @@
 </ol>
 </li>
 </ol>
+<h3>Why might things not be working?</h3>
+<ol>
+<li>You need to ensure that your IAM User has permssions to:<ol>
+<li>Both the <code>PutObject`` and</code>ListObject``` permissions. Both of these are required to run the <a href="https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/sync.html">S3 Sync command</a> </li>
+<li>Has access to both the bucket <code>"arn:aws:s3:::www.z1g1.net"</code>, and the objects inside it <code>"arn:aws:s3:::www.z1g1.net/*",</code></li>
+</ol>
+</li>
+<li>You might not be able to run <code>git push</code> after createing the workflow<ol>
+<li>Ensure that your GitHub user / <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">personal access token</a> has permissions to create Workflows.</li>
+</ol>
+</li>
+<li>You might get an error saying "actions/checkout@v2 and aws-actions/configure-aws-credentials@v1 are not allowed to be used in ..."<ol>
+<li>Items listed is Steps of a Github Actions (lines 13, and 16) are code that your runner is executing. It's convenient to use code that other wrote so you don't have to rewrite it. However, this does introduce some level of risk as you're running code others wrote on a system you own. GitHub Actions has 4 levels of permissions to control what can run. These are defined in the repo settings and range (from most to least restrctive): no actions at all, actions owned by the current org/user, actions written by GitHub or orgs they have <a href="https://github.com/marketplace?type=actions&amp;verification=verified_creator">verified</a>, any action.</li>
+<li><img alt="Screenshot of github actions permissions" src="/images/github-actions-permissions.png"></li>
+<li>My repo is set to use GitHub and their verified plugins. I am trusting GitHub to write files to my S3 bucket so if they wanted to modify them they could, so this is an acceptable level of risk for me. </li>
+</ol>
+</li>
+</ol>
 <h3>Sample IAM policy for Github Actions</h3>
 <div class="highlight"><pre><span></span><code>{
     &quot;Version&quot;: &quot;2012-10-17&quot;,

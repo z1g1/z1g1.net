@@ -67,6 +67,17 @@ These files could be manauly uploaded to S3, or sent via the S3 CLI. However, th
 	11. Line 19 makes use of the [GitHub Actions Secrets API]() to get the value of the ```Z1G1_NEW_WRITE_ONLY``` secret created above. You never want to include the Secret Key for an AWS IAM user within a GitHub repo, or any source code
 	11. Lines 22-23 declare that we will run the [S3 Sync command](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/sync.html) to upload the ```output``` directory to the s3 bucket used to host the site
 
+### Why might things not be working?
+1. You need to ensure that your IAM User has permssions to:
+	11. Both the ```PutObject`` and ```ListObject``` permissions. Both of these are required to run the [S3 Sync command](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/sync.html) 
+	11. Has access to both the bucket ```"arn:aws:s3:::www.z1g1.net"```, and the objects inside it ```"arn:aws:s3:::www.z1g1.net/*",```
+1. You might not be able to run ```git push``` after createing the workflow
+	11. Ensure that your GitHub user / [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) has permissions to create Workflows.
+1. You might get an error saying "actions/checkout@v2 and aws-actions/configure-aws-credentials@v1 are not allowed to be used in ..."
+	11. Items listed is Steps of a Github Actions (lines 13, and 16) are code that your runner is executing. It's convenient to use code that other wrote so you don't have to rewrite it. However, this does introduce some level of risk as you're running code others wrote on a system you own. GitHub Actions has 4 levels of permissions to control what can run. These are defined in the repo settings and range (from most to least restrctive): no actions at all, actions owned by the current org/user, actions written by GitHub or orgs they have [verified](https://github.com/marketplace?type=actions&verification=verified_creator), any action.
+	11. ![Screenshot of github actions permissions]({static}/images/github-actions-permissions.png)
+	11. My repo is set to use GitHub and their verified plugins. I am trusting GitHub to write files to my S3 bucket so if they wanted to modify them they could, so this is an acceptable level of risk for me. 
+
 ### Sample IAM policy for Github Actions
 ```
 {
