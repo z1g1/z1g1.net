@@ -66,8 +66,10 @@ These files could be manauly uploaded to S3, or sent via the S3 CLI. However, th
 	11. Line 18 includes the AKID to be used for the upload process. An AKID alone should not be considered a secret. However, this does introduces an Avaliblity issue as this workflow is now tied directly to this AKID. If it's ever disabled/loses permissions the job will fail.
 	11. Line 19 makes use of the [GitHub Actions Secrets API]() to get the value of the ```Z1G1_NEW_WRITE_ONLY``` secret created above. You never want to include the Secret Key for an AWS IAM user within a GitHub repo, or any source code
 	11. Lines 22-23 declare that we will run the [S3 Sync command](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/sync.html) to upload the ```output``` directory to the s3 bucket used to host the site
+1. When you run a ```git push``` to this repository your output folder will be written to the specified S3 bucket.
 
-### Why might things not be working?
+
+### Debugging Deployment 
 1. You need to ensure that your IAM User has permssions to:
 	11. Both the ```PutObject`` and ```ListObject``` permissions. Both of these are required to run the [S3 Sync command](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/sync.html) 
 	11. Has access to both the bucket ```"arn:aws:s3:::www.z1g1.net"```, and the objects inside it ```"arn:aws:s3:::www.z1g1.net/*",```
