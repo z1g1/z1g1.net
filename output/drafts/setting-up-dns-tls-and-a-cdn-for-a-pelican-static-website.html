@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="generator" content="Pelican" />
-        <title>Title_Of_The_Post</title>
+        <title>Setting up DNS, TLS, and a CDN for a Pelican Static Website</title>
         <link rel="stylesheet" href="/theme/css/main.css" />
         <meta name="description" content="you can have one category listed remove the status line above when you're done Write here in Markdown To link to internal content (files in the..." />
 </head>
@@ -21,27 +21,38 @@
   <article>
     <header>
       <h1 class="entry-title">
-        <a href="/drafts/title_of_the_post.html" rel="bookmark"
-           title="Permalink to Title_Of_The_Post">Title_Of_The_Post</a></h1>
+        <a href="/drafts/setting-up-dns-tls-and-a-cdn-for-a-pelican-static-website.html" rel="bookmark"
+           title="Permalink to Setting up DNS, TLS, and a CDN for a Pelican Static Website">Setting up DNS, TLS, and a CDN for a Pelican Static Website</a></h1>
     </header>
 
     <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="9999-12-31T23:59:59.999999-04:56">
-                Published: 
+        <abbr class="published" title="2022-01-28T00:00:00-05:00">
+                Published: Fri 28 January 2022
         </abbr>
 
         <address class="vcard author">
                 By                         <a class="url fn" href="/author/zack.html">Zack</a>
         </address>
-<p>In <a href="/category/misc.html">misc</a>.</p>
+<p>In <a href="/category/pelican.html">Pelican</a>.</p>
 
 </footer><!-- /.post-info -->      <p>you can have one category listed </p>
 <p>remove the status line above when you're done </p>
 <p>Write here in Markdown</p>
 <p>To link to internal content (files in the content directory), use the following syntax for the link target: {filename}path/to/file Note: forward slashes, /, are the required path separator in the {filename} directive on all operating systems, including Windows.
 to include an image <img alt="alt_text" src="/images/FILENAME">, if you need to SCP it use <code>scp -i ~/.ssh/zackDo_id_rsa LOCAL_FILE zack@ssh.z1g1.net:/home/zack/projects/z1g1.net/content/images/</code></p>
-<p><img alt="alt_text" src="/images/FILENAME"></p>
+<p><img alt="diagram of s3 bucket to laptop over tls via cloudfront and cloudflare" src="/images/dns-and-cloudflare.png"></p>
+<p>The first post in this series covered <a href="/posts/2022/1/15/setting-up-a-site-with-pelican.html">creating a site with Pelican</a> the second covered <a href="/posts/2022/1/22/hosting-a-static-pelican-site-in-s3-with-github-actions.html">S3 hosting and Github Actions</a>. The series will conclude with configuration of DNS, TLS, and a CDN. You will need a domain name, AWS Account, and Cloudflare account to complete this step. </p>
+<h2>Configuring DNS</h2>
+<p>With a static site configured and uploading to an S3 bucket configured for static website hosting, anyone can see your site by visiting the bucket directly via the "Bucket website endpoint" created when the bucket is setup for <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html">static website hosting</a>. Setting up DNS allows visitors to access this via your purchased domain name.</p>
+<ol>
+<li>Within your <a href="https://dash.cloudflare.com">CloudFlare dashboard</a>, under the "Website" menu click on the "Add Site" button. Enter your domain name and click "Add site". Select the free plan and contiune.</li>
+<li>You will be provided with a review of the DNS records currently setup for the domain. If this is a fesh purchase you will likely see DNS records created by your registrar. Click Contiune.</li>
+<li>You will be prompted to update the domain's existing nameservers and point them to CloudFlare. This will allow CloudFlare to provide answers when browsers ask for information about your domain. These instructions will be unique for your domain registrar of choice. </li>
+<li>Once you have updated your Name Servers click the "Done, check nameservers" button. If this fails after updating at your registrar give it some time and retry. </li>
+<li>Within the CloudFlare "Quick Start Guide" accept the defaults and click "Finish"</li>
+</ol>
+<p>that CloudFlare is going to create for you. </p>
     </div><!-- /.entry-content -->
 
   </article>
