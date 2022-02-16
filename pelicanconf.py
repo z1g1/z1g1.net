@@ -37,6 +37,7 @@ DISPLAY_PAGES_ON_MENU = True
 INDEX_SAVE_AS = 'blog_index.html' 
 MENUITEMS = (
 	('Posts', '/blog_index.html'),
+	('Link Blog', 'https://z1g1.tumblr.com/'),
 )
 
 
