@@ -1,5 +1,4 @@
 title: Using Jupyter Notebooks in Google Colab and publishing to Google Sheets
-status: draft
 category: Jupyter
 image: ![alt_text]({static}/images/FILENAME)
 
