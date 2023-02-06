@@ -1,10 +1,10 @@
 title: Hosting a Static Pelican Site in S3 with GitHub Actions
 status: published
 category: Pelican
-image: ![Diagram of laptop to GitHub to S3 bucket via GitHub actions]({filename}/images/github-actions-to-s3-bucket.png)
+image: ![Diagram of laptop to GitHub to S3 bucket via GitHub actions]({static}/images/github-actions-to-s3-bucket.png)
 
-![Diagram of laptop to GitHub to S3 bucket via GitHub actions]({filename}/images/github-actions-to-s3-bucket.png)
-With the [static site already created]({filename}2022-01-15-Setting-up-the-site.md) you could manually copy these files to S3 via the AWS console, or via the S3 CLI. However, this adds friction to the writing process. When the files are sent to GitHub via the ```git push``` command they can be automatically be sent to Amazon S3 using [GitHub Actions](https://docs.github.com/en/actions) for continuous Deployment/ Continuous Intergration (CI/CD). 
+![Diagram of laptop to GitHub to S3 bucket via GitHub actions]({static}/images/github-actions-to-s3-bucket.png)
+With the [static site already created]({static}2022-01-15-Setting-up-the-site.md) you could manually copy these files to S3 via the AWS console, or via the S3 CLI. However, this adds friction to the writing process. When the files are sent to GitHub via the ```git push``` command they can be automatically be sent to Amazon S3 using [GitHub Actions](https://docs.github.com/en/actions) for continuous Deployment/ Continuous Integrations (CI/CD). 
 
 When working with any type of system like this ensure you review the [security](https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions) and [pricing](https://docs.github.com/en/actions/learn-github-actions/usage-limits-billing-and-administration). I got a good start using GitHub Actions based on a great post by [johnkevinlosito@](https://johnkevinlosito.com/posts/deploy-static-website-to-s3-using-github-actions).
 

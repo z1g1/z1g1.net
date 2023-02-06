@@ -8,7 +8,7 @@ If you are collaborating with a user who you don't want to send to the notebook,
 
 ## Step by Step
 1. Create a new notebook on  [Google Colab](https://colab.research.google.com/) 
-1. Import both the ```pandas`` and ```google.cloab``` libraries. You can use the ```#@title ...``` nomenclature to title a Python code cell in your Notebook. These will appear in the table of contents allowing you to jump around your notebook.
+1. Import both the ```pandas``` and ```google.cloab``` libraries. You can use the ```#@title ...``` nomenclature to title a Python code cell in your Notebook. These will appear in the table of contents allowing you to jump around your notebook.
 ![python code importing colab and pandas libraries]({static}/images/google-colab-01.png)
 1. Use the ```colab``` library access the sample data.  To access the path for an item in Google Drive open the file browser (1), navigate to the file and click the three dot menu (2), then select "copy path" (3) 
 ![use copy path to get an object's Google Drive path]({static}/images/google-colab-02.png)

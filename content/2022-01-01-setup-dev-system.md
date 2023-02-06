@@ -1,8 +1,8 @@
 title:  Setting up WSL and Ubuntu on Windows
 category: Step by Step
-image: ![Ubuntu logo]({filename}/images/Ubuntu-logo.jpg)
+image: ![Ubuntu logo]({static}/images/Ubuntu-logo.jpg)
 
-![Ubuntu logo]({filename}/images/Ubuntu-logo.jpg)
+![Ubuntu logo]({static}/images/Ubuntu-logo.jpg)
 
 I wanted to get started with writing more online in 2022. I decided to setup a static site hosted out of S3 which I will cover in a future post. However, before taking this step I needed a system that I could work on to build out. I made the check list below for myself and wanted to share it out. As with setting up any computer there are an infinite number of opinions so keep in mind this works for me, but is not the gospel. Where I can I will layout why each step is useful and what it's doing for context. 
 

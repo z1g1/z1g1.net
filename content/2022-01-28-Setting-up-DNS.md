@@ -1,11 +1,11 @@
 title: Setting up DNS, TLS, and a CDN for a Pelican Static Website
 status: published 
 category: Pelican
-image: ![diagram of s3 bucket to laptop over tls via cloudfront and cloudflare]({filename}/images/dns-and-cloudflare.png)
+image: ![diagram of s3 bucket to laptop over tls via cloudfront and cloudflare]({static}/images/dns-and-cloudflare.png)
 
-![diagram of s3 bucket to laptop over tls via cloudfront and cloudflare]({filename}/images/dns-and-cloudflare.png)
+![diagram of s3 bucket to laptop over tls via cloudfront and cloudflare]({static}/images/dns-and-cloudflare.png)
 
-The first post in this series covered [creating a site with Pelican]({filename}2022-01-15-Setting-up-the-site.md) the second covered [S3 hosting and Github Actions]({filename}2022-01-22-Hosting-site-via-s3-and-github-actions.md). The series will conclude with configuration of DNS, TLS, and a CDN. You will need a domain name, AWS Account, and Cloudflare account to complete this step. 
+The first post in this series covered [creating a site with Pelican]({static}2022-01-15-Setting-up-the-site.md) the second covered [S3 hosting and Github Actions]({filename}2022-01-22-Hosting-site-via-s3-and-github-actions.md). The series will conclude with configuration of DNS, TLS, and a CDN. You will need a domain name, AWS Account, and Cloudflare account to complete this step. 
 
 ## Create a TLS certificate
 
