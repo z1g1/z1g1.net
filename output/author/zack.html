@@ -13,13 +13,62 @@
                 <h1><a href="/">z1g1.net</a></h1>
                 <nav><ul>
                     <li><a href="/blog_index.html">Posts</a></li>
+                    <li><a href="https://z1g1.tumblr.com/">Link Blog</a></li>
                     <li><a href="/pages/purchases.html">Purchases</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/posts/2022/1/28/setting-up-dns-tls-and-a-cdn-for-a-pelican-static-website.html">Setting up DNS, TLS, and a CDN for a Pelican Static Website</a></h1>
+                    <h1 class="entry-title"><a href="/posts/2023/2/5/using-jupyter-notebooks-in-google-colab-and-publishing-to-google-sheets.html">Using Jupyter Notebooks in Google Colab and publishing to Google Sheets</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2023-02-05T00:00:00-05:00">
+                Published: Sun 05 February 2023
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/zack.html">Zack</a>
+        </address>
+<p>In <a href="/category/jupyter.html">Jupyter</a>.</p>
+
+</footer><!-- /.post-info --><p><a href="https://jupyter.org/try-jupyter/lab/">Jupyter Lab notebooks</a>  are a great tool for doing data analysis that is either to big for Excel, or you need to repeat the output. <a href="https://colab.research.google.com/">Google Colab</a> is a hosted version of Jupyter Labs. A useful feature of Jupyter Notebooks are that you can share a notebook with someone and they can see the same output. Google Colab adds the extra bonus of allowing you to share your instance of the notebook directly with anyone who has a Google Account, or corporate Google Apps Account. These sharing features also extend to accessing data directly from Google Drive using Google's <a href="https://github.com/googlecolab/colabtools/tree/main/google/colab">colab library</a>.</p>
+<p>If you are collaborating with a user who you don't want to send to the notebook, you can also make use of colab features to send data directly to Google Sheets. The setups below walk though the process of using the Pandas library to analyze some of Google Colab's <a href="https://developers.google.com/machine-learning/crash-course/california-housing-data-description">California Housing sample data</a>, and send the results to Google Sheets. Details are also in this <a href="https://github.com/z1g1/notebooks/blob/main/Colab_demo.ipynb">sample notebook</a>.</p>
+<h2>Step by Step</h2>
+<ol>
+<li>Create a new notebook on  <a href="https://colab.research.google.com/">Google Colab</a> </li>
+<li>Import both the <code>pandas</code> and <code>google.cloab</code> libraries. You can use the <code>#@title ...</code> nomenclature to title a Python code cell in your Notebook. These will appear in the table of contents allowing you to jump around your notebook.
+<img alt="python code importing colab and pandas libraries" src="/images/google-colab-01.png"></li>
+<li>Use the <code>colab</code> library access the sample data.  To access the path for an item in Google Drive open the file browser (1), navigate to the file and click the three dot menu (2), then select "copy path" (3) 
+<img alt="use copy path to get an object's Google Drive path" src="/images/google-colab-02.png"></li>
+<li>Create a Pandas Dataframe with the sample data, then use the <code>df.shape</code> method to see this data has 3000 rows and 9 columns 
+<img alt="code cell showing accessing the sample data" src="/images/google-colab-03.png"></li>
+<li>To create a new Google Sheet for this data you need to authenticate your notebook to your Google Account.  You will use this auth with the <a href="https://docs.gspread.org/en/v5.7.0/index.html">gspread</a> library. 
+<img alt="code cell showing using gspread authentication" src="/images/google-colab-04.png"></li>
+<li>Using <code>gspread</code> to create a new spreadsheet and worksheet to the size of your data. then using <code>worksheet.update</code> put the data into Google Sheets
+<img alt="Code cell using gspread update" src="/images/google-colab-05.png"></li>
+</ol>
+<p>This will have your data into Google Sheets but the one line of <code>worksheet.update([df.columns.values.tolist()] + df.values.tolist())</code> is doing a lot. How did this data actually get written. </p>
+<p>The <a href="https://docs.gspread.org/en/v5.7.0/api/models/worksheet.html#gspread.worksheet.Worksheet.update">worksheet.update</a> method takes in a list of data as the <code>values</code> attribute. If the elements of this list are themselves lists gspread will send this data as rows and columns to write to the sheet. For example if your data is <code>data = [[1,1],[2,1],[3,1]]</code> when this is written to Google Sheets it will be written as three rows, with two columns each </p>
+<p><img alt="a code cell passing a list of lists to gspread" src="/images/google-colab-06.png"></p>
+<p><img alt="the output of the code cell above in Google Sheets" src="/images/google-colab-07.png"></p>
+<p>With this information we can keep diving into how <code>worksheet.update([df.columns.values.tolist()] + df.values.tolist())</code> wrote our data to Google Sheets. <code>df.columns.values.tolist()</code> calls the columns attribute from the Pandas Dataframe. This is then converted to a list using <code>tolist()</code>. In order to have our list of lists as above this list is included inside of <code>[ ]</code> inside the <code>worksheet.update</code>. If this were the only data sent to Google Sheets it would only write the column names </p>
+<p>To get each of the remaining 3000 rows of data <code>df.values.tolist()</code> is used to export the Dataframe's data to a list. This is then added to the column names list using the <a href="https://docs.python.org/3/reference/datamodel.html#object.__add__">add operator</a>. When this add operation is complete we have a list with 3001 elements, each of which is a row to write to Google Sheets.</p>
+<p><img alt="code cell showing how the columns and data were put together for Google Sheets" src="/images/google-colab-08.png"></p>
+<h2>What's next</h2>
+<p>This example only wrote the Dataframe directly to Google Sheets. However, you can use these same basics to write the output of any of your data analysis  Dataframes or series to Google Sheets. You can also use gspread to update existing worksheets, or create multiple sheets for each of the answers you produce. </p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/posts/2022/1/28/setting-up-dns-tls-and-a-cdn-for-a-pelican-static-website.html" rel="bookmark"
+                           title="Permalink to Setting up DNS, TLS, and a CDN for a Pelican Static Website">Setting up DNS, TLS, and a CDN for a Pelican Static Website</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2022-01-28T00:00:00-05:00">
                 Published: Fri 28 January 2022
@@ -30,60 +79,17 @@
         </address>
 <p>In <a href="/category/pelican.html">Pelican</a>.</p>
 
-</footer><!-- /.post-info --><p><img alt="diagram of s3 bucket to laptop over tls via cloudfront and cloudflare" src="/images/dns-and-cloudflare.png"></p>
-<p>The first post in this series covered <a href="/posts/2022/1/15/setting-up-a-site-with-pelican.html">creating a site with Pelican</a> the second covered <a href="/posts/2022/1/22/hosting-a-static-pelican-site-in-s3-with-github-actions.html">S3 hosting and Github Actions</a>. The series will conclude with configuration of DNS, TLS, and a CDN. You will need a domain name, AWS Account, and Cloudflare account to complete this step. </p>
-<h2>Create a TLS certificate</h2>
-<ol>
-<li>To enable your distribution to serve over TLS you will <a href="https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-request-public.html">request a public certificate</a> from Amazon Certificate Manager (ACM)<ol>
-<li>For the "Fully qualified domain name" enter the domain name that you will eventually want the Pelican generated site to be accessed by </li>
-<li>Select "Use DNS validation"</li>
-<li>Click Create</li>
-</ol>
-</li>
-<li>At this point the certificate will be created but not valid, you need to prove ownership via DNS. Click on the Certificate ID. In the "Domains" section note the "CNAME name" and "CNAME value". </li>
-<li>In CloudFlare console for your domain <a href="https://support.cloudflare.com/hc/en-us/articles/360019093151-Managing-DNS-records-in-Cloudflare#h_60566325041543261564371">create a CNAME</a> using the values AWS provided above<ol>
-<li>The AWS "CNAME name" corresponds to "Name" in CloudFlare console</li>
-<li>The AWS "CNAM value" corresponds to "Content" in CloudFlare console</li>
-<li>Disable the CloudFlare Proxy Toggle </li>
-</ol>
-</li>
-<li>Wait until the certificate's status is "Issued" in the AWS console.</li>
-</ol>
-<h2>Create a CloudFront Distribution</h2>
-<ol>
-<li>Following <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-creating-console.html">AWS' guide</a> configure a Cloudfront Web Distribution<ol>
-<li>Select your bucket created as the "Origin domain"</li>
-<li>For "S3 Bucket Access" select "Yes use OAI", select create a new one, and have AWS update the bucket policy. An Origin Access Identity is another type of identity within AWS which will allow your bucket to be locked down to just access via CloudFront vs being made public.</li>
-<li>In the "Alternate domain name" section enter the domain you wish to use </li>
-<li>In the "Custom SSL certificate" dropdown select the ACM certificate you created above</li>
-<li>In the "Default root object" enter <code>index.html</code>. <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/DefaultRootObject.html">docs</a></li>
-<li>Leave other options at their default and click Create. You will need to wait to move on until the distribution is deployed until you can test </li>
-</ol>
-</li>
-<li>Once the Distribution is no longer showing as "Deploying" you should be able to see your site being served over TLS via the "Distribution domain name"/index.html</li>
-</ol>
-<h2>Configuring DNS</h2>
-<p>With a static site in the S3 bucket configured for static website hosting, and the CloudFront distribution configured via the "Distribution domain name". Setting up DNS allows visitors to access this via your purchased domain name.</p>
-<ol>
-<li>Within your <a href="https://dash.cloudflare.com">CloudFlare dashboard</a>, under the "Website" menu click on the "Add Site" button. Enter your domain name and click "Add site". Select the free plan and contiune.</li>
-<li>You will be provided with a review of the DNS records currently setup for the domain. If this is a fesh purchase you will likely see DNS records created by your registrar. Click Contiune.</li>
-<li>You will be prompted to update the domain's existing nameservers and point them to CloudFlare. This will allow CloudFlare to provide answers when browsers ask for information about your domain. These instructions will be unique for your domain registrar of choice. </li>
-<li>Once you have updated your Name Servers click the "Done, check nameservers" button. If this fails after updating at your registrar give it some time and retry. </li>
-<li>Within the CloudFlare "Quick Start Guide" accept the defaults and click "Finish". Wait until CloudFlare confirms that your domain is congirued</li>
-<li>Within CloudFlare create a CNAME record with a value of <code>@</code>, and the "Target" as your CloudFront Distribution Domain Name. Ensure you delete the <code>https://</code> or you will get an error </li>
-<li>Within CloudFlare select the "SSL/TLS" menu and set the encryption mode to "Full".</li>
-</ol>
-<p>Your site should now load at the domain name that you requested</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+</footer><!-- /.post-info -->                <p><img alt="diagram of s3 bucket to laptop over tls via cloudfront and cloudflare" src="/images/dns-and-cloudflare.png"></p>
+<p>The first post in this series covered <a href="{static}2022-01-15-Setting-up-the-site.md">creating a site with Pelican</a> the second covered <a href="/posts/2022/1/22/hosting-a-static-pelican-site-in-s3-with-github-actions.html">S3 hosting and Github Actions</a>. The series will conclude with configuration of DNS, TLS, and a CDN. You will need a domain name, AWS Account, and Cloudflare account to complete this step. </p>
+<h2>Create a TLS …</h2>
+                <a class="readmore" href="/posts/2022/1/28/setting-up-dns-tls-and-a-cdn-for-a-pelican-static-website.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
                     <h1><a href="/posts/2022/1/22/hosting-a-static-pelican-site-in-s3-with-github-actions.html" rel="bookmark"
-                           title="Permalink to Hosting a Static Pelican Site in S3 with Github Actions">Hosting a Static Pelican Site in S3 with Github Actions</a></h1>
+                           title="Permalink to Hosting a Static Pelican Site in S3 with GitHub Actions">Hosting a Static Pelican Site in S3 with GitHub Actions</a></h1>
                 </header>
 
                 <div class="entry-content">
@@ -97,8 +103,8 @@
         </address>
 <p>In <a href="/category/pelican.html">Pelican</a>.</p>
 
-</footer><!-- /.post-info -->                <p><img alt="Diagram of laptop to github to s3 bucket via github actions" src="/images/github-actions-to-s3-bucket.png">
-With the <a href="/posts/2022/1/15/setting-up-a-site-with-pelican.html">static site already created</a> you could manually copy these files to s3 via the AWS console, or via the S3 CLI. However, this adds friction to the writting process. When the files are sent to Github via the <code>git push</code> command they can be automatically be sent to …</p>
+</footer><!-- /.post-info -->                <p><img alt="Diagram of laptop to GitHub to S3 bucket via GitHub actions" src="/images/github-actions-to-s3-bucket.png">
+With the <a href="{static}2022-01-15-Setting-up-the-site.md">static site already created</a> you could manually copy these files to S3 via the AWS console, or via the S3 CLI. However, this adds friction to the writing process. When the files are sent to GitHub via the <code>git push</code> command they can be automatically be sent to …</p>
                 <a class="readmore" href="/posts/2022/1/22/hosting-a-static-pelican-site-in-s3-with-github-actions.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>

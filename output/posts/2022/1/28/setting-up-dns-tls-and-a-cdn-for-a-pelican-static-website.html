@@ -14,6 +14,7 @@
                 <h1><a href="/">z1g1.net</a></h1>
                 <nav><ul>
                     <li><a href="/blog_index.html">Posts</a></li>
+                    <li><a href="https://z1g1.tumblr.com/">Link Blog</a></li>
                     <li><a href="/pages/purchases.html">Purchases</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
@@ -37,7 +38,7 @@
 <p>In <a href="/category/pelican.html">Pelican</a>.</p>
 
 </footer><!-- /.post-info -->      <p><img alt="diagram of s3 bucket to laptop over tls via cloudfront and cloudflare" src="/images/dns-and-cloudflare.png"></p>
-<p>The first post in this series covered <a href="/posts/2022/1/15/setting-up-a-site-with-pelican.html">creating a site with Pelican</a> the second covered <a href="/posts/2022/1/22/hosting-a-static-pelican-site-in-s3-with-github-actions.html">S3 hosting and Github Actions</a>. The series will conclude with configuration of DNS, TLS, and a CDN. You will need a domain name, AWS Account, and Cloudflare account to complete this step. </p>
+<p>The first post in this series covered <a href="{static}2022-01-15-Setting-up-the-site.md">creating a site with Pelican</a> the second covered <a href="/posts/2022/1/22/hosting-a-static-pelican-site-in-s3-with-github-actions.html">S3 hosting and Github Actions</a>. The series will conclude with configuration of DNS, TLS, and a CDN. You will need a domain name, AWS Account, and Cloudflare account to complete this step. </p>
 <h2>Create a TLS certificate</h2>
 <ol>
 <li>To enable your distribution to serve over TLS you will <a href="https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-request-public.html">request a public certificate</a> from Amazon Certificate Manager (ACM)<ol>

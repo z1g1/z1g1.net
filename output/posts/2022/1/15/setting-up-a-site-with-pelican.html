@@ -14,6 +14,7 @@
                 <h1><a href="/">z1g1.net</a></h1>
                 <nav><ul>
                     <li><a href="/blog_index.html">Posts</a></li>
+                    <li><a href="https://z1g1.tumblr.com/">Link Blog</a></li>
                     <li><a href="/pages/purchases.html">Purchases</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
@@ -38,7 +39,7 @@
 
 </footer><!-- /.post-info -->      <p><img alt="Diagram of a laptop connecting to server over ssh" src="/images/site-with-pelican.png">
 The site here is built using <a href="https://docs.getpelican.com/">Pelican</a> which is a static website generator. It allowed you to write webpages in markdown, then build them along with a config file and theme to HTML files. These files are then stored in an S3 bucket without having to run any webserver. To be able to serve the site via https the site has a certificate created via Amazon Certificate manager and hosted out of CloudFront. To top things off the site is routed over the Cloudflare CDN. I got a good start on this process from a post on Aaron Asaro's blog about <a href="https://blog.anotherstarburst.com/posts/s3-static-site-cloudflare-ssl/">Serving a static site from S3 using Cloudflare Full SSL</a>. I had to make some tweaks to get SSL full up and working. </p>
-<p>You need a command line system to run the commands below. I will be using my <a href="/posts/2022/1/1/setting-up-wsl-and-ubuntu-on-windows.html">Ubuntu system</a></p>
+<p>You need a command line system to run the commands below. I will be using my <a href="{static}2022-01-01-setup-dev-system.md">Ubuntu system</a></p>
 <h2>Creating the site</h2>
 <ol>
 <li>To install <a href="https://docs.getpelican.com/en/latest/quickstart.html">Pelican</a> you will need to have Python and Pip installed.<ol>
@@ -91,7 +92,7 @@ The site here is built using <a href="https://docs.getpelican.com/">Pelican</a> 
 </li>
 <li>To create a page to act as the front page create a file in <code>content/pages/index.md</code>. To ensure it shows as the front page set the following metadata at the top of the page. <code>URL:</code>, <code>save_as: index.html</code>, <code>status: hidden</code></li>
 </ol>
-<p>At this point you will have the skelton of a site, which as you add content will be written to HTML files in the <code>output</code> directory when you run the <code>pelican</code> command. These files can be uploaded to your object store of choice to act as your website. This site is hosted in Amazon S3. The <a href="/posts/2022/1/22/hosting-a-static-pelican-site-in-s3-with-github-actions.html">next post in the series</a> covers setting up <a href="https://docs.github.com/en/actions">GitHub Actions</a> for continuous Deployment/ Continuous Intergration (CI/CD).  </p>
+<p>At this point you will have the skelton of a site, which as you add content will be written to HTML files in the <code>output</code> directory when you run the <code>pelican</code> command. These files can be uploaded to your object store of choice to act as your website. This site is hosted in Amazon S3. The <a href="{static}2022-01-22-Hosting-site-via-s3-and-github-actions.md">next post in the series</a> covers setting up <a href="https://docs.github.com/en/actions">GitHub Actions</a> for continuous Deployment/ Continuous Intergration (CI/CD).  </p>
     </div><!-- /.entry-content -->
 
   </article>

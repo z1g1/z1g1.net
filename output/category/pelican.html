@@ -13,6 +13,7 @@
                 <h1><a href="/">z1g1.net</a></h1>
                 <nav><ul>
                     <li><a href="/blog_index.html">Posts</a></li>
+                    <li><a href="https://z1g1.tumblr.com/">Link Blog</a></li>
                     <li><a href="/pages/purchases.html">Purchases</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
@@ -31,7 +32,7 @@
 <p>In <a href="/category/pelican.html">Pelican</a>.</p>
 
 </footer><!-- /.post-info --><p><img alt="diagram of s3 bucket to laptop over tls via cloudfront and cloudflare" src="/images/dns-and-cloudflare.png"></p>
-<p>The first post in this series covered <a href="/posts/2022/1/15/setting-up-a-site-with-pelican.html">creating a site with Pelican</a> the second covered <a href="/posts/2022/1/22/hosting-a-static-pelican-site-in-s3-with-github-actions.html">S3 hosting and Github Actions</a>. The series will conclude with configuration of DNS, TLS, and a CDN. You will need a domain name, AWS Account, and Cloudflare account to complete this step. </p>
+<p>The first post in this series covered <a href="{static}2022-01-15-Setting-up-the-site.md">creating a site with Pelican</a> the second covered <a href="/posts/2022/1/22/hosting-a-static-pelican-site-in-s3-with-github-actions.html">S3 hosting and Github Actions</a>. The series will conclude with configuration of DNS, TLS, and a CDN. You will need a domain name, AWS Account, and Cloudflare account to complete this step. </p>
 <h2>Create a TLS certificate</h2>
 <ol>
 <li>To enable your distribution to serve over TLS you will <a href="https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-request-public.html">request a public certificate</a> from Amazon Certificate Manager (ACM)<ol>
@@ -83,7 +84,7 @@
             <li><article class="hentry">
                 <header>
                     <h1><a href="/posts/2022/1/22/hosting-a-static-pelican-site-in-s3-with-github-actions.html" rel="bookmark"
-                           title="Permalink to Hosting a Static Pelican Site in S3 with Github Actions">Hosting a Static Pelican Site in S3 with Github Actions</a></h1>
+                           title="Permalink to Hosting a Static Pelican Site in S3 with GitHub Actions">Hosting a Static Pelican Site in S3 with GitHub Actions</a></h1>
                 </header>
 
                 <div class="entry-content">
@@ -97,8 +98,8 @@
         </address>
 <p>In <a href="/category/pelican.html">Pelican</a>.</p>
 
-</footer><!-- /.post-info -->                <p><img alt="Diagram of laptop to github to s3 bucket via github actions" src="/images/github-actions-to-s3-bucket.png">
-With the <a href="/posts/2022/1/15/setting-up-a-site-with-pelican.html">static site already created</a> you could manually copy these files to s3 via the AWS console, or via the S3 CLI. However, this adds friction to the writting process. When the files are sent to Github via the <code>git push</code> command they can be automatically be sent to …</p>
+</footer><!-- /.post-info -->                <p><img alt="Diagram of laptop to GitHub to S3 bucket via GitHub actions" src="/images/github-actions-to-s3-bucket.png">
+With the <a href="{static}2022-01-15-Setting-up-the-site.md">static site already created</a> you could manually copy these files to S3 via the AWS console, or via the S3 CLI. However, this adds friction to the writing process. When the files are sent to GitHub via the <code>git push</code> command they can be automatically be sent to …</p>
                 <a class="readmore" href="/posts/2022/1/22/hosting-a-static-pelican-site-in-s3-with-github-actions.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>

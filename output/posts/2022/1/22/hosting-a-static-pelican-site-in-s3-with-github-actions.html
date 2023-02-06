@@ -4,9 +4,9 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="generator" content="Pelican" />
-        <title>Hosting a Static Pelican Site in S3 with Github Actions</title>
+        <title>Hosting a Static Pelican Site in S3 with GitHub Actions</title>
         <link rel="stylesheet" href="/theme/css/main.css" />
-        <meta name="description" content="With the static site already created you could manually copy these files to s3 via the AWS console, or via the S3 CLI. However, this adds friction..." />
+        <meta name="description" content="With the static site already created you could manually copy these files to S3 via the AWS console, or via the S3 CLI. However, this adds friction..." />
 </head>
 
 <body id="index" class="home">
@@ -14,6 +14,7 @@
                 <h1><a href="/">z1g1.net</a></h1>
                 <nav><ul>
                     <li><a href="/blog_index.html">Posts</a></li>
+                    <li><a href="https://z1g1.tumblr.com/">Link Blog</a></li>
                     <li><a href="/pages/purchases.html">Purchases</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
@@ -22,7 +23,7 @@
     <header>
       <h1 class="entry-title">
         <a href="/posts/2022/1/22/hosting-a-static-pelican-site-in-s3-with-github-actions.html" rel="bookmark"
-           title="Permalink to Hosting a Static Pelican Site in S3 with Github Actions">Hosting a Static Pelican Site in S3 with Github Actions</a></h1>
+           title="Permalink to Hosting a Static Pelican Site in S3 with GitHub Actions">Hosting a Static Pelican Site in S3 with GitHub Actions</a></h1>
     </header>
 
     <div class="entry-content">
@@ -36,8 +37,8 @@
         </address>
 <p>In <a href="/category/pelican.html">Pelican</a>.</p>
 
-</footer><!-- /.post-info -->      <p><img alt="Diagram of laptop to github to s3 bucket via github actions" src="/images/github-actions-to-s3-bucket.png">
-With the <a href="/posts/2022/1/15/setting-up-a-site-with-pelican.html">static site already created</a> you could manually copy these files to s3 via the AWS console, or via the S3 CLI. However, this adds friction to the writting process. When the files are sent to Github via the <code>git push</code> command they can be automatically be sent to Amazon S3 using <a href="https://docs.github.com/en/actions">GitHub Actions</a> for continuous Deployment/ Continuous Intergration (CI/CD). </p>
+</footer><!-- /.post-info -->      <p><img alt="Diagram of laptop to GitHub to S3 bucket via GitHub actions" src="/images/github-actions-to-s3-bucket.png">
+With the <a href="{static}2022-01-15-Setting-up-the-site.md">static site already created</a> you could manually copy these files to S3 via the AWS console, or via the S3 CLI. However, this adds friction to the writing process. When the files are sent to GitHub via the <code>git push</code> command they can be automatically be sent to Amazon S3 using <a href="https://docs.github.com/en/actions">GitHub Actions</a> for continuous Deployment/ Continuous Integrations (CI/CD). </p>
 <p>When working with any type of system like this ensure you review the <a href="https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions">security</a> and <a href="https://docs.github.com/en/actions/learn-github-actions/usage-limits-billing-and-administration">pricing</a>. I got a good start using GitHub Actions based on a great post by <a href="https://johnkevinlosito.com/posts/deploy-static-website-to-s3-using-github-actions">johnkevinlosito@</a>.</p>
 <h2>Setting up AWS Assets</h2>
 <p>If you do not already have an S3 Bucket <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html">configured for static website hosting</a> complete these steps first. Please note that S3 is a <a href="https://aws.amazon.com/s3/pricing/">paid service</a>. There is a free tier but by using AWS assets you can incur charges. </p>
@@ -94,7 +95,7 @@ With the <a href="/posts/2022/1/15/setting-up-a-site-with-pelican.html">static s
 </li>
 </ol>
 <h2>Example files</h2>
-<h3>Sample IAM policy for Github Actions</h3>
+<h3>Sample IAM policy for GitHub Actions</h3>
 <div class="highlight"><pre><span></span><code>{
     &quot;Version&quot;: &quot;2012-10-17&quot;,
     &quot;Statement&quot;: [
@@ -116,29 +117,29 @@ With the <a href="/posts/2022/1/15/setting-up-a-site-with-pelican.html">static s
 </code></pre></div>
 
 <h3>Sample main.yml for GitHub Actions</h3>
-<div class="highlight"><pre><span></span><code><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="n">Upload</span><span class="w"> </span><span class="n">Website</span><span class="w"> </span><span class="n">via</span><span class="w"> </span><span class="n">GitHub</span><span class="w"> </span><span class="n">Actions</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="n">Upload</span><span class="w"> </span><span class="n">Website</span><span class="w"> </span><span class="n">via</span><span class="w"> </span><span class="n">GitHub</span><span class="w"> </span><span class="n">Actions</span>
 
-<span class="n">on</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="n">push</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="n">branches</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="o">-</span><span class="w"> </span><span class="k">master</span><span class="w"></span>
+<span class="n">on</span><span class="p">:</span>
+<span class="w">  </span><span class="n">push</span><span class="p">:</span>
+<span class="w">    </span><span class="n">branches</span><span class="p">:</span>
+<span class="w">    </span><span class="o">-</span><span class="w"> </span><span class="k">master</span>
 
-<span class="n">jobs</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="n">deploy</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="n">runs</span><span class="o">-</span><span class="n">on</span><span class="p">:</span><span class="w"> </span><span class="n">ubuntu</span><span class="o">-</span><span class="n">latest</span><span class="w"></span>
-<span class="w">    </span><span class="n">steps</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="o">-</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="n">Checkout</span><span class="w"></span>
-<span class="w">      </span><span class="n">uses</span><span class="p">:</span><span class="w"> </span><span class="n">actions</span><span class="o">/</span><span class="n">checkout</span><span class="err">@</span><span class="n">v2</span><span class="w"></span>
+<span class="n">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="n">deploy</span><span class="p">:</span>
+<span class="w">    </span><span class="n">runs</span><span class="o">-</span><span class="n">on</span><span class="p">:</span><span class="w"> </span><span class="n">ubuntu</span><span class="o">-</span><span class="n">latest</span>
+<span class="w">    </span><span class="n">steps</span><span class="p">:</span>
+<span class="w">    </span><span class="o">-</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="n">Checkout</span>
+<span class="w">      </span><span class="n">uses</span><span class="p">:</span><span class="w"> </span><span class="n">actions</span><span class="o">/</span><span class="n">checkout</span><span class="err">@</span><span class="n">v2</span>
 
-<span class="w">    </span><span class="o">-</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="n">Configure</span><span class="w"> </span><span class="n">AWS</span><span class="w"> </span><span class="n">Credentials</span><span class="w"></span>
-<span class="w">      </span><span class="n">uses</span><span class="p">:</span><span class="w"> </span><span class="n">aws</span><span class="o">-</span><span class="n">actions</span><span class="o">/</span><span class="n">configure</span><span class="o">-</span><span class="n">aws</span><span class="o">-</span><span class="n">credentials</span><span class="err">@</span><span class="n">v1</span><span class="w"></span>
-<span class="w">      </span><span class="n">with</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="n">aws</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="n">key</span><span class="o">-</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="n">AKIAR2JKVZGO665RVFMT</span><span class="w"></span>
-<span class="w">        </span><span class="n">aws</span><span class="o">-</span><span class="n">secret</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="n">key</span><span class="p">:</span><span class="w"> </span><span class="o">$</span><span class="p">{{</span><span class="w"> </span><span class="n">secrets</span><span class="o">.</span><span class="n">Z1G1_NET_WRITE_ONLY</span><span class="w"> </span><span class="p">}}</span><span class="w"></span>
-<span class="w">        </span><span class="n">aws</span><span class="o">-</span><span class="n">region</span><span class="p">:</span><span class="w"> </span><span class="n">us</span><span class="o">-</span><span class="n">east</span><span class="o">-</span><span class="mi">1</span><span class="w"></span>
+<span class="w">    </span><span class="o">-</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="n">Configure</span><span class="w"> </span><span class="n">AWS</span><span class="w"> </span><span class="n">Credentials</span>
+<span class="w">      </span><span class="n">uses</span><span class="p">:</span><span class="w"> </span><span class="n">aws</span><span class="o">-</span><span class="n">actions</span><span class="o">/</span><span class="n">configure</span><span class="o">-</span><span class="n">aws</span><span class="o">-</span><span class="n">credentials</span><span class="err">@</span><span class="n">v1</span>
+<span class="w">      </span><span class="n">with</span><span class="p">:</span>
+<span class="w">        </span><span class="n">aws</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="n">key</span><span class="o">-</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="n">AKIAR2JKVZGO665RVFMT</span>
+<span class="w">        </span><span class="n">aws</span><span class="o">-</span><span class="n">secret</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="n">key</span><span class="p">:</span><span class="w"> </span><span class="o">$</span><span class="p">{{</span><span class="w"> </span><span class="n">secrets</span><span class="o">.</span><span class="n">Z1G1_NET_WRITE_ONLY</span><span class="w"> </span><span class="p">}}</span>
+<span class="w">        </span><span class="n">aws</span><span class="o">-</span><span class="n">region</span><span class="p">:</span><span class="w"> </span><span class="n">us</span><span class="o">-</span><span class="n">east</span><span class="o">-</span><span class="mi">1</span>
 
-<span class="w">    </span><span class="o">-</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="n">Deploy</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">site</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">S3</span><span class="w"> </span><span class="n">bucket</span><span class="w"></span>
-<span class="w">      </span><span class="n">run</span><span class="p">:</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="n">s3</span><span class="w"> </span><span class="n">sync</span><span class="w"> </span><span class="o">./</span><span class="n">output</span><span class="o">/</span><span class="w"> </span><span class="n">s3</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">z1g1</span><span class="o">.</span><span class="n">net</span><span class="w"> </span><span class="o">--</span><span class="n">delete</span><span class="w"></span>
+<span class="w">    </span><span class="o">-</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="n">Deploy</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">site</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">S3</span><span class="w"> </span><span class="n">bucket</span>
+<span class="w">      </span><span class="n">run</span><span class="p">:</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="n">s3</span><span class="w"> </span><span class="n">sync</span><span class="w"> </span><span class="o">./</span><span class="n">output</span><span class="o">/</span><span class="w"> </span><span class="n">s3</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">z1g1</span><span class="o">.</span><span class="n">net</span><span class="w"> </span><span class="o">--</span><span class="n">delete</span>
 </code></pre></div>
     </div><!-- /.entry-content -->
 
