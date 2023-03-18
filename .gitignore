@@ -4,3 +4,4 @@ links.csv.txt
 .jekyll-cache/
 __pycache__/
 venv/
+output/*
