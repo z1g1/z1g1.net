@@ -5,7 +5,7 @@ image: ![Diagram of a laptop connecting to server over ssh]({static}/images/site
 ![Diagram of a laptop connecting to server over ssh]({static}/images/site-with-pelican.png)
 The site here is built using [Pelican](https://docs.getpelican.com/) which is a static website generator. It allowed you to write webpages in markdown, then build them along with a config file and theme to HTML files. These files are then stored in an S3 bucket without having to run any webserver. To be able to serve the site via https the site has a certificate created via Amazon Certificate manager and hosted out of CloudFront. To top things off the site is routed over the Cloudflare CDN. I got a good start on this process from a post on Aaron Asaro's blog about [Serving a static site from S3 using Cloudflare Full SSL](https://blog.anotherstarburst.com/posts/s3-static-site-cloudflare-ssl/). I had to make some tweaks to get SSL full up and working. 
 
-You need a command line system to run the commands below. I will be using my [Ubuntu system]({static}2022-01-01-setup-dev-system.md)
+You need a command line system to run the commands below. I will be using my [Ubuntu system]({filename}2022-01-01-setup-dev-system.md)
 
 ## Creating the site
 1. To install [Pelican](https://docs.getpelican.com/en/latest/quickstart.html) you will need to have Python and Pip installed.
@@ -43,4 +43,4 @@ You need a command line system to run the commands below. I will be using my [Ub
 1. To create a page to act as the front page create a file in ```content/pages/index.md```. To ensure it shows as the front page set the following metadata at the top of the page. ```URL: ```, ```save_as: index.html```, ```status: hidden```
 
 
-At this point you will have the skelton of a site, which as you add content will be written to HTML files in the ```output``` directory when you run the ```pelican``` command. These files can be uploaded to your object store of choice to act as your website. This site is hosted in Amazon S3. The [next post in the series]({static}2022-01-22-Hosting-site-via-s3-and-github-actions.md) covers setting up [GitHub Actions](https://docs.github.com/en/actions) for continuous Deployment/ Continuous Intergration (CI/CD).  
+At this point you will have the skelton of a site, which as you add content will be written to HTML files in the ```output``` directory when you run the ```pelican``` command. These files can be uploaded to your object store of choice to act as your website. This site is hosted in Amazon S3. The [next post in the series]({filename}2022-01-22-Hosting-site-via-s3-and-github-actions.md) covers setting up [GitHub Actions](https://docs.github.com/en/actions) for continuous Deployment/ Continuous Intergration (CI/CD).  
