@@ -18,9 +18,9 @@ I wanted to get started with writing more online in 2022. I decided to setup a s
 11. This will make a copy of all of the dotfiles into the ```projects/Dotfiles``` directory. For programs to find these files and load their config we will use symlinks below
 11. The benefit of this seperate folder/symlink setup is that it allows you to version control your files without worrying about picking up detritus from your home directory. If you ever make an edit you don't like you can roll back it via version control. 
 1. Create a symlink off of the Dotfiles repo into the home directory. This will allow for you to source control this file 
-11. .zshrc file ```ln -s projects/Dotfiles/.zshrc ~/.zshrc``` 
-11. .tmux.conf file ```ln -s projects/Dotfiles/.tmux.conf ~/.tmux.conf``` 
-11. .vimrc file ```ln -f -s projects/Dotfiles/.vimrc ~/.vimrc``` 
+11. .zshrc file ```ln -s ~/projects/Dotfiles/.zshrc ~/.zshrc``` 
+11. .tmux.conf file ```ln -s ~/projects/Dotfiles/.tmux.conf ~/.tmux.conf``` 
+11. .vimrc file ```ln -f -s ~/projects/Dotfiles/.vimrc ~/.vimrc``` 
 1. Set default shell to zsh with ```chsh``` followed by ```/usr/bin/zsh```
 
 This setup gives you an Ubuntu system running on windows to act as a foundation for a static webiste
