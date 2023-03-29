@@ -13,6 +13,10 @@ body {
 a {
     color: #f7cac9
 }
+a:hover: {
+    color: #c74451
+}
+
 .main-container {
     background-color: #fff;
     padding-left: 5px;
@@ -83,5 +87,20 @@ nav li {
     height: auto;
  }
   
+.entry-title a{
+    color: #000;
+    font-weight: 700;
+    text-decoration: none;
+}
 
-
+article {
+    max-width: 100%;
+    height: auto;
+    overflow: hidden;
+ }
+  
+article img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+ }
