@@ -7,6 +7,8 @@
         <meta name="generator" content="Pelican" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/theme/css/skeleton.css">
+        <link rel="stylesheet" href="/theme/css/normalize.css">
+        <link rel="stylesheet" href="/theme/css/custom.css">
 
         {% if FEED_ALL_ATOM %}
         <link href="{{ FEED_DOMAIN }}/{% if FEED_ALL_ATOM_URL %}{{ FEED_ALL_ATOM_URL }}{% else %}{{ FEED_ALL_ATOM }}{% endif %}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Full Atom Feed" />
@@ -36,43 +38,49 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="container main-container">
     <div class="row">
       <div class="twelve columns">
         <header>
-                <h1><a href="{{ SITEURL }}/">{{ SITENAME }}{% if SITESUBTITLE %} <strong>{{ SITESUBTITLE }}</strong>{% endif %}</a></h1>
+                <h1 class="site-title-text"><a href="{{ SITEURL }}/">{{ SITENAME }}{% if SITESUBTITLE %} <strong>{{ SITESUBTITLE }}</strong>{% endif %}</a></h1>
         </header>
       </div> <!-- /twelve columns -->
     </div> <!-- /row -->
-    <div class="row">
-      <div class="twelve columns">
+    <div class="row top-border-red">
+      <div class="three columns">
         <nav><ul>
         {% for title, link in MENUITEMS %}
-            <li><a href="{{ link }}">{{ title }}</a></li>
+            <li class="nav-li"><a href="{{ link }}"><div>{{ title }}</div></a></li>
         {% endfor %}
         {% if DISPLAY_PAGES_ON_MENU %}
           {% for p in pages %}
-            <li{% if p == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
-          {% endfor %}
-        {% endif %}
-        {% if DISPLAY_CATEGORIES_ON_MENU %}
-          {% for cat, null in categories %}
-            <li{% if cat == category %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
+            {% if p == page %} class="active"{% endif %}<li class="nav-li"><a href="{{ SITEURL }}/{{ p.url }}"><div>{{ p.title }}</div></a></li>
           {% endfor %}
         {% endif %}
         </ul></nav>
-      </div> <!-- /twelve columns -->
-    </div> <!-- /row -->
+      </div> <!-- /three columns -->
+      <div class="nine columns left-border-red">
         <main>
         {% block content %}
         {% endblock %}
         </main>
-        <footer>
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
-                which takes great advantage of <a href="https://www.python.org/">Python</a>.
-                </address><!-- /#about -->
-        </footer>
+      </div> <!-- /nine columns -->
+    </div> <!-- /row -->
+    <div class=" row top-border-red">
+    <footer>
+      <div class="three columns">
+        <address id="about" class="vcard body">&#169; 2020 Zack Glick </address><!-- /#about -->
+      </div> <!-- /three columns -->
+      <div class="three columns">
+        <strong>Socials</strong>
+        <ul class="social">
+          {% for name, link in SOCIAL %}
+          <li><a href="{{ link }}" target="_blank" rel="noopener">{{ name }}</a></li>
+          {% endfor %}
+        </ul>
+      </div> <!-- /three columns -->
+    </footer>
+    </div> <!-- /row -->
     
   </div> <!-- /container -->
 </body>

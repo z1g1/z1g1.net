@@ -1,0 +1,38 @@
+.site-title-text a {
+    color: #000;
+    text-decoration : none;
+    font-weight: 700;
+    
+}
+
+nav a {
+    color: #000;
+    text-decoration : none;
+    font-weight: 700;
+}
+
+nav a:hover {
+    color: #fff;
+}
+
+nav li:hover {
+    background: #c74451;
+    color: #fff;
+    text-shadow: none !important;
+}
+
+nav li {
+    list-style-type: none;
+    width: 100%;
+  }
+
+.left-border-red{
+    border-left: 2px solid #c74451;
+    border-left-style: dotted;
+    padding-left: 5px;
+}
+
+.top-border-red{
+    border-top: 2px solid #c74451;
+    border-top-style: dotted;
+}
