@@ -20,7 +20,7 @@ LINKS = ()
 
 # Social widget
 SOCIAL = (
-	('Mastadon - z1g1@', 'https://infosec.exchange/@z1g1')
+	('Mastadon - z1g1@', 'https://infosec.exchange/@z1g1'),
 	('Twitter - z1g1@', 'https://twitter.com/z1g1'),
     ('Github - z1g1', 'https://github.com/z1g1'),
 	('LinkedIn - zglick', 'https://www.linkedin.com/in/zglick/'),

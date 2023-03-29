@@ -1,3 +1,23 @@
+/*
+    #c74451 (the base color)
+    #b83e4b (a darker shade of the base color)
+    #d24e5a (a lighter shade of the base color)
+    #f7cac9 (a pale pink color that complements the base color)
+    #d1d1d1 (a light gray color that works well as a neutral background color)
+    #ffffff (white, also works well as a background color or accent color)
+*/
+
+body {
+    background-color:  #d1d1d1 ;
+}
+a {
+    color: #f7cac9
+}
+.main-container {
+    background-color: #fff;
+    padding-left: 5px;
+    padding-right: 5px;
+}
 .site-title-text a {
     color: #000;
     text-decoration : none;
@@ -45,3 +65,23 @@ nav li {
 .pageh1 h1 {
     margin-top: 0px;
 }
+
+.articleIndex a {
+    text-decoration: none;
+    color:  #f7cac9 ;
+}
+
+.aricleSummary {
+    max-width: 100%;
+    height: auto;
+    overflow: hidden;
+ }
+  
+ .aricleSummary img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+ }
+  
+
+
