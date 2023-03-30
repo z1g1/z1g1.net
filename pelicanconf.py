@@ -45,3 +45,4 @@ MENUITEMS = (
 ARTICLE_URL = 'posts/{date.year}/{date.month}/{date.day}/{slug}.html'
 ARTICLE_SAVE_AS = 'posts/{date.year}/{date.month}/{date.day}/{slug}.html'
 
+THEME = 'theme'
