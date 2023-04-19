@@ -5,3 +5,4 @@ links.csv.txt
 __pycache__/
 venv/
 output/*
+.vscode/*
