@@ -1,7 +1,7 @@
 title: 
 How to Create a Hardened Cloudflare Account
 category: Zatik
-image: ![alt_text]({static}/images/zatik-logo.jpg)
+image: ![alt_text]({static}/images/Zatik-text.png)
 
 Original post on [Zatik's blog](https://www.zatik.io/blog/how-to-create-a-hardened-cloudflare-account)
 
