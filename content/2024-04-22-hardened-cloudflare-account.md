@@ -2,6 +2,7 @@ title: How to Create a Hardened Cloudflare Account
 category: Zatik
 image: ![alt_text]({static}/images/Zatik-text.png)
 
+
 Original post on [Zatik's blog](https://www.zatik.io/blog/how-to-create-a-hardened-cloudflare-account)
 
 >> Zatik Security moved all of our domains and DNS infrastructure onto the Cloudflare platform in early 2024. We made this decision after completing a review of 5 commonly used domain registrars security features. We selected the Cloudflare platform based on the security features available on their intro tier without requiring an upgrade to the enterprise tier. These features are strong two factor authentication,  support for multiple users with role-based access controls, in-account audit trails, and the ability to log out other users. Support for these features is included in the intro tier, but still needs to be configured. Follow along below as we create and harden a Cloudflare account in April 2024. If you just want the step by step without the narrative you can skip right there. 
