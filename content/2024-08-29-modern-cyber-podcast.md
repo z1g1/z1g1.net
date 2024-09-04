@@ -1,5 +1,5 @@
 title: My appearance on the Modern Cyber Podcase 
-category: Media Apperance 
+category: Media Appearance 
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/C9SS50wz9CM/0.jpg)](https://www.youtube.com/watch?v=C9SS50wz9CM)
 
