@@ -25,5 +25,10 @@
     1. Instal remote theme via ``bundle``
 1. You should now be able to serve the site and will have the default Mmistake theme ``bundle exec jekyll serve --host localhost --ssl-key ssl/localhost.key --ssl-cert ssl/localhost.crt``
 
-## Writing Content 
-1. 
+## Github Pages and DNS setup
+1. Update the ``_config.yml`` file per [docs](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll) to add ``domain: `` 
+1. [Verify custom domain for GitHub Pages](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages)
+1. Enable [Github Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) on master branch
+1. Enter ``z1g1.net`` as the custom domain
+  1. Update DNS records per [docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site). Make sure to set both the A records and CNAME for www 
+1. Enable the ``Enforce HTTPS`` option. Per [docs](https://docs.github.com/en/pages/getting-started-with-github-pages/securing-your-github-pages-site-with-https) you have to wait until the DNS check is done for the certificate to be populated so you can enable this.
