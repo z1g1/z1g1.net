@@ -24,3 +24,6 @@
         1. Add ``remote_theme: "mmistakes/minimal-mistakes@4.26.2"``
     1. Instal remote theme via ``bundle``
 1. You should now be able to serve the site and will have the default Mmistake theme ``bundle exec jekyll serve --host localhost --ssl-key ssl/localhost.key --ssl-cert ssl/localhost.crt``
+
+## Writing Content 
+1. 
