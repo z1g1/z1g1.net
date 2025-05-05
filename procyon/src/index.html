@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procyon Sector Map</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .map-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .map-background {
+            width: 100%;
+            height: auto;
+            transform-origin: center;
+            transition: transform 0.2s ease;
+        }
+
+        .clickable-rectangle {
+            position: absolute;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="map-container" id="mapContainer">
+        <img src="../assets/images/procyon-sector-map.svg" alt="Procyon Sector Map" class="map-background" id="mapBackground">
+        <a href="system1.html" class="clickable-rectangle" style="top: 20%; left: 30%; width: 10%; height: 10%;"></a>
+        <a href="system2.html" class="clickable-rectangle" style="top: 40%; left: 50%; width: 10%; height: 10%;"></a>
+        <a href="system3.html" class="clickable-rectangle" style="top: 60%; left: 70%; width: 10%; height: 10%;"></a>
+    </div>
+    <script>
+        const mapContainer = document.getElementById('mapContainer');
+        const mapBackground = document.getElementById('mapBackground');
+        let scale = 1;
+        let originX = 0;
+        let originY = 0;
+
+        mapContainer.addEventListener('wheel', (event) => {
+            event.preventDefault();
+            const zoomSpeed = 0.1;
+            const rect = mapContainer.getBoundingClientRect();
+            const offsetX = (event.clientX - rect.left) / rect.width;
+            const offsetY = (event.clientY - rect.top) / rect.height;
+
+            if (event.deltaY < 0) {
+                scale = Math.min(scale + zoomSpeed, 3);
+            } else {
+                scale = Math.max(scale - zoomSpeed, 1);
+            }
+
+            originX = offsetX * (1 - 1 / scale);
+            originY = offsetY * (1 - 1 / scale);
+
+            mapBackground.style.transform = `scale(${scale}) translate(${originX * 100}%, ${originY * 100}%)`;
+        });
+
+        let isDragging = false;
+        let startX, startY;
+
+        mapContainer.addEventListener('mousedown', (event) => {
+            isDragging = true;
+            startX = event.clientX;
+            startY = event.clientY;
+        });
+
+        mapContainer.addEventListener('mousemove', (event) => {
+            if (!isDragging) return;
+
+            const dx = (event.clientX - startX) / scale;
+            const dy = (event.clientY - startY) / scale;
+
+            originX -= dx / mapContainer.offsetWidth;
+            originY -= dy / mapContainer.offsetHeight;
+
+            mapBackground.style.transform = `scale(${scale}) translate(${originX * 100}%, ${originY * 100}%)`;
+
+            startX = event.clientX;
+            startY = event.clientY;
+        });
+
+        mapContainer.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+
+        mapContainer.addEventListener('mouseleave', () => {
+            isDragging = false;
+        });
+    </script>
+</body>
+</html>

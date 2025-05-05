@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Scum and Villain | About Procyon Sector</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            touch-action: none;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #00ff00;
+        }
+        #map-container {
+            width: 100vw;
+            height: 100vh;
+            background-color: #000;
+            position: relative;
+        }
+        .title-overlay {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            z-index: 1000;
+            text-shadow: 0 0 10px #00ff00;
+        }
+        .title-overlay h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #00ff00;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .content-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 800px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border: 1px solid #00ff00;
+            border-radius: 10px;
+            z-index: 1000;
+            text-shadow: 0 0 5px #00ff00;
+        }
+        .content-overlay h2 {
+            color: #00ff00;
+            margin-top: 0;
+            border-bottom: 1px solid #00ff00;
+            padding-bottom: 10px;
+        }
+        .content-overlay p {
+            margin: 15px 0;
+            line-height: 1.6;
+        }
+        .footer-overlay {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            z-index: 1000;
+        }
+        .footer-overlay a {
+            color: #00ff00;
+            text-decoration: none;
+            font-size: 0.9em;
+            text-shadow: 0 0 10px #00ff00;
+        }
+        .footer-overlay a:hover {
+            text-shadow: 0 0 15px #00ff00;
+        }
+    </style>
+</head>
+<body>
+    <div id="map-container">
+        <div class="title-overlay">
+            <h1>About The Tool</h1>
+        </div>
+        <div class="content-overlay">
+            <p>This tool is built to help a playgroup with playing Scum and Villainy. It is not affiliated with <a href="https://www.evilhat.com/">Evil Hat Publishers</a> 
+        </div>
+        <div class="footer-overlay">
+            <a href="index.html">Return to Sector Map</a>
+        </div>
+    </div>
+
+    <script>
+        // Load the SVG file
+        d3.xml("assets/images/procyon-sector-map.svg").then(function(data) {
+            const container = d3.select("#map-container");
+            const svg = d3.select(data.documentElement);
+            
+            // Add the SVG to the container
+            container.node().appendChild(svg.node());
+            
+            // Set up zoom behavior
+            const zoom = d3.zoom()
+                .scaleExtent([0.5, 8])
+                .on("zoom", (event) => {
+                    svg.attr("transform", event.transform);
+                });
+
+            // Apply zoom behavior to the container
+            container.call(zoom);
+
+            // Initial zoom to fit the SVG
+            const bbox = svg.node().getBBox();
+            const width = container.node().clientWidth;
+            const height = container.node().clientHeight;
+            const scale = Math.min(width / bbox.width, height / bbox.height) * 0.9;
+            
+            // Center the view on the middle of the SVG
+            const centerX = bbox.width / 2;
+            const centerY = bbox.height / 2;
+            const x = (width / 2) - (centerX * scale);
+            const y = (height / 2) - (centerY * scale);
+
+            container.call(zoom.transform, d3.zoomIdentity.translate(x, y).scale(scale));
+        });
+    </script>
+</body>
+</html> 
