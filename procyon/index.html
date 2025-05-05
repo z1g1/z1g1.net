@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Scum and Villain | Procyon Sector Map</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <style>
@@ -10,16 +10,21 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
-            touch-action: none;
+            touch-action: pan-x pan-y pinch-zoom;
             font-family: Arial, sans-serif;
             background-color: #000;
             color: #00ff00;
+            -webkit-overflow-scrolling: touch;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
         }
         #map-container {
             width: 100vw;
             height: 100vh;
             background-color: #000;
             position: relative;
+            touch-action: pan-x pan-y pinch-zoom;
+            -webkit-tap-highlight-color: transparent;
         }
         .title-overlay {
             position: absolute;
@@ -204,148 +209,21 @@
             // Add the SVG to the container
             container.node().appendChild(svg.node());
             
-            // Set up zoom behavior
+            // Set up zoom behavior with touch support
             const zoom = d3.zoom()
                 .scaleExtent([0.5, 8])
+                .filter(event => {
+                    // Allow both mouse and touch events
+                    return (!event.button || event.button === 0) && 
+                           (event.type !== 'dblclick') &&
+                           (!event.touches || event.touches.length === 2);
+                })
                 .on("zoom", (event) => {
                     svg.attr("transform", event.transform);
                 });
 
             // Apply zoom behavior to the container
             container.call(zoom);
-
-            // Modal handling
-            const modal = document.getElementById('system-modal');
-            const overlay = document.getElementById('modal-overlay');
-            const closeBtn = document.querySelector('.modal-close');
-
-            function createLevelIndicator(level) {
-                const div = document.createElement('div');
-                div.className = 'level-indicator level-' + level;
-                return div;
-            }
-
-            function showModal(objectId) {
-                console.log('Showing modal for:', objectId);
-                console.log('Available data:', systemsData);
-                
-                const object = systemsData[objectId];
-                
-                if (!object) {
-                    console.log('Object not found:', objectId);
-                    return;
-                }
-                
-                document.getElementById('modal-title').textContent = object.name;
-                
-                // Clear previous content
-                const modalContent = document.getElementById('modal-content');
-                modalContent.innerHTML = '';
-                
-                // Add type and system info
-                const typeDiv = document.createElement('div');
-                typeDiv.innerHTML = `<p><strong>Type:</strong> ${object.type}</p>`;
-                if (object.system) {
-                    typeDiv.innerHTML += `<p><strong>System:</strong> ${object.system}</p>`;
-                }
-                modalContent.appendChild(typeDiv);
-
-                // Add description
-                if (object.description) {
-                    const descDiv = document.createElement('div');
-                    descDiv.innerHTML = `<p>${object.description}</p>`;
-                    modalContent.appendChild(descDiv);
-                }
-
-                // Add rule if exists
-                if (object.rule) {
-                    const ruleDiv = document.createElement('div');
-                    ruleDiv.innerHTML = `<h3>Rule</h3><p>${object.rule}</p>`;
-                    modalContent.appendChild(ruleDiv);
-                }
-
-                // Add scene if exists
-                if (object.scene) {
-                    const sceneDiv = document.createElement('div');
-                    sceneDiv.innerHTML = `<h3>Scene</h3><p>${object.scene}</p>`;
-                    modalContent.appendChild(sceneDiv);
-                }
-
-                // Add levels section
-                const levelsDiv = document.createElement('div');
-                levelsDiv.innerHTML = '<h3>Levels</h3>';
-                if (object.wealth_level !== undefined) {
-                    levelsDiv.innerHTML += `<p><strong>Wealth:</strong> ${createLevelIndicator(object.wealth_level).outerHTML} ${object.wealth_level}</p>`;
-                }
-                if (object.crime_level !== undefined) {
-                    levelsDiv.innerHTML += `<p><strong>Crime:</strong> ${createLevelIndicator(object.crime_level).outerHTML} ${object.crime_level}</p>`;
-                }
-                if (object.tech_level !== undefined) {
-                    levelsDiv.innerHTML += `<p><strong>Tech:</strong> ${createLevelIndicator(object.tech_level).outerHTML} ${object.tech_level}</p>`;
-                }
-                if (object.weird_level !== undefined) {
-                    levelsDiv.innerHTML += `<p><strong>Weird:</strong> ${createLevelIndicator(object.weird_level).outerHTML} ${object.weird_level}</p>`;
-                }
-                modalContent.appendChild(levelsDiv);
-
-                // Add notables section
-                if (object.notables && Object.keys(object.notables).length > 0) {
-                    const notablesDiv = document.createElement('div');
-                    notablesDiv.innerHTML = '<h3>Notable People</h3>';
-                    
-                    for (const notableId in object.notables) {
-                        const notable = object.notables[notableId];
-                        const notableDiv = document.createElement('div');
-                        notableDiv.className = 'notable-person';
-                        notableDiv.innerHTML = `
-                            <h4>${notable.name}</h4>
-                            <p>${notable.description}</p>
-                        `;
-                        notablesDiv.appendChild(notableDiv);
-                    }
-                    
-                    modalContent.appendChild(notablesDiv);
-                }
-
-                // Add notable places section for systems
-                if (object.notable_places && Object.keys(object.notable_places).length > 0) {
-                    const placesDiv = document.createElement('div');
-                    placesDiv.innerHTML = '<h3>Notable Places</h3>';
-                    
-                    for (const placeId in object.notable_places) {
-                        const place = object.notable_places[placeId];
-                        const placeDiv = document.createElement('div');
-                        placeDiv.className = 'notable-place';
-                        placeDiv.innerHTML = `
-                            <h4>${place.name}</h4>
-                            <p>${place.description}</p>
-                        `;
-                        placesDiv.appendChild(placeDiv);
-                    }
-                    
-                    modalContent.appendChild(placesDiv);
-                }
-                
-                modal.classList.add('active');
-                overlay.classList.add('active');
-            }
-
-            function hideModal() {
-                modal.classList.remove('active');
-                overlay.classList.remove('active');
-            }
-
-            closeBtn.addEventListener('click', hideModal);
-            overlay.addEventListener('click', hideModal);
-
-            // Add click handlers to all interactive regions
-            svg.selectAll("rect[id]")
-                .on("click", function(event) {
-                    const id = this.getAttribute("id");
-                    console.log('Clicked element ID:', id);
-                    showModal(id);
-                    event.stopPropagation(); // Prevent zoom on click
-                });
 
             // Initial zoom to fit the SVG
             const bbox = svg.node().getBBox();
@@ -360,7 +238,141 @@
             const y = (height / 2) - (centerY * scale);
 
             container.call(zoom.transform, d3.zoomIdentity.translate(x, y).scale(scale));
+
+            // Add click handlers to all interactive regions
+            svg.selectAll("rect[id]")
+                .on("click", function(event) {
+                    const id = this.getAttribute("id");
+                    console.log('Clicked element ID:', id);
+                    showModal(id);
+                    event.preventDefault(); // Prevent default touch behavior
+                    event.stopPropagation(); // Prevent zoom on click
+                });
         });
+
+        // Modal handling
+        const modal = document.getElementById('system-modal');
+        const overlay = document.getElementById('modal-overlay');
+        const closeBtn = document.querySelector('.modal-close');
+
+        function createLevelIndicator(level) {
+            const div = document.createElement('div');
+            div.className = 'level-indicator level-' + level;
+            return div;
+        }
+
+        function showModal(objectId) {
+            console.log('Showing modal for:', objectId);
+            console.log('Available data:', systemsData);
+            
+            const object = systemsData[objectId];
+            
+            if (!object) {
+                console.log('Object not found:', objectId);
+                return;
+            }
+            
+            document.getElementById('modal-title').textContent = object.name;
+            
+            // Clear previous content
+            const modalContent = document.getElementById('modal-content');
+            modalContent.innerHTML = '';
+            
+            // Add type and system info
+            const typeDiv = document.createElement('div');
+            typeDiv.innerHTML = `<p><strong>Type:</strong> ${object.type}</p>`;
+            if (object.system) {
+                typeDiv.innerHTML += `<p><strong>System:</strong> ${object.system}</p>`;
+            }
+            modalContent.appendChild(typeDiv);
+
+            // Add description
+            if (object.description) {
+                const descDiv = document.createElement('div');
+                descDiv.innerHTML = `<p>${object.description}</p>`;
+                modalContent.appendChild(descDiv);
+            }
+
+            // Add rule if exists
+            if (object.rule) {
+                const ruleDiv = document.createElement('div');
+                ruleDiv.innerHTML = `<h3>Rule</h3><p>${object.rule}</p>`;
+                modalContent.appendChild(ruleDiv);
+            }
+
+            // Add scene if exists
+            if (object.scene) {
+                const sceneDiv = document.createElement('div');
+                sceneDiv.innerHTML = `<h3>Scene</h3><p>${object.scene}</p>`;
+                modalContent.appendChild(sceneDiv);
+            }
+
+            // Add levels section
+            const levelsDiv = document.createElement('div');
+            levelsDiv.innerHTML = '<h3>Levels</h3>';
+            if (object.wealth_level !== undefined) {
+                levelsDiv.innerHTML += `<p><strong>Wealth:</strong> ${createLevelIndicator(object.wealth_level).outerHTML} ${object.wealth_level}</p>`;
+            }
+            if (object.crime_level !== undefined) {
+                levelsDiv.innerHTML += `<p><strong>Crime:</strong> ${createLevelIndicator(object.crime_level).outerHTML} ${object.crime_level}</p>`;
+            }
+            if (object.tech_level !== undefined) {
+                levelsDiv.innerHTML += `<p><strong>Tech:</strong> ${createLevelIndicator(object.tech_level).outerHTML} ${object.tech_level}</p>`;
+            }
+            if (object.weird_level !== undefined) {
+                levelsDiv.innerHTML += `<p><strong>Weird:</strong> ${createLevelIndicator(object.weird_level).outerHTML} ${object.weird_level}</p>`;
+            }
+            modalContent.appendChild(levelsDiv);
+
+            // Add notables section
+            if (object.notables && Object.keys(object.notables).length > 0) {
+                const notablesDiv = document.createElement('div');
+                notablesDiv.innerHTML = '<h3>Notable People</h3>';
+                
+                for (const notableId in object.notables) {
+                    const notable = object.notables[notableId];
+                    const notableDiv = document.createElement('div');
+                    notableDiv.className = 'notable-person';
+                    notableDiv.innerHTML = `
+                        <h4>${notable.name}</h4>
+                        <p>${notable.description}</p>
+                    `;
+                    notablesDiv.appendChild(notableDiv);
+                }
+                
+                modalContent.appendChild(notablesDiv);
+            }
+
+            // Add notable places section for systems
+            if (object.notable_places && Object.keys(object.notable_places).length > 0) {
+                const placesDiv = document.createElement('div');
+                placesDiv.innerHTML = '<h3>Notable Places</h3>';
+                
+                for (const placeId in object.notable_places) {
+                    const place = object.notable_places[placeId];
+                    const placeDiv = document.createElement('div');
+                    placeDiv.className = 'notable-place';
+                    placeDiv.innerHTML = `
+                        <h4>${place.name}</h4>
+                        <p>${place.description}</p>
+                    `;
+                    placesDiv.appendChild(placeDiv);
+                }
+                
+                modalContent.appendChild(placesDiv);
+            }
+            
+            modal.classList.add('active');
+            overlay.classList.add('active');
+        }
+
+        function hideModal() {
+            modal.classList.remove('active');
+            overlay.classList.remove('active');
+        }
+
+        closeBtn.addEventListener('click', hideModal);
+        overlay.addEventListener('click', hideModal);
     </script>
 </body>
 </html> 
