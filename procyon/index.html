@@ -89,12 +89,13 @@
             padding: 20px;
             border-radius: 10px;
             color: white;
-            max-width: 90%;
-            width: 500px;
+            width: 90%;
+            max-width: 500px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
             z-index: 1000;
             max-height: 80vh;
             overflow-y: auto;
+            box-sizing: border-box;
         }
         .modal.active {
             display: block;
@@ -104,14 +105,18 @@
             color: #fbff00;
             border-bottom: 1px solid #fbff00;
             padding-bottom: 10px;
+            font-size: 1.5em;
+            word-wrap: break-word;
         }
         .modal h3 {
             color: #fbff00;
             margin: 15px 0 5px 0;
+            font-size: 1.2em;
         }
         .modal p {
             margin: 10px 0;
             line-height: 1.4;
+            word-wrap: break-word;
         }
         .modal ul {
             padding-left: 20px;
@@ -124,8 +129,10 @@
             background: none;
             border: none;
             color: white;
-            font-size: 20px;
+            font-size: 24px;
             cursor: pointer;
+            padding: 5px 10px;
+            line-height: 1;
         }
         .modal-overlay {
             display: none;
@@ -160,16 +167,47 @@
         .notable-person h4 {
             margin: 0 0 5px 0;
             color: #fbff00;
+            font-size: 1.1em;
         }
         .notable-person p {
             margin: 0;
             font-size: 0.9em;
         }
+        .notable-place {
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+        .notable-place h4 {
+            margin: 0 0 5px 0;
+            color: #fbff00;
+            font-size: 1.1em;
+        }
+        .notable-place p {
+            margin: 0;
+            font-size: 0.9em;
+        }
         @media (max-width: 600px) {
             .modal {
-                width: 90%;
-                max-height: 80vh;
-                overflow-y: auto;
+                width: 95%;
+                padding: 15px;
+                margin: 10px;
+            }
+            .modal h2 {
+                font-size: 1.3em;
+                padding-right: 30px;
+            }
+            .modal h3 {
+                font-size: 1.1em;
+            }
+            .modal p {
+                font-size: 0.95em;
+            }
+            .modal-close {
+                top: 5px;
+                right: 5px;
+                font-size: 20px;
             }
         }
     </style>
@@ -180,7 +218,7 @@
             <h1>The Procyon Sector</h1>
         </div>
         <div class="footer-overlay">
-            <a href="about.html">About the Procyon Sector</a>
+            <a href="about.html">About the tool</a>
         </div>
     </div>
     <div id="modal-overlay" class="modal-overlay"></div>
