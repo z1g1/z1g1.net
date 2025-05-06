@@ -274,13 +274,20 @@
             // Apply zoom behavior to the container
             container.call(zoom);
 
-            // Enable touch events for the container
+            // Enable touch events for the container and SVG
             container
                 .style("touch-action", "none")
                 .on("touchstart", function(event) {
-                    if (event.touches.length === 1) {
-                        event.preventDefault();
-                    }
+                    event.preventDefault();
+                }, { passive: false })
+                .on("touchmove", function(event) {
+                    event.preventDefault();
+                }, { passive: false });
+
+            svg
+                .style("touch-action", "none")
+                .on("touchstart", function(event) {
+                    event.preventDefault();
                 }, { passive: false })
                 .on("touchmove", function(event) {
                     event.preventDefault();
