@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Scum and Villain | Procyon Sector Map</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <style>
@@ -10,33 +10,30 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
-            touch-action: none;
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            user-select: none;
+            touch-action: pan-x pan-y pinch-zoom;
             font-family: Arial, sans-serif;
             background-color: #000;
             color: #00ff00;
+            -webkit-overflow-scrolling: touch;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
         }
         #map-container {
             width: 100vw;
             height: 100vh;
             background-color: #000;
             position: relative;
-            touch-action: none;
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            user-select: none;
+            touch-action: pan-x pan-y pinch-zoom;
+            -webkit-tap-highlight-color: transparent;
         }
         .title-overlay {
-            position: fixed;
+            position: absolute;
             top: 20px;
             left: 0;
             width: 100%;
             text-align: center;
             z-index: 1000;
             text-shadow: 0 0 10px #00ff00;
-            pointer-events: none;
         }
         .title-overlay h1 {
             margin: 0;
@@ -46,23 +43,18 @@
             letter-spacing: 2px;
         }
         .footer-overlay {
-            position: fixed;
+            position: absolute;
             bottom: 20px;
             left: 0;
             width: 100%;
             text-align: center;
             z-index: 1000;
-            pointer-events: none;
         }
         .footer-overlay a {
             color: #00ff00;
             text-decoration: none;
             font-size: 0.9em;
             text-shadow: 0 0 10px #00ff00;
-            pointer-events: auto;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 5px 15px;
-            border-radius: 5px;
         }
         .footer-overlay a:hover {
             text-shadow: 0 0 15px #00ff00;
@@ -93,19 +85,16 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: rgba(0, 0, 0, 0.9);
-            border: 1px solid #00ff00;
-            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.95);
             padding: 20px;
+            border-radius: 10px;
+            color: white;
             max-width: 90%;
             width: 500px;
-            max-height: 90vh;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-            box-sizing: border-box;
-            z-index: 1000;
-            color: white;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            max-height: 80vh;
+            overflow-y: auto;
         }
         .modal.active {
             display: block;
@@ -115,18 +104,14 @@
             color: #fbff00;
             border-bottom: 1px solid #fbff00;
             padding-bottom: 10px;
-            font-size: 1.5em;
-            word-wrap: break-word;
         }
         .modal h3 {
             color: #fbff00;
             margin: 15px 0 5px 0;
-            font-size: 1.2em;
         }
         .modal p {
             margin: 10px 0;
             line-height: 1.4;
-            word-wrap: break-word;
         }
         .modal ul {
             padding-left: 20px;
@@ -139,10 +124,8 @@
             background: none;
             border: none;
             color: white;
-            font-size: 24px;
+            font-size: 20px;
             cursor: pointer;
-            padding: 5px 10px;
-            line-height: 1;
         }
         .modal-overlay {
             display: none;
@@ -177,47 +160,16 @@
         .notable-person h4 {
             margin: 0 0 5px 0;
             color: #fbff00;
-            font-size: 1.1em;
         }
         .notable-person p {
             margin: 0;
             font-size: 0.9em;
         }
-        .notable-place {
-            margin: 10px 0;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-        }
-        .notable-place h4 {
-            margin: 0 0 5px 0;
-            color: #fbff00;
-            font-size: 1.1em;
-        }
-        .notable-place p {
-            margin: 0;
-            font-size: 0.9em;
-        }
-        @media (max-width: 768px) {
+        @media (max-width: 600px) {
             .modal {
-                width: 95%;
-                padding: 15px;
-                margin: 10px;
-            }
-            
-            .modal h2 {
-                font-size: 1.2em;
-                margin-bottom: 10px;
-            }
-            
-            .modal p {
-                font-size: 0.9em;
-                margin-bottom: 8px;
-            }
-            
-            .modal-close {
-                padding: 8px 12px;
-                font-size: 0.9em;
+                width: 90%;
+                max-height: 80vh;
+                overflow-y: auto;
             }
         }
     </style>
@@ -228,7 +180,7 @@
             <h1>The Procyon Sector</h1>
         </div>
         <div class="footer-overlay">
-            <a href="about.html">About the tool</a>
+            <a href="about.html">About the Procyon Sector</a>
         </div>
     </div>
     <div id="modal-overlay" class="modal-overlay"></div>
@@ -263,7 +215,8 @@
                 .filter(event => {
                     // Allow both mouse and touch events
                     return (!event.button || event.button === 0) && 
-                           (event.type !== 'dblclick');
+                           (event.type !== 'dblclick') &&
+                           (!event.touches || event.touches.length === 2);
                 })
                 .on("zoom", (event) => {
                     svg.attr("transform", event.transform);
@@ -271,50 +224,6 @@
 
             // Apply zoom behavior to the container
             container.call(zoom);
-
-            // Enable touch events for the container and SVG
-            container
-                .style("touch-action", "none")
-                .on("touchstart", function(event) {
-                    event.preventDefault();
-                }, { passive: false })
-                .on("touchmove", function(event) {
-                    event.preventDefault();
-                }, { passive: false })
-                .on("touchend", function(event) {
-                    event.preventDefault();
-                }, { passive: false });
-
-            svg
-                .style("touch-action", "none")
-                .on("touchstart", function(event) {
-                    event.preventDefault();
-                }, { passive: false })
-                .on("touchmove", function(event) {
-                    event.preventDefault();
-                }, { passive: false })
-                .on("touchend", function(event) {
-                    event.preventDefault();
-                }, { passive: false });
-
-            // Add touch event handling for interactive regions
-            svg.selectAll("rect[id]")
-                .on("click", function(event) {
-                    const id = this.getAttribute("id");
-                    console.log('Clicked element ID:', id);
-                    showModal(id);
-                    event.preventDefault();
-                    event.stopPropagation();
-                })
-                .on("touchstart", function(event) {
-                    event.preventDefault();
-                    const id = this.getAttribute("id");
-                    console.log('Touched element ID:', id);
-                    showModal(id);
-                }, { passive: false })
-                .on("touchend", function(event) {
-                    event.preventDefault();
-                }, { passive: false });
 
             // Initial zoom to fit the SVG
             const bbox = svg.node().getBBox();
@@ -329,6 +238,16 @@
             const y = (height / 2) - (centerY * scale);
 
             container.call(zoom.transform, d3.zoomIdentity.translate(x, y).scale(scale));
+
+            // Add click handlers to all interactive regions
+            svg.selectAll("rect[id]")
+                .on("click", function(event) {
+                    const id = this.getAttribute("id");
+                    console.log('Clicked element ID:', id);
+                    showModal(id);
+                    event.preventDefault(); // Prevent default touch behavior
+                    event.stopPropagation(); // Prevent zoom on click
+                });
         });
 
         // Modal handling
@@ -443,49 +362,17 @@
                 modalContent.appendChild(placesDiv);
             }
             
-            // Show modal and overlay
-            modal.style.display = 'block';
             modal.classList.add('active');
-            overlay.style.display = 'block';
             overlay.classList.add('active');
         }
 
         function hideModal() {
-            modal.style.display = 'none';
             modal.classList.remove('active');
-            overlay.style.display = 'none';
             overlay.classList.remove('active');
         }
 
-        // Prevent modal from closing when touching content
-        modal.addEventListener('touchstart', function(event) {
-            event.stopPropagation();
-        }, { passive: false });
-
-        // Close modal when touching overlay
-        overlay.addEventListener('touchstart', function(event) {
-            hideModal();
-            event.preventDefault();
-        }, { passive: false });
-
-        // Close modal when touching close button
-        closeBtn.addEventListener('touchstart', function(event) {
-            hideModal();
-            event.preventDefault();
-        }, { passive: false });
-
-        // Add click event listener for close button
-        closeBtn.addEventListener('click', function(event) {
-            hideModal();
-            event.preventDefault();
-        });
-
-        // Prevent unwanted touch behaviors on the modal
-        modal.addEventListener('touchmove', function(event) {
-            if (event.touches.length > 1) {
-                event.preventDefault();
-            }
-        }, { passive: false });
+        closeBtn.addEventListener('click', hideModal);
+        overlay.addEventListener('click', hideModal);
     </script>
 </body>
 </html> 
