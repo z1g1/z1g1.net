@@ -459,6 +459,12 @@
             event.preventDefault();
         }, { passive: false });
 
+        // Add click event listener for close button
+        closeBtn.addEventListener('click', function(event) {
+            hideModal();
+            event.preventDefault();
+        });
+
         // Prevent unwanted touch behaviors on the modal
         modal.addEventListener('touchmove', function(event) {
             if (event.touches.length > 1) {
