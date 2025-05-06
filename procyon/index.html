@@ -86,21 +86,15 @@
         }
         /* Modal Styles */
         .modal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, 0.95);
+            background-color: rgba(0, 0, 0, 0.9);
+            border: 1px solid #00ff00;
+            border-radius: 8px;
             padding: 20px;
-            border-radius: 10px;
-            color: white;
-            width: 90%;
-            max-width: 500px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            max-height: 80vh;
+            max-width: 90%;
+            width: 500px;
+            max-height: 90vh;
             overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
             box-sizing: border-box;
         }
         .modal.active {
@@ -194,26 +188,26 @@
             margin: 0;
             font-size: 0.9em;
         }
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
             .modal {
                 width: 95%;
                 padding: 15px;
                 margin: 10px;
             }
+            
             .modal h2 {
-                font-size: 1.3em;
-                padding-right: 30px;
+                font-size: 1.2em;
+                margin-bottom: 10px;
             }
-            .modal h3 {
-                font-size: 1.1em;
-            }
+            
             .modal p {
-                font-size: 0.95em;
+                font-size: 0.9em;
+                margin-bottom: 8px;
             }
+            
             .modal-close {
-                top: 5px;
-                right: 5px;
-                font-size: 20px;
+                padding: 8px 12px;
+                font-size: 0.9em;
             }
         }
     </style>
@@ -289,8 +283,14 @@
                     const id = this.getAttribute("id");
                     console.log('Clicked element ID:', id);
                     showModal(id);
-                    event.preventDefault(); // Prevent default touch behavior
-                    event.stopPropagation(); // Prevent zoom on click
+                    event.preventDefault();
+                    event.stopPropagation();
+                })
+                .on("touchstart", function(event) {
+                    event.preventDefault();
+                    const id = this.getAttribute("id");
+                    console.log('Touched element ID:', id);
+                    showModal(id);
                 });
         });
 
@@ -415,8 +415,22 @@
             overlay.classList.remove('active');
         }
 
-        closeBtn.addEventListener('click', hideModal);
-        overlay.addEventListener('click', hideModal);
+        // Prevent modal from closing when touching content
+        modal.addEventListener('touchstart', function(event) {
+            event.stopPropagation();
+        });
+
+        // Close modal when touching overlay
+        overlay.addEventListener('touchstart', function(event) {
+            hideModal();
+            event.preventDefault();
+        });
+
+        // Close modal when touching close button
+        closeBtn.addEventListener('touchstart', function(event) {
+            hideModal();
+            event.preventDefault();
+        });
     </script>
 </body>
 </html> 
