@@ -2,130 +2,100 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Scum and Villain | About Procyon Sector</title>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            touch-action: none;
-            font-family: Arial, sans-serif;
-            background-color: #000;
-            color: #00ff00;
-        }
-        #map-container {
-            width: 100vw;
-            height: 100vh;
-            background-color: #000;
-            position: relative;
-        }
-        .title-overlay {
-            position: absolute;
-            top: 20px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            z-index: 1000;
-            text-shadow: 0 0 10px #00ff00;
-        }
-        .title-overlay h1 {
-            margin: 0;
-            font-size: 2.5em;
-            color: #00ff00;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        .content-overlay {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            max-width: 800px;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 20px;
-            border: 1px solid #00ff00;
-            border-radius: 10px;
-            z-index: 1000;
-            text-shadow: 0 0 5px #00ff00;
-        }
-        .content-overlay h2 {
-            color: #00ff00;
-            margin-top: 0;
-            border-bottom: 1px solid #00ff00;
-            padding-bottom: 10px;
-        }
-        .content-overlay p {
-            margin: 15px 0;
-            line-height: 1.6;
-        }
-        .footer-overlay {
-            position: absolute;
-            bottom: 20px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            z-index: 1000;
-        }
-        .footer-overlay a {
-            color: #00ff00;
-            text-decoration: none;
-            font-size: 0.9em;
-            text-shadow: 0 0 10px #00ff00;
-        }
-        .footer-overlay a:hover {
-            text-shadow: 0 0 15px #00ff00;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>About - Procyon Sector Navigation Console</title>
+    <link rel="stylesheet" href="src/css/styles.css">
 </head>
 <body>
-    <div id="map-container">
-        <div class="title-overlay">
-            <h1>About The Tool</h1>
+    <div class="console-frame">
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
+        
+        <div class="console-header">
+            <div class="console-title"><h1>About Procyon Sector</h1></div>
+            <div class="console-status">SYSTEM READY</div>
         </div>
-        <div class="content-overlay">
-            <p>This tool is built to help a playgroup with playing Scum and Villainy. It is not affiliated with <a href="https://www.evilhat.com/">Evil Hat Publishers</a> 
-        </div>
-        <div class="footer-overlay">
-            <a href="index.html">Return to Sector Map</a>
+        
+        <div class="console-content">
+            <div class="scan-line"></div>
+            <div class="about-content">
+                <h2>Welcome to the Procyon Sector Navigation Console</h2>
+                <p>The Procyon Sector is a region of space that has been colonized by the Hegemony for over a century. This interactive map allows you to explore the various systems, planets, and notable locations within the sector.</p>
+
+                <h3>About the Data</h3>
+                <p>The Procyon sector and all other Scum and Villiany data is owned by <a href="https://evilhat.com/product/scum-and-villainy/">Evil Hat Productions</a>. This application is not affiliated with Evil Hat Productions and was made for fun</p>>
+
+                <h3>Key Features</h3>
+                <ul style="list-style-type: none; margin: 15px 0;">
+                    <li>• Interactive map of the entire Procyon Sector</li>
+                    <li>• Detailed information about systems and planets</li>
+                    <li>• Notable locations and figures</li>
+                    <li>• Responsive design for both desktop and mobile devices</li>
+                </ul>
+
+                <h3>Navigation</h3>
+                <p>Use the following controls to navigate the map:</p>
+                <ul style="list-style-type: none; margin: 15px 0;">
+                    <li>• Click and drag to pan the map</li>
+                    <li>• Use the mouse wheel or pinch gestures to zoom</li>
+                    <li>• Double-click to zoom in at a specific point</li>
+                    <li>• Click on any highlighted area to view detailed information</li>
+                </ul>
+            </div>
         </div>
     </div>
 
-    <script>
-        // Load the SVG file
-        d3.xml("assets/images/procyon-sector-map.svg").then(function(data) {
-            const container = d3.select("#map-container");
-            const svg = d3.select(data.documentElement);
-            
-            // Add the SVG to the container
-            container.node().appendChild(svg.node());
-            
-            // Set up zoom behavior
-            const zoom = d3.zoom()
-                .scaleExtent([0.5, 8])
-                .on("zoom", (event) => {
-                    svg.attr("transform", event.transform);
-                });
+    <a href="index.html" class="about-link">Back to Map</a>
 
-            // Apply zoom behavior to the container
-            container.call(zoom);
+    <style>
+        .about-content {
+            color: var(--text-color);
+            font-family: 'Courier New', monospace;
+        }
 
-            // Initial zoom to fit the SVG
-            const bbox = svg.node().getBBox();
-            const width = container.node().clientWidth;
-            const height = container.node().clientHeight;
-            const scale = Math.min(width / bbox.width, height / bbox.height) * 0.9;
-            
-            // Center the view on the middle of the SVG
-            const centerX = bbox.width / 2;
-            const centerY = bbox.height / 2;
-            const x = (width / 2) - (centerX * scale);
-            const y = (height / 2) - (centerY * scale);
+        .about-content h2 {
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px var(--text-color);
+        }
 
-            container.call(zoom.transform, d3.zoomIdentity.translate(x, y).scale(scale));
-        });
-    </script>
+        .about-content h3 {
+            margin: 25px 0 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px var(--text-color);
+        }
+
+        .about-content p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .about-content ul {
+            margin-left: 20px;
+        }
+
+        .about-content li {
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                padding: 15px;
+            }
+
+            .about-content h2 {
+                font-size: 1.2em;
+            }
+
+            .about-content h3 {
+                font-size: 1em;
+            }
+        }
+    </style>
 </body>
 </html> 

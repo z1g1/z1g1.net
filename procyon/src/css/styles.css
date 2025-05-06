@@ -56,12 +56,30 @@ body {
     color: #00ff00;
 }
 
+.about-link {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px var(--text-color);
+    transition: text-shadow 0.3s ease;
+}
+
+.about-link:hover {
+    text-shadow: 0 0 15px var(--text-color);
+}
+
 .console-content {
     flex: 1;
     position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    height: calc(100vh - 120px); /* Account for header and margins */
 }
 
 .map-container {
@@ -214,6 +232,44 @@ body {
     letter-spacing: 1px;
 }
 
+.about-content {
+    color: var(--text-color);
+    font-family: 'Courier New', monospace;
+    padding: 20px;
+    overflow-y: auto;
+    height: 100%;
+    flex: 1;
+}
+
+.about-content h2 {
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px var(--text-color);
+}
+
+.about-content h3 {
+    margin: 25px 0 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px var(--text-color);
+}
+
+.about-content p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.about-content ul {
+    list-style-type: none;
+    margin: 15px 0;
+}
+
+.about-content li {
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
 @media (max-width: 768px) {
     .console-frame {
         margin: 10px;
@@ -237,6 +293,24 @@ body {
     }
 
     .modal-title {
+        font-size: 1em;
+    }
+
+    .about-link {
+        bottom: 10px;
+        right: 10px;
+        font-size: 0.8em;
+    }
+
+    .about-content {
+        padding: 15px;
+    }
+
+    .about-content h2 {
+        font-size: 1.2em;
+    }
+
+    .about-content h3 {
         font-size: 1em;
     }
 }
