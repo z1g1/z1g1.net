@@ -17,6 +17,8 @@
             -webkit-overflow-scrolling: touch;
             -webkit-tap-highlight-color: transparent;
             -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
         }
         #map-container {
             width: 100vw;
@@ -25,6 +27,8 @@
             position: relative;
             touch-action: pan-x pan-y pinch-zoom;
             -webkit-tap-highlight-color: transparent;
+            -webkit-user-select: none;
+            user-select: none;
         }
         .title-overlay {
             position: fixed;
@@ -86,6 +90,11 @@
         }
         /* Modal Styles */
         .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             background-color: rgba(0, 0, 0, 0.9);
             border: 1px solid #00ff00;
             border-radius: 8px;
@@ -96,6 +105,9 @@
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
             box-sizing: border-box;
+            z-index: 1000;
+            color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
         }
         .modal.active {
             display: block;
@@ -277,7 +289,7 @@
 
             container.call(zoom.transform, d3.zoomIdentity.translate(x, y).scale(scale));
 
-            // Add click handlers to all interactive regions
+            // Add touch event handling for interactive regions
             svg.selectAll("rect[id]")
                 .on("click", function(event) {
                     const id = this.getAttribute("id");
@@ -291,7 +303,17 @@
                     const id = this.getAttribute("id");
                     console.log('Touched element ID:', id);
                     showModal(id);
+                })
+                .on("touchend", function(event) {
+                    event.preventDefault();
                 });
+
+            // Prevent default touch behaviors on the container
+            container.on("touchstart", function(event) {
+                if (event.touches.length === 1) {
+                    event.preventDefault();
+                }
+            });
         });
 
         // Modal handling
@@ -406,31 +428,43 @@
                 modalContent.appendChild(placesDiv);
             }
             
+            // Show modal and overlay
+            modal.style.display = 'block';
             modal.classList.add('active');
+            overlay.style.display = 'block';
             overlay.classList.add('active');
         }
 
         function hideModal() {
+            modal.style.display = 'none';
             modal.classList.remove('active');
+            overlay.style.display = 'none';
             overlay.classList.remove('active');
         }
 
         // Prevent modal from closing when touching content
         modal.addEventListener('touchstart', function(event) {
             event.stopPropagation();
-        });
+        }, { passive: false });
 
         // Close modal when touching overlay
         overlay.addEventListener('touchstart', function(event) {
             hideModal();
             event.preventDefault();
-        });
+        }, { passive: false });
 
         // Close modal when touching close button
         closeBtn.addEventListener('touchstart', function(event) {
             hideModal();
             event.preventDefault();
-        });
+        }, { passive: false });
+
+        // Prevent unwanted touch behaviors on the modal
+        modal.addEventListener('touchmove', function(event) {
+            if (event.touches.length > 1) {
+                event.preventDefault();
+            }
+        }, { passive: false });
     </script>
 </body>
 </html> 
