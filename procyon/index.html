@@ -3,376 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Scum and Villain | Procyon Sector Map</title>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            touch-action: pan-x pan-y pinch-zoom;
-            font-family: Arial, sans-serif;
-            background-color: #000;
-            color: #00ff00;
-            -webkit-overflow-scrolling: touch;
-            -webkit-tap-highlight-color: transparent;
-            -webkit-touch-callout: none;
-        }
-        #map-container {
-            width: 100vw;
-            height: 100vh;
-            background-color: #000;
-            position: relative;
-            touch-action: pan-x pan-y pinch-zoom;
-            -webkit-tap-highlight-color: transparent;
-        }
-        .title-overlay {
-            position: absolute;
-            top: 20px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            z-index: 1000;
-            text-shadow: 0 0 10px #00ff00;
-        }
-        .title-overlay h1 {
-            margin: 0;
-            font-size: 2.5em;
-            color: #00ff00;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        .footer-overlay {
-            position: absolute;
-            bottom: 20px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            z-index: 1000;
-        }
-        .footer-overlay a {
-            color: #00ff00;
-            text-decoration: none;
-            font-size: 0.9em;
-            text-shadow: 0 0 10px #00ff00;
-        }
-        .footer-overlay a:hover {
-            text-shadow: 0 0 15px #00ff00;
-        }
-        .system-region, .object-region {
-            cursor: pointer;
-            transition: all 0.3s;
-            fill: transparent;
-            stroke: rgba(255, 255, 255, 0.3);
-            stroke-width: 1;
-        }
-        .system-region:hover, .object-region:hover {
-            fill: rgba(255, 255, 255, 0.1);
-            stroke: rgba(255, 255, 255, 0.8);
-            stroke-width: 2;
-        }
-        .system-label {
-            pointer-events: none;
-            font-family: Arial, sans-serif;
-            font-size: 12px;
-            fill: white;
-            text-anchor: middle;
-        }
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, 0.95);
-            padding: 20px;
-            border-radius: 10px;
-            color: white;
-            max-width: 90%;
-            width: 500px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-        .modal.active {
-            display: block;
-        }
-        .modal h2 {
-            margin-top: 0;
-            color: #fbff00;
-            border-bottom: 1px solid #fbff00;
-            padding-bottom: 10px;
-        }
-        .modal h3 {
-            color: #fbff00;
-            margin: 15px 0 5px 0;
-        }
-        .modal p {
-            margin: 10px 0;
-            line-height: 1.4;
-        }
-        .modal ul {
-            padding-left: 20px;
-            margin: 5px 0;
-        }
-        .modal-close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-        }
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 999;
-        }
-        .modal-overlay.active {
-            display: block;
-        }
-        .level-indicator {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            margin-right: 5px;
-        }
-        .level-0 { background-color: #444; }
-        .level-1 { background-color: #666; }
-        .level-2 { background-color: #888; }
-        .level-3 { background-color: #aaa; }
-        .notable-person {
-            margin: 10px 0;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-        }
-        .notable-person h4 {
-            margin: 0 0 5px 0;
-            color: #fbff00;
-        }
-        .notable-person p {
-            margin: 0;
-            font-size: 0.9em;
-        }
-        @media (max-width: 600px) {
-            .modal {
-                width: 90%;
-                max-height: 80vh;
-                overflow-y: auto;
-            }
-        }
-    </style>
+    <title>Procyon Sector Navigation Console</title>
+    <script src="https://unpkg.com/panzoom@9.4.0/dist/panzoom.min.js"></script>
+    <link rel="stylesheet" href="src/css/styles.css">
 </head>
 <body>
-    <div id="map-container">
-        <div class="title-overlay">
-            <h1>The Procyon Sector</h1>
+    <div class="console-frame">
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
+        
+        <div class="console-header">
+            <div class="console-title"><h1>Procyon Sector Navigation</h1></div>
+            <div class="console-status">SYSTEM READY</div>
         </div>
-        <div class="footer-overlay">
-            <a href="about.html">About the Procyon Sector</a>
+        
+        <div class="console-content">
+            <div class="scan-line"></div>
+            <div class="map-container" id="map-container">
+                <!-- SVG will be loaded here -->
+            </div>
         </div>
-    </div>
-    <div id="modal-overlay" class="modal-overlay"></div>
-    <div id="system-modal" class="modal">
-        <button class="modal-close">&times;</button>
-        <h2 id="modal-title"></h2>
-        <div id="modal-content"></div>
     </div>
 
     <script>
-        let systemsData = null;
+        // Wait for panzoom to be available
+        window.addEventListener('load', function() {
+            // Load the SVG file
+            fetch('assets/images/procyon-sector-map.svg')
+                .then(response => response.text())
+                .then(svgText => {
+                    const mapContainer = document.getElementById('map-container');
+                    mapContainer.innerHTML = svgText;
+                    
+                    // Initialize panzoom
+                    const svg = mapContainer.querySelector('svg');
+                    const instance = panzoom(svg, {
+                        maxZoom: 8,
+                        minZoom: 0.5,
+                        bounds: true,
+                        boundsPadding: 0.1,
+                        zoomDoubleClickSpeed: 1,
+                        smoothScroll: false
+                    });
 
-        // Load systems data
-        fetch('assets/data/objects.json')
-            .then(response => response.json())
-            .then(data => {
-                systemsData = data;
-            })
-            .catch(error => console.error('Error loading objects data:', error));
+                    // Handle touch events
+                    mapContainer.addEventListener('touchstart', instance.handleTouchStart);
+                    mapContainer.addEventListener('touchmove', instance.handleTouchMove);
+                    mapContainer.addEventListener('touchend', instance.handleTouchEnd);
 
-        // Load the SVG file
-        d3.xml("assets/images/procyon-sector-map.svg").then(function(data) {
-            const container = d3.select("#map-container");
-            const svg = d3.select(data.documentElement);
-            
-            // Add the SVG to the container
-            container.node().appendChild(svg.node());
-            
-            // Set up zoom behavior with touch support
-            const zoom = d3.zoom()
-                .scaleExtent([0.5, 8])
-                .filter(event => {
-                    // Allow both mouse and touch events
-                    return (!event.button || event.button === 0) && 
-                           (event.type !== 'dblclick') &&
-                           (!event.touches || event.touches.length === 2);
-                })
-                .on("zoom", (event) => {
-                    svg.attr("transform", event.transform);
-                });
+                    // Handle mouse events
+                    mapContainer.addEventListener('wheel', instance.zoomWithWheel);
 
-            // Apply zoom behavior to the container
-            container.call(zoom);
+                    // Add click handlers to interactive regions
+                    svg.querySelectorAll('rect[id]').forEach(rect => {
+                        rect.addEventListener('click', function(event) {
+                            const id = this.getAttribute('id');
+                            console.log('Clicked element ID:', id);
+                            // Prevent zoom on click
+                            event.stopPropagation();
+                        });
+                    });
 
-            // Initial zoom to fit the SVG
-            const bbox = svg.node().getBBox();
-            const width = container.node().clientWidth;
-            const height = container.node().clientHeight;
-            const scale = Math.min(width / bbox.width, height / bbox.height) * 0.9;
-            
-            // Center the view on the middle of the SVG
-            const centerX = bbox.width / 2;
-            const centerY = bbox.height / 2;
-            const x = (width / 2) - (centerX * scale);
-            const y = (height / 2) - (centerY * scale);
-
-            container.call(zoom.transform, d3.zoomIdentity.translate(x, y).scale(scale));
-
-            // Add click handlers to all interactive regions
-            svg.selectAll("rect[id]")
-                .on("click", function(event) {
-                    const id = this.getAttribute("id");
-                    console.log('Clicked element ID:', id);
-                    showModal(id);
-                    event.preventDefault(); // Prevent default touch behavior
-                    event.stopPropagation(); // Prevent zoom on click
+                    // Center the map
+                    const bbox = svg.getBBox();
+                    const width = mapContainer.clientWidth;
+                    const height = mapContainer.clientHeight;
+                    const scale = Math.min(width / bbox.width, height / bbox.height) * 0.9;
+                    
+                    // Set initial zoom and position
+                    instance.transform({
+                        scale: scale,
+                        x: (width - bbox.width * scale) / 2,
+                        y: (height - bbox.height * scale) / 2
+                    });
                 });
         });
-
-        // Modal handling
-        const modal = document.getElementById('system-modal');
-        const overlay = document.getElementById('modal-overlay');
-        const closeBtn = document.querySelector('.modal-close');
-
-        function createLevelIndicator(level) {
-            const div = document.createElement('div');
-            div.className = 'level-indicator level-' + level;
-            return div;
-        }
-
-        function showModal(objectId) {
-            console.log('Showing modal for:', objectId);
-            console.log('Available data:', systemsData);
-            
-            const object = systemsData[objectId];
-            
-            if (!object) {
-                console.log('Object not found:', objectId);
-                return;
-            }
-            
-            document.getElementById('modal-title').textContent = object.name;
-            
-            // Clear previous content
-            const modalContent = document.getElementById('modal-content');
-            modalContent.innerHTML = '';
-            
-            // Add type and system info
-            const typeDiv = document.createElement('div');
-            typeDiv.innerHTML = `<p><strong>Type:</strong> ${object.type}</p>`;
-            if (object.system) {
-                typeDiv.innerHTML += `<p><strong>System:</strong> ${object.system}</p>`;
-            }
-            modalContent.appendChild(typeDiv);
-
-            // Add description
-            if (object.description) {
-                const descDiv = document.createElement('div');
-                descDiv.innerHTML = `<p>${object.description}</p>`;
-                modalContent.appendChild(descDiv);
-            }
-
-            // Add rule if exists
-            if (object.rule) {
-                const ruleDiv = document.createElement('div');
-                ruleDiv.innerHTML = `<h3>Rule</h3><p>${object.rule}</p>`;
-                modalContent.appendChild(ruleDiv);
-            }
-
-            // Add scene if exists
-            if (object.scene) {
-                const sceneDiv = document.createElement('div');
-                sceneDiv.innerHTML = `<h3>Scene</h3><p>${object.scene}</p>`;
-                modalContent.appendChild(sceneDiv);
-            }
-
-            // Add levels section
-            const levelsDiv = document.createElement('div');
-            levelsDiv.innerHTML = '<h3>Levels</h3>';
-            if (object.wealth_level !== undefined) {
-                levelsDiv.innerHTML += `<p><strong>Wealth:</strong> ${createLevelIndicator(object.wealth_level).outerHTML} ${object.wealth_level}</p>`;
-            }
-            if (object.crime_level !== undefined) {
-                levelsDiv.innerHTML += `<p><strong>Crime:</strong> ${createLevelIndicator(object.crime_level).outerHTML} ${object.crime_level}</p>`;
-            }
-            if (object.tech_level !== undefined) {
-                levelsDiv.innerHTML += `<p><strong>Tech:</strong> ${createLevelIndicator(object.tech_level).outerHTML} ${object.tech_level}</p>`;
-            }
-            if (object.weird_level !== undefined) {
-                levelsDiv.innerHTML += `<p><strong>Weird:</strong> ${createLevelIndicator(object.weird_level).outerHTML} ${object.weird_level}</p>`;
-            }
-            modalContent.appendChild(levelsDiv);
-
-            // Add notables section
-            if (object.notables && Object.keys(object.notables).length > 0) {
-                const notablesDiv = document.createElement('div');
-                notablesDiv.innerHTML = '<h3>Notable People</h3>';
-                
-                for (const notableId in object.notables) {
-                    const notable = object.notables[notableId];
-                    const notableDiv = document.createElement('div');
-                    notableDiv.className = 'notable-person';
-                    notableDiv.innerHTML = `
-                        <h4>${notable.name}</h4>
-                        <p>${notable.description}</p>
-                    `;
-                    notablesDiv.appendChild(notableDiv);
-                }
-                
-                modalContent.appendChild(notablesDiv);
-            }
-
-            // Add notable places section for systems
-            if (object.notable_places && Object.keys(object.notable_places).length > 0) {
-                const placesDiv = document.createElement('div');
-                placesDiv.innerHTML = '<h3>Notable Places</h3>';
-                
-                for (const placeId in object.notable_places) {
-                    const place = object.notable_places[placeId];
-                    const placeDiv = document.createElement('div');
-                    placeDiv.className = 'notable-place';
-                    placeDiv.innerHTML = `
-                        <h4>${place.name}</h4>
-                        <p>${place.description}</p>
-                    `;
-                    placesDiv.appendChild(placeDiv);
-                }
-                
-                modalContent.appendChild(placesDiv);
-            }
-            
-            modal.classList.add('active');
-            overlay.classList.add('active');
-        }
-
-        function hideModal() {
-            modal.classList.remove('active');
-            overlay.classList.remove('active');
-        }
-
-        closeBtn.addEventListener('click', hideModal);
-        overlay.addEventListener('click', hideModal);
     </script>
 </body>
-</html> 
+</html>
