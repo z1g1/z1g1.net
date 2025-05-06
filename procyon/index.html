@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
     <title>Scum and Villain | Procyon Sector Map</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <style>
@@ -10,23 +10,21 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
-            touch-action: pan-x pan-y pinch-zoom;
-            font-family: Arial, sans-serif;
-            background-color: #000;
-            color: #00ff00;
-            -webkit-overflow-scrolling: touch;
-            -webkit-tap-highlight-color: transparent;
+            touch-action: none;
             -webkit-touch-callout: none;
             -webkit-user-select: none;
             user-select: none;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #00ff00;
         }
         #map-container {
             width: 100vw;
             height: 100vh;
             background-color: #000;
             position: relative;
-            touch-action: pan-x pan-y pinch-zoom;
-            -webkit-tap-highlight-color: transparent;
+            touch-action: none;
+            -webkit-touch-callout: none;
             -webkit-user-select: none;
             user-select: none;
         }
@@ -282,6 +280,9 @@
                 }, { passive: false })
                 .on("touchmove", function(event) {
                     event.preventDefault();
+                }, { passive: false })
+                .on("touchend", function(event) {
+                    event.preventDefault();
                 }, { passive: false });
 
             svg
@@ -290,6 +291,28 @@
                     event.preventDefault();
                 }, { passive: false })
                 .on("touchmove", function(event) {
+                    event.preventDefault();
+                }, { passive: false })
+                .on("touchend", function(event) {
+                    event.preventDefault();
+                }, { passive: false });
+
+            // Add touch event handling for interactive regions
+            svg.selectAll("rect[id]")
+                .on("click", function(event) {
+                    const id = this.getAttribute("id");
+                    console.log('Clicked element ID:', id);
+                    showModal(id);
+                    event.preventDefault();
+                    event.stopPropagation();
+                })
+                .on("touchstart", function(event) {
+                    event.preventDefault();
+                    const id = this.getAttribute("id");
+                    console.log('Touched element ID:', id);
+                    showModal(id);
+                }, { passive: false })
+                .on("touchend", function(event) {
                     event.preventDefault();
                 }, { passive: false });
 
@@ -306,25 +329,6 @@
             const y = (height / 2) - (centerY * scale);
 
             container.call(zoom.transform, d3.zoomIdentity.translate(x, y).scale(scale));
-
-            // Add touch event handling for interactive regions
-            svg.selectAll("rect[id]")
-                .on("click", function(event) {
-                    const id = this.getAttribute("id");
-                    console.log('Clicked element ID:', id);
-                    showModal(id);
-                    event.preventDefault();
-                    event.stopPropagation();
-                })
-                .on("touchstart", function(event) {
-                    event.preventDefault();
-                    const id = this.getAttribute("id");
-                    console.log('Touched element ID:', id);
-                    showModal(id);
-                })
-                .on("touchend", function(event) {
-                    event.preventDefault();
-                });
         });
 
         // Modal handling
