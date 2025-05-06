@@ -265,8 +265,7 @@
                 .filter(event => {
                     // Allow both mouse and touch events
                     return (!event.button || event.button === 0) && 
-                           (event.type !== 'dblclick') &&
-                           (!event.touches || event.touches.length === 2);
+                           (event.type !== 'dblclick');
                 })
                 .on("zoom", (event) => {
                     svg.attr("transform", event.transform);
@@ -274,6 +273,18 @@
 
             // Apply zoom behavior to the container
             container.call(zoom);
+
+            // Enable touch events for the container
+            container
+                .style("touch-action", "none")
+                .on("touchstart", function(event) {
+                    if (event.touches.length === 1) {
+                        event.preventDefault();
+                    }
+                }, { passive: false })
+                .on("touchmove", function(event) {
+                    event.preventDefault();
+                }, { passive: false });
 
             // Initial zoom to fit the SVG
             const bbox = svg.node().getBBox();
@@ -307,13 +318,6 @@
                 .on("touchend", function(event) {
                     event.preventDefault();
                 });
-
-            // Prevent default touch behaviors on the container
-            container.on("touchstart", function(event) {
-                if (event.touches.length === 1) {
-                    event.preventDefault();
-                }
-            });
         });
 
         // Modal handling
