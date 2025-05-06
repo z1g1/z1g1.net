@@ -37,15 +37,29 @@
                     const mapContainer = document.getElementById('map-container');
                     mapContainer.innerHTML = svgText;
                     
-                    // Initialize panzoom
+                    // Get the SVG element
                     const svg = mapContainer.querySelector('svg');
+                    
+                    // Calculate the initial scale to fill the container
+                    const bbox = svg.getBBox();
+                    const containerWidth = mapContainer.clientWidth;
+                    const containerHeight = mapContainer.clientHeight;
+                    
+                    // Calculate scale to fill the container while maintaining aspect ratio
+                    const scaleX = containerWidth / bbox.width;
+                    const scaleY = containerHeight / bbox.height;
+                    const initialScale = Math.max(scaleX, scaleY) * 1.1; // Add 10% padding
+                    
+                    // Initialize panzoom with bounds
                     const instance = panzoom(svg, {
                         maxZoom: 8,
-                        minZoom: 0.5,
+                        minZoom: initialScale, // Prevent zooming out beyond initial scale
                         bounds: true,
                         boundsPadding: 0.1,
                         zoomDoubleClickSpeed: 1,
-                        smoothScroll: false
+                        smoothScroll: false,
+                        zoomDoubleClick: true, // Enable double-click to zoom
+                        zoomDoubleClickSpeed: 1.5 // Zoom factor for double-click
                     });
 
                     // Handle touch events
@@ -67,16 +81,14 @@
                     });
 
                     // Center the map
-                    const bbox = svg.getBBox();
-                    const width = mapContainer.clientWidth;
-                    const height = mapContainer.clientHeight;
-                    const scale = Math.min(width / bbox.width, height / bbox.height) * 0.9;
+                    const centerX = (containerWidth - bbox.width * initialScale) / 2;
+                    const centerY = (containerHeight - bbox.height * initialScale) / 2;
                     
-                    // Set initial zoom and position
+                    // Set initial transform
                     instance.transform({
-                        scale: scale,
-                        x: (width - bbox.width * scale) / 2,
-                        y: (height - bbox.height * scale) / 2
+                        scale: initialScale,
+                        x: centerX,
+                        y: centerY
                     });
                 });
         });
