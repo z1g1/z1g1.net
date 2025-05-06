@@ -136,6 +136,84 @@ body {
     border-right: 2px solid var(--text-color);
 }
 
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal {
+    background: linear-gradient(45deg, #000000, #0a0a0a);
+    border: 2px solid var(--frame-color);
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 
+        0 0 20px var(--glow-color),
+        inset 0 0 20px var(--glow-color);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--frame-color);
+}
+
+.modal-title {
+    font-size: 1.2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px var(--text-color);
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 5px;
+    line-height: 1;
+}
+
+.modal-close:hover {
+    text-shadow: 0 0 10px var(--text-color);
+}
+
+.modal-content {
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+.modal-content p {
+    margin-bottom: 10px;
+}
+
+.modal-content h3 {
+    margin: 15px 0 10px;
+    color: var(--text-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 @media (max-width: 768px) {
     .console-frame {
         margin: 10px;
@@ -151,5 +229,14 @@ body {
 
     .console-status {
         font-size: 0.8em;
+    }
+
+    .modal {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    .modal-title {
+        font-size: 1em;
     }
 }

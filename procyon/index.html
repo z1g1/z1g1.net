@@ -27,9 +27,79 @@
         </div>
     </div>
 
+    <!-- Modal Structure -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title" id="modal-title"></div>
+                <button class="modal-close" id="modal-close">&times;</button>
+            </div>
+            <div class="modal-content" id="modal-content"></div>
+        </div>
+    </div>
+
     <script>
         // Wait for panzoom to be available
         window.addEventListener('load', function() {
+            let objectsData = null;
+            const modalOverlay = document.getElementById('modal-overlay');
+            const modalTitle = document.getElementById('modal-title');
+            const modalContent = document.getElementById('modal-content');
+            const modalClose = document.getElementById('modal-close');
+
+            // Load the objects data
+            fetch('assets/data/objects.json')
+                .then(response => response.json())
+                .then(data => {
+                    objectsData = data;
+                });
+
+            // Function to show modal with object data
+            function showObjectData(id) {
+                if (!objectsData || !objectsData[id]) return;
+                
+                const object = objectsData[id];
+                modalTitle.textContent = object.name;
+                
+                let content = `<p>${object.description}</p>`;
+                
+                if (object.type === 'system' && object.notable_places) {
+                    content += '<h3>Notable Places</h3>';
+                    for (const [placeId, place] of Object.entries(object.notable_places)) {
+                        content += `<p><strong>${place.name}:</strong> ${place.description}</p>`;
+                    }
+                }
+                
+                if (object.notables) {
+                    content += '<h3>Notable Figures</h3>';
+                    for (const [notableId, notable] of Object.entries(object.notables)) {
+                        content += `<p><strong>${notable.name}:</strong> ${notable.description}</p>`;
+                    }
+                }
+                
+                modalContent.innerHTML = content;
+                modalOverlay.classList.add('active');
+            }
+
+            // Close modal when clicking close button
+            modalClose.addEventListener('click', () => {
+                modalOverlay.classList.remove('active');
+            });
+
+            // Close modal when clicking outside
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) {
+                    modalOverlay.classList.remove('active');
+                }
+            });
+
+            // Close modal when pressing escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                    modalOverlay.classList.remove('active');
+                }
+            });
+
             // Load the SVG file
             fetch('assets/images/procyon-sector-map.svg')
                 .then(response => response.text())
@@ -72,10 +142,23 @@
 
                     // Add click handlers to interactive regions
                     svg.querySelectorAll('rect[id]').forEach(rect => {
+                        // Make the rect fill the entire area
+                        rect.style.fill = 'rgba(255, 255, 0, 0.1)';
+                        rect.style.cursor = 'pointer';
+                        
+                        // Add click handler
                         rect.addEventListener('click', function(event) {
                             const id = this.getAttribute('id');
-                            console.log('Clicked element ID:', id);
+                            showObjectData(id);
                             // Prevent zoom on click
+                            event.stopPropagation();
+                        });
+
+                        // Add touch handler for mobile
+                        rect.addEventListener('touchend', function(event) {
+                            const id = this.getAttribute('id');
+                            showObjectData(id);
+                            // Prevent zoom on touch
                             event.stopPropagation();
                         });
                     });
