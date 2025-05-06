@@ -1,408 +1,414 @@
 {
-  "brekk": {
-    "name": "Brekk System",
-    "type": "system",
-    "description": "Considered by many to be more civilized than the rest of Procyon, this system is home to many finer aspects of the Hegemony—education, art, and culture. Wealth and culture means the Legion presence is strong in the sector. However, there are many odd, non-Starsmith- maintained hyperspace lanes that bend strangely, making long loops perpendicular to planetary orbits. Pilots map these so-called \"dark lanes,\" making it easy to hide and dodge patrols if one is willing to take one's time.",
-    "notable_places": {
-      "blackstarr": {
-        "name": "Blackstarr",
-        "description": "The vast and largely empty Nightspeaker ship where initiates train for their first year.  The ship is unlit and moves routinely to prevent discovery.  It does not often receive visitors, but exceptions are made for those that have a favorable relationship to the Cult."
+  "objects": {
+    "systems": {
+      "brekk": {
+        "name": "Brekk System",
+        "type": "system",
+        "system_overview": "Considered by many to be more civilized than the rest of Procyon, this system is home to many finer aspects of the Hegemony—education, art, and culture. Wealth and culture means the Legion presence is strong in the sector. However, there are many odd, non-Starsmith- maintained hyperspace lanes that bend strangely, making long loops perpendicular to planetary orbits. Pilots map these so-called \"dark lanes,\" making it easy to hide and dodge patrols if one is willing to take one's time.",
+        "notable_places": {
+          "blackstarr": {
+            "name": "Blackstarr",
+            "description": "The vast and largely empty Nightspeaker ship where initiates train for their first year.  The ship is unlit and moves routinely to prevent discovery.  It does not often receive visitors, but exceptions are made for those that have a favorable relationship to the Cult."
+          },
+          "dendra": {
+            "name": "Dendra",
+            "description": "An ancient temple on Nightfall's fifth moon, Todav.  Some say it's an Ur temple, others that it's the remains of a forgotten mystic Cult. Its derelict corridors are tough to tour due to the moon's lack of atmosphere and the glitching effect it has on drives and electronics."
+          },
+          "bright-wind": {
+            "name": "Bright Wind",
+            "description": "A large gas cloud ejected by the star, now used as racing grounds by the Echo Wave Riders. Despite it being both lethal and illegal, racers from all over the sector compete for cred and fame. Invitations to the races are exclusive and require qualifying in equally hazardous conditions."
+          },
+          "isotropa-max-secure": {
+            "name": "Isotropa Max Secure",
+            "description": "Orbiting near the star, Isotropa is the most notorious prison in Procyon.  Wardens broker audiences with prisoners and grant commutations for the powerful and wealthy.  They report to Malklaith but the prison largely runs itself."
+          }
+        }
       },
-      "dendra": {
-        "name": "Dendra",
-        "description": "An ancient temple on Nightfall's fifth moon, Todav.  Some say it's an Ur temple, others that it's the remains of a forgotten mystic Cult. Its derelict corridors are tough to tour due to the moon's lack of atmosphere and the glitching effect it has on drives and electronics."
+      "holt": {
+        "name": "Holt System",
+        "type": "system",
+        "system_overview": "Holt was the second Procyon system to be colonized, though the Rin-Holt gate was troublesome to stabilize. Hegemonic scientists eventually found a series of Ur keys in the system that forced the gate to consistently lead to Holt. The gate remains temperamental, however, and has been known to open on its own. No ships have come through during these spontaneous openings—so far. The Holt system star burns white, though it is far older than stars of this type should be, which Hegemonic scientists attribute to ancient Ur manipulation.",
+        "notable_places": {
+          "jerecs-junkyard": {
+            "name": "Jerec's Junkyard",
+            "description": "A free-floating mass of ships and parts, connected via magnetism and cabling. If you're looking for equipment on the cheap, the Junkyard is your place, though it will likely be missing a piece or unreliable. Jerec also buys, but is a canny haggler."
+          },
+          "hantu-gate": {
+            "name": "Hantu Gate",
+            "description": "The Hegemony has never been able to activate this jumpgate. Compared to other jumpgates it seems to be missing a few small but key pieces. It has been speculated that the Ur locked the gate and hid the keys somewhere, though it's anyone's guess as to why."
+          },
+          "trade-platform-4": {
+            "name": "Trade Platform Auto #4",
+            "description": "The Guild set up an automated platform for selling fuel, covered in defensive systems to deter theft. Because of this, some parties conduct negotiations here to discourage escalation.  Nobody knows what happened to the first three platforms."
+          },
+          "planet-omega": {
+            "name": "Planet Omega",
+            "description": "Three survey crews and one military expedition vanished before the Legion quarantined this planet.  It's overrun by a deadly life form that nests withing Ur ruins and can resist nukes from orbit. The Hegemony considers it hostile, but insignificant to its plans."
+          }
+        }
       },
-      "bright-wind": {
-        "name": "Bright Wind",
-        "description": "A large gas cloud ejected by the star, now used as racing grounds by the Echo Wave Riders. Despite it being both lethal and illegal, racers from all over the sector compete for cred and fame. Invitations to the races are exclusive and require qualifying in equally hazardous conditions."
+      "iota": {
+        "name": "Iota System",
+        "type": "system",
+        "system_overview": "The planets in Iota orbit a pair of stars—a yellow sun (Iota-1) and a brown dwarf (Iota-2). By the time the Hegemony arrived, there were two asteroid belts, one of which still has a large portion of a shattered planet remaining in its midst. Although both the belts were clearly planets once upon a time, nobody is sure what sort of calamity shattered them. As is their wont, the Guilds didn't look a gift horse in the mouth—they set up the Iota shipyards, which service many ships in the sector using metals from the belts.",
+        "notable_places": {
+          "shipyards": {
+            "name": "Shipyards",
+            "description": "While the primary yard is run by Starsmiths, many smaller, licensed hubs work on repairs and ship refits. These stations are full of bored spacers looking for any distraction from the wait. Starsmiths sometimes hire foolhardy pilots for prototype tests."
+          },
+          "belt-of-fire": {
+            "name": "Belt of Fire",
+            "description": "The region of superheated plasma currents between the Iota binary stars.  Spacers spin yarns about the Old Dragon—a vast space creature living there. While the name is whimsical, the Hegemony issued a Quarantine order for the area after several ships disappeared."
+          },
+          "way-line": {
+            "name": "Way Line",
+            "description": "The Iota gates produce a region between them where engines have more thrust, akin to \"winds\" of a planet. The path is hard to find and switches direction. Pilots in the know use this to gain an advantage on rush deliveries (or daring escapes)."
+          },
+          "zx-1138": {
+            "name": "ZX-1138",
+            "description": "A long-period comet has recently diverged from its course, taking it much closer to Indri. Reasons for the course change are unclear, but locals have requested the Governor investigate. Mystics claim that this has shifted the system Way lines, making the Way sometimes act unpredictably."
+          }
+        }
       },
-      "isotropa-max-secure": {
-        "name": "Isotropa Max Secure",
-        "description": "Orbiting near the star, Isotropa is the most notorious prison in Procyon.  Wardens broker audiences with prisoners and grant commutations for the powerful and wealthy.  They report to Malklaith but the prison largely runs itself."
+      "rin": {
+        "name": "Rin System",
+        "type": "system",
+        "system_overview": "The entry point to the Procyon sector, Rin was colonized a little over a hundred years ago by House Nim-Amar. It has never been an important sector, so Malklaith's never invested more than a minimum of resources in its development. Instead, it's used to train young House members, or as an assignment to punish those who fail the House. Galactic law is more present here than the rest of the sector, as this is the seat of the sector's administration and contains gates to three systems, including a path towards the rest of the Hegemony.",
+        "notable_places": {
+          "aleph": {
+            "name": "Aleph",
+            "description": "Between the poisonous gases and tectonic instability, Aleph would be a planet to avoid if it weren't for its mineral stores. Most of the wealth dug from the planet is taxed heavily by the Governor, leading to frequent unrest with the miners."
+          },
+          "baftoma-the-husk": {
+            "name": "Baftoma 'The Husk'",
+            "description": "Resource exploitation by the Hegemony is comprehensive, and planets incapable of sustaining life are stripped to the core. Baftoma was once such a planet—now only scaffolding of rock remains, its broken form only used by folks hiding or dodging pursuit."
+          },
+          "ashtari-cloud": {
+            "name": "Ashtari Cloud",
+            "description": "An ancient damaged remnant of a massive Ur ship lies in space, generating an in-system nebula. Within it, normal propulsion is minimal and nav systems dodgy. The Maelstrom pirates figured out how to navigate the cloud, and made their base of operations within its protective shroud."
+          },
+          "the-straylight": {
+            "name": "The Straylight",
+            "description": "The latest fad, the Straylight is an upscale club and cocktail bar where elites can wine and dine. It usually orbits Aleph, though it can move to other planets and moons in the system. Its owner, Chance, runs a tight establishment, but things can sometimes get out of hand."
+          }
+        }
       }
-    }
-  },
-  "holt": {
-    "name": "Holt System",
-    "type": "system",
-    "description": "Holt was the second Procyon system to be colonized, though the Rin-Holt gate was troublesome to stabilize. Hegemonic scientists eventually found a series of Ur keys in the system that forced the gate to consistently lead to Holt. The gate remains temperamental, however, and has been known to open on its own. No ships have come through during these spontaneous openings—so far. The Holt system star burns white, though it is far older than stars of this type should be, which Hegemonic scientists attribute to ancient Ur manipulation.",
-    "notable_places": {
-      "jerecs-junkyard": {
-        "name": "Jerec's Junkyard",
-        "description": "A free-floating mass of ships and parts, connected via magnetism and cabling. If you're looking for equipment on the cheap, the Junkyard is your place, though it will likely be missing a piece or unreliable. Jerec also buys, but is a canny haggler."
+    },
+    "locations": {
+      "nightfall": {
+        "name": "Nightfall",
+        "system": "brekk",
+        "type": "planet",
+        "description": "Named for frequent eclipses caused by the planet's 13 moons.  Their erratic movements make night only predictable by computer. The city of Yaw is nestled where night and day last between 2 and 12 hours each. It bustles with economic activity and is a frequent destination for tourists and traders. Known for its haute cuisine and theater.",
+        "rule": "Nightfall is the center of culture in the system, and everything is mostly about who you know. When you acquire assets, roll with consort instead of crew quality.",
+        "scene": "High-rises lighting up block by block as the city goes from day to night in the span of minutes. A rowdy night club spilling dancers clad in black, glow-accented outfits onto a sun-lit street. The blue glow of a public data kiosk projecting tomorrow's night schedule and market changes.",
+        "wealth_level": 2,
+        "crime_level": 1,
+        "tech_level": 2,
+        "weird_level": 1,
+        "notables": {
+          "saren-galia": {
+            "name": "Saren Galia",
+            "description": "Data broker and bookie. When you can't pay your debts, you become her informant. (paranoid, fast, connected)"
+          },
+          "lotus": {
+            "name": "Lotus",
+            "description": "Fashionista and taste- maker, dressed in elaborate costumes. Secretly a high- powered fixer. Has been known to take charity cases when the cause appeals to her. (popular, passionate, meticulous)"
+          },
+          "jet-woolfe": {
+            "name": "Jet Woolfe",
+            "description": "Scarlet Wolf Assassin.  Can be hired at a price, but only takes off-world jobs. Travels with a large, blue-skinned alien animal of unknown origin. (aloof, confident, unforgiving)"
+          },
+          "sol-brighton": {
+            "name": "Sol Brighton",
+            "description": "Best lawyer in the sector. (cunning, connected, expensive)"
+          }
+        }
       },
-      "hantu-gate": {
-        "name": "Hantu Gate",
-        "description": "The Hegemony has never been able to activate this jumpgate. Compared to other jumpgates it seems to be missing a few small but key pieces. It has been speculated that the Ur locked the gate and hid the keys somewhere, though it's anyone's guess as to why."
+      "shimaya": {
+        "name": "Shimaya",
+        "system": "brekk",
+        "type": "planet",
+        "description": "This desert planet is ravaged by electrical storms that occasionally clear colored sand off mineral deposits essential to space travel, or turn it to glass, giving a view to the ruins beneath. Teams race to capitalize on these events. There is a substantial civilian population, including the sector's preeminent educational institution, Khalud Academy.",
+        "rule": "Although only students and professors are technically allowed to use the Khalud Academy archives, any study rolls while using them take +1d.",
+        "scene": "Professors walking down the marble paths of the Academy. A market street with insistent vendors selling sandworm kebabs to hungry miners. Excavators packing furiously onto sand-skiffs, ready to take advantage of a storm- cleared deposit. The storm alert blaring citywide.",
+        "wealth_level": 2,
+        "crime_level": 1,
+        "tech_level": 2,
+        "weird_level": 0,
+        "notables": {
+          "hondo-suzuka": {
+            "name": "Hondo Suzuka",
+            "description": "HNN reporter seeking evidence of conspiracy at Khalud Academy, where several top students have vanished.  (ambitious, vigilant, charming)"
+          },
+          "ed-ursis": {
+            "name": "Ed Ursis",
+            "description": "Guild Engineer that works on the orbital array and the electrostatic generators it powers to keep the storms away from the capital. Collects colored glass statues. (dedicated, brilliant, overworked)"
+          },
+          "miranda-kasur": {
+            "name": "Miranda Kasur",
+            "description": "Minerals trader with a load of stolen goods she needs to move. In hiding after her first deal went wrong.  (scared, cunning, proud)"
+          },
+          "sahar": {
+            "name": "Sahar",
+            "description": "Strange-suited mystic that lives in the desert. (odd, blue-eyed, ancient)"
+          }
+        }
       },
-      "trade-platform-4": {
-        "name": "Trade Platform Auto #4",
-        "description": "The Guild set up an automated platform for selling fuel, covered in defensive systems to deter theft. Because of this, some parties conduct negotiations here to discourage escalation.  Nobody knows what happened to the first three platforms."
+      "aketi": {
+        "name": "Aketi",
+        "system": "brekk",
+        "type": "planet",
+        "description": "This verdant jungle world would be more settled, were it not for the incredibly hostile natural life. Between rapidly spreading carnivorous plants, seasonally rampaging beasts, and hyper-aggressive fish, only a few distinct types visit Aketi— researchers, poachers, and criminals hiding from the law.  The planet is labeled a Malklaith 'nature preserve.'",
+        "rule": "Nobody comes here who doesn't have to. The planet hates you, and jobs are hard to find. Even bounty hunters pass it by. When you lay low on Aketi, take +1d.",
+        "scene": "Heavily armed guards patrolling the tall walls of Base Camp One, nervously eyeing the jungle. Research crews packing for their next expedition across from poachers doing the same. A smuggler discussing arrangements with a client in a tent while a personal barista makes them drinks.",
+        "wealth_level": 0,
+        "crime_level": 3,
+        "tech_level": 1,
+        "weird_level": 1,
+        "notables": {
+          "razor": {
+            "name": "Razor",
+            "description": "A hunter mounting an expedition to catch the deadly Grand Phereniki for a rich client.  (callous, experienced, gambler)"
+          },
+          "zokar-pava": {
+            "name": "Zokar Pava",
+            "description": "Lost Legionnaire dealing in military-grade weapons. (cautious, meticulous, dissident)"
+          },
+          "intal-brel": {
+            "name": "Intal Brel",
+            "description": "Psy-blade-wielding Concordiat Knight. Travels with a nine-foot-tall xeno, an ex-priest, and an Urbot. Recently lost a party member and hopes to replace them. (religious, vigilant, honorable)"
+          },
+          "aha-ravann": {
+            "name": "Aha Ravann",
+            "description": "Base Camp One commander. Instituted a wall- mounted flamethrower measure that's kept the jungle at bay.  (tired, jaded, relentless)"
+          }
+        }
       },
-      "planet-omega": {
-        "name": "Planet Omega",
-        "description": "Three survey crews and one military expedition vanished before the Legion quarantined this planet.  It's overrun by a deadly life form that nests withing Ur ruins and can resist nukes from orbit. The Hegemony considers it hostile, but insignificant to its plans."
-      }
-    }
-  },
-  "iota": {
-    "name": "Iota System",
-    "type": "system",
-    "description": "The planets in Iota orbit a pair of stars—a yellow sun (Iota-1) and a brown dwarf (Iota-2). By the time the Hegemony arrived, there were two asteroid belts, one of which still has a large portion of a shattered planet remaining in its midst. Although both the belts were clearly planets once upon a time, nobody is sure what sort of calamity shattered them. As is their wont, the Guilds didn't look a gift horse in the mouth—they set up the Iota shipyards, which service many ships in the sector using metals from the belts.",
-    "notable_places": {
-      "shipyards": {
-        "name": "Shipyards",
-        "description": "While the primary yard is run by Starsmiths, many smaller, licensed hubs work on repairs and ship refits. These stations are full of bored spacers looking for any distraction from the wait. Starsmiths sometimes hire foolhardy pilots for prototype tests."
+      "amerath": {
+        "name": "Amerath",
+        "system": "iota",
+        "type": "planet",
+        "description": "With a lush biome, this planet has become well known for pharmaceuticals research and manufacturing. Many regions of the planet are well tended, and due to the comprehensive attentions of the Guild, the garden city of Rost is in perennial bloom. Warm, gentle rains come frequently. The deep forests hide some pirate lairs and Mendicant temples amid overgrown ruins.",
+        "rule": "While it's ruined and unsanctified, the Mendicants keep their temple and their mystics tend to any and all that request aid. Take +1d when you recover in their care.",
+        "scene": "Massive, person-sized flowers blooming along a vine- supported path through the trees. The sweet smell of honey in the air. Scientists having lunch at treetop cafés while reviewing project schedules. Sick pilgrims praying for a cure while waiting to travel to the old Mendicant temple deep in the forests.",
+        "wealth_level": 1,
+        "crime_level": 1,
+        "tech_level": 2,
+        "weird_level": 1,
+        "notables": {
+          "yon-lirak": {
+            "name": "Yon Lirak",
+            "description": "High-end drug dealer.  Runs a factory in Rost that never shuts down, producing synthetic narcotics for several major species. (experienced, ruthless, unforgiving)"
+          },
+          "ara-blaze": {
+            "name": "Ara Blaze",
+            "description": "Once a star athlete, now a preeminent pit fighter in the underground fight clubs. Ara has tried every performance- enhancing drug offered to her, and it has changed her. (ruthless, unforgiving, engineered)"
+          },
+          "uyen-al-vorron": {
+            "name": "Uyen Al-Vorron",
+            "description": "Famous Noble duelist from the religious House Vorron. Seeking to cultivate a plant for the new vineyard he's planning to grow on a moon near the Core. (armed, deadly, observant)"
+          }
+        }
       },
-      "belt-of-fire": {
-        "name": "Belt of Fire",
-        "description": "The region of superheated plasma currents between the Iota binary stars.  Spacers spin yarns about the Old Dragon—a vast space creature living there. While the name is whimsical, the Hegemony issued a Quarantine order for the area after several ships disappeared."
+      "lithios": {
+        "name": "Lithios",
+        "system": "iota",
+        "type": "planet",
+        "description": "Ancient ice palaces dot the surface of this frozen planet, but the race to which they belong has long since passed. Entry to the palaces has been restricted after a string of mysterious explorer deaths. Orbital mirrors shine like artificial suns, keeping a few larger settlements warm and powering large mining rigs for extracting water and liquefied gases.",
+        "rule": "When you explore the ice palaces of Lithios, you must make a resolve resist if you don't want to heed the echoes urging you to wander into the frozen wastes alone.",
+        "scene": "A purple and green aurora shining over the freezing cold sky. Ice explorers whispering about the Yaru creche. Heated vapors escaping around Solitude Colony. Colonists in full parkas, riding large, many-eyed canids.  Farmers pulling gas-eels and ice-mushroom wine crates in sail-sporting snow skimmers.",
+        "wealth_level": 0,
+        "crime_level": 1,
+        "tech_level": 2,
+        "weird_level": 3,
+        "notables": {
+          "asha-munzen": {
+            "name": "Asha Munzen",
+            "description": "Ex-lover of the Governor, ice climber, mystic, and explorer of the ice palaces and gas caves. Only returns with visions, never artifacts.  Attempting to find the \"First Message.\" (mystic, ambitious, fit)"
+          },
+          "ren-laran": {
+            "name": "Ren Laran",
+            "description": "Xenobiologist attempting to revive an ancient xeno found frozen but alive in the ice, despite Hegemonic law forbidding it. Currently trying to sneak the xeno off-world. (bold, brilliant, confident)"
+          },
+          "raf-urich": {
+            "name": "Raf Urich",
+            "description": "Ice pirate, currently stranded on planet. Used his ship weapons to cut a berth in the ice. Has been hiding out, stealing parts to repair his ship.  (experienced, cautious, shrewd)"
+          }
+        }
       },
-      "way-line": {
-        "name": "Way Line",
-        "description": "The Iota gates produce a region between them where engines have more thrust, akin to \"winds\" of a planet. The path is hard to find and switches direction. Pilots in the know use this to gain an advantage on rush deliveries (or daring escapes)."
+      "indri": {
+        "name": "Indri",
+        "type": "planet",
+        "system": "iota",
+        "description": "Over 25 percent of all goods manufactured in the Procyon Sector come from this incredibly industrialized planet. Thick, rust-colored clouds create dusk even during the day. From the warehouse-surrounded spaceport of Reves, one can view the impressive skyline of smokestacks and flames from gas burn-offs. Travel without protective gear is not advised.",
+        "rule": "The factories have caused massive air pollution; anyone spending any amount of time outside without proper equipment or xeno abilities gains level 2 harm ' Indri Lung'",
+        "scene": "Hovercar traffic reflecting adverts on buildings. Gas- masked pedestrians walking hurriedly down metal sidewalks with umbrellas treated to prevent acid rain damage.  Slow-moving containers being shuttled to warehouses. Storm clouds with multi-hued lightning rolling in.",
+        "wealth_level": 1,
+        "crime_level": 2,
+        "tech_level": 2,
+        "weird_level": 0,
+        "notables": {
+          "piro-locke": {
+            "name": "Piro Locke",
+            "description": "Owns a number of discreet, well-guarded storage spaces in orbit, and has a strict no-questions policy. If it's illegal, it's certainly stored by Locke.  (honorable, wealthy, confident)"
+          },
+          "zo-o-yun-ta-ri": {
+            "name": "Zo-o-yun-ta-ri",
+            "description": "Xeno weapons dealer known for prototypes and specialty armaments. Recently acquired an Ur ship weapon and plans to auction it under the cover of a storm. (xeno, connected, cautious, meticulous)"
+          },
+          "pasha-lensarr": {
+            "name": "Pasha 'The Roc' Lensarr",
+            "description": "Local head Ashen Knife. Known for a brutal approach to criminal organization. Wears custom- tailored suits that allow his wings to unfurl as needed. (xeno, fierce, ruthless, demanding)"
+          }
+        }
       },
-      "zx-1138": {
-        "name": "ZX-1138",
-        "description": "A long-period comet has recently diverged from its course, taking it much closer to Indri. Reasons for the course change are unclear, but locals have requested the Governor investigate. Mystics claim that this has shifted the system Way lines, making the Way sometimes act unpredictably."
-      }
-    }
-  },
-  "rin": {
-    "name": "Rin System",
-    "type": "system",
-    "description": "The entry point to the Procyon sector, Rin was colonized a little over a hundred years ago by House Nim-Amar. It has never been an important sector, so Malklaith's never invested more than a minimum of resources in its development. Instead, it's used to train young House members, or as an assignment to punish those who fail the House. Galactic law is more present here than the rest of the sector, as this is the seat of the sector's administration and contains gates to three systems, including a path towards the rest of the Hegemony.",
-    "notable_places": {
+      "mem": {
+        "name": "Mem",
+        "type": "planet",
+        "system": "holt",
+        "description": "This ocean planet was colonized by the Hegemony for almost a hundred years before aquatic xenos made themselves (and their planetary claims) known. Hegemonic forces broke the Memish military and incorporated them into the Hegemony. Exploration of Mem has proven difficult because of the free-standing gravity wells deep beneath the waves.",
+        "rule": "The deeps are littered with Ur sites and strange glows.  When in the deeps, using attune for long-term projects grants +1d. Low rolls may attract dangerous Way attention.",
+        "scene": "Hegemonic officials in sashes, talking with Memish labor bosses. See-through spires rising from the underwater government palace to open-air pavilions. Tourists embarking on submersibles to take in the local sea life. Scientists in exo-suits on deep-sea missions while the Memish watch from the waters.",
+        "wealth_level": 2,
+        "crime_level": 2,
+        "tech_level": 2,
+        "weird_level": 3,
+        "notables": {
+          "victor-kromyl": {
+            "name": "Victor Kromyl",
+            "description": "Planetary Governor. Seeks proof of Memish rebellion after a few subordinates vanished. Always with his Legion bodyguard. (vigilant, meticulous, paranoid)"
+          },
+          "espa-nur": {
+            "name": "Espa Nur",
+            "description": "Memish labor boss.  His scars are packed with deep- ocean bioluminescence. Reports to Kromyl on seditious behavior, but hides his knowledge of Memish occultism. (xeno, ambitious, cunning, treacherous)"
+          },
+          "wyndam-taru-zahn": {
+            "name": "Wyndam Taru-Zahn",
+            "description": "Biology researcher seeking a connection between the Mem and other planetary life, with little success.  Gathering an exploration of the ancient Mem city of Bok-Dar.  (wealthy, brilliant, passionate)"
+          }
+        }
+      },
+      "baftoma": {
+        "name": "Baftoma",
+        "system": "holt",
+        "type": "asteroid",
+        "description": "Resource exploitation by the Hegemony is comprehensive, and planets incapable of sustaining life are stripped to the core. Baftoma was once such a planet—now only scaffolding of rock remains, its broken form only used by folks hiding or dodging pursuit.",
+      },
+      "warren": {
+        "name": "Warren",
+        "type": "planet",
+        "system": "holt",
+        "description": "Warren is one of the moons of Aleph and the home to an ecumenopolis—a city spanning the entire surface of the moon.  It’s the capitol for the system, and the system Governor Ritam al’Malklaith makes his residence here. On Warren, you can find anything you need—for a price. Its high-rises are full of legitimate business dealings, and its streets far less so.",
+        "rule": "Warren is a wretched hive of villainy, yet also the Hegemonic seat of power in the system. You can take +1d to acquire assets here, if you also accept +2 heat.",
+        "scene": "A bustling street market with neon signs promising foods of all kinds in several languages. Hovercars streaming between towering buildings. The bass beat of a basement club playing the latest mix; patrons stumbling onto the street, singing. Socialites attending a gala at the Governor’s mansion.",
+        "wealth_level": 2,
+        "crime_level": 3,
+        "tech_level": 2,
+        "weird_level": 1,
+        "notables": {
+          "ritam-al-malklaith": {
+            "name": "Ritam al'Malklaith",
+            "description": "Governor of the Rin system, in disgrace within House Malklaith. He seeks to improve his position in the House by acquiring illegal Ur artifacts. (callous, ambitious, strange)"
+          },
+          "liara-uriel": {
+            "name": "Liara Uriel",
+            "description": "Owner and operator of the Lock Luna, the most infamous bar in the undercity.  (cunning, unforgiving, popular)"
+          },
+          "rocco-applin": {
+            "name": "Rocco Applin",
+            "description": "Ship designer extraordinaire. Only makes one of each ship designed. (artistic, brilliant, aloof)"
+          },
+          "pasha-quolin": {
+            "name": "Pasha Qu-Olin",
+            "description": "Once a feared assassin among the Knives, now a Syndicate leader. Loves good food and pit fights. (sly, corpulent, sartorial, decadent)"
+          }
+        }
+      },
       "aleph": {
         "name": "Aleph",
-        "description": "Between the poisonous gases and tectonic instability, Aleph would be a planet to avoid if it weren't for its mineral stores. Most of the wealth dug from the planet is taxed heavily by the Governor, leading to frequent unrest with the miners."
+        "type": "planet",
+        "system": "rin",
+        "description": "Between the poisonous gases and tectonic instability, Aleph would be a planet to avoid if it weren’t for its mineral stores.  Most of the wealth dug from the planet is taxed heavily by the Governor, leading to frequent unrest with the miners.",
       },
-      "baftoma-the-husk": {
-        "name": "Baftoma 'The Husk'",
-        "description": "Resource exploitation by the Hegemony is comprehensive, and planets incapable of sustaining life are stripped to the core. Baftoma was once such a planet—now only scaffolding of rock remains, its broken form only used by folks hiding or dodging pursuit."
+      "vet": {
+        "name": "Vet",
+        "type": "planet",
+        "system": "rin",
+        "description": "Gas giant with rings. SB-176 orbits the planet",
       },
-      "ashtari-cloud": {
-        "name": "Ashtari Cloud",
-        "description": "An ancient damaged remnant of a massive Ur ship lies in space, generating an in-system nebula. Within it, normal propulsion is minimal and nav systems dodgy. The Maelstrom pirates figured out how to navigate the cloud, and made their base of operations within its protective shroud."
+      "sb-176": {
+        "name": "SB-176",
+        "type": "space station",
+        "system": "rin",
+        "description": "You don’t need a planet in order to mine. Or at least, you don’t need ground. This combination 'mining' platform and space colony is responsible for extracting resources from Vet, the gas planet below. The mining rigs in the skies below—mostly manned by Urbots—send their goods to this central hub. Most of those are packaged and fired towards the Rin-Ecliptis gate.",
+        "rule": "Engagement rolls on SB-176 itself are always at -1d due to ever-present station monitoring. Any jobs run against Guilders here are considered to be on hostile turf.",
+        "scene": "Cold clacking of footsteps on the brilliantly clean main concourse. Whispers of politicos taking tea at a parlor. Children running down halls, laughing.  The hum of generators in the darkened side passages leading to the lower levels. Dingy workers shouting in the cramped quarters of the mining rigs.",
+        "wealth_level": 2,
+        "crime_level": 0,
+        "tech_level": 3,
+        "weird_level": 1,
+        "notables": {
+          "yast-jor": {
+            "name": "Yast Jor",
+            "description": "Guilder head of the outpost. Jor is known for getting things done, even if it means bending the rules. A thrill-seeker, he keeps a Guild-enhanced racing ship for rare days off.  (commanding, shrewd, bold)"
+          },
+          "kasumi-ortcutt": {
+            "name": "Kasumi Orcutt",
+            "description": "A mystic who claims to hear the voice of Vet, the gas giant the platform is mining. Trades information, including esoterica on the Ur.  (passionate, strange, religious)"
+          },
+          "espa-wu": {
+            "name": "Espa 'Bolt' Wu",
+            "description": "Labor organizer for the Guild miners. Rabble- rouser beloved by the workers.  Has been incarcerated numerous times for crimes both real and fabricated. (popular, dissident, ambitious)"
+          }
+        }
       },
-      "the-straylight": {
-        "name": "The Straylight",
-        "description": "The latest fad, the Straylight is an upscale club and cocktail bar where elites can wine and dine. It usually orbits Aleph, though it can move to other planets and moons in the system. Its owner, Chance, runs a tight establishment, but things can sometimes get out of hand."
+      "the-cove": {
+        "name": "The Cove",
+        "type": "space station",
+        "system": "rin",
+        "description": "The Maelstrom pirates have made a station out of derelict freighters, cargo containers, and stolen scrap metal. They call this home 'the Cove.' Enterprising individuals can discover where it is located if they have the tenacity or contacts—though it moves about within the Ashtari Cloud. Only the best friends of pirates might be granted storm drives to better navigate with.",
+        "rule": "Conflicts at the Cove are rampant, but by Banshee’s decree no murder is allowed.  Those needing to settle blood feuds resort to kidnapping and killing folks outside the Cloud.",
+        "scene": "Quick bets taken on an open brawl between two captains over slights. Blue- white sparks of maintenance workers welding on a new ship.  Fresh water misting over rows of hydroponics. A station-wide broadcast of the Banshee’s latest conquest, followed by cheers throughout the halls.",
+        "wealth_level": 1,
+        "crime_level": 1,
+        "tech_level": 2,
+        "weird_level": 2,
+        "notables": {
+          "alanda-ryle": {
+            "name": "Pirate Queen Alanda 'The Banshee' Ryle",
+            "description": "A larger-than-life figure with a hatred for the Hegemony.  Tough and violent, she enforces a pirate code on those who would follow her. Once stranded her first lieutenant on a barren world for mutiny. (proud, demanding, honorable)"
+          },
+          "praxis-ivanov": {
+            "name": "Praxis Ivanov",
+            "description": "Merchant always willing to make a deal. His tentacles are tattooed with the story of his several-hundred- year life. (xeno, experienced, shrewd, loves to barter)"
+          },
+          "kai-quag": {
+            "name": "Kai Quag",
+            "description": "Mid-level Cobalt boss.  Arranges protection for Cobalt smuggling runs and meets with potential clients at the Cove.  (cautious, charming, confident)"
+          }
+        }
+      },
+      "brekk-iota-gate": {
+        "name": "Brekk to Iota Gate",
+        "type": "gate",
+        "description": "Stable gate between Holt and Rin",
+      },
+      "rin-iota-gate": {
+        "name": "Rin to Iota Gate",
+        "type": "gate",
+        "description": "Stable gate between Holt and Rin",
+      },
+      "holt-rin-gate": {
+        "name": "Holt to Rin Gate",
+        "type": "gate",
+        "description": "Stable gate between Holt and Rin",
+      },
+      "holt-hantu-gate": {
+        "name": "Holt to Hantu Gate",
+        "type": "gate",
+        "description": "The Hegemony has never been able to activate this jumpgate. Compared to other jumpgates it seems to be missing a few small but key pieces. It has been speculated that the Ur locked the gate and hid the keys somewhere, though it’s anyone’s guess as to why.",
       }
     }
-  },
-  "nightfall": {
-    "name": "Nightfall",
-    "type": "planet",
-    "system": "brekk",
-    "description": "Named for frequent eclipses caused by the planet's 13 moons.  Their erratic movements make night only predictable by computer. The city of Yaw is nestled where night and day last between 2 and 12 hours each. It bustles with economic activity and is a frequent destination for tourists and traders. Known for its haute cuisine and theater.",
-    "rule": "Nightfall is the center of culture in the system, and everything is mostly about who you know. When you acquire assets, roll with consort instead of crew quality.",
-    "scene": "High-rises lighting up block by block as the city goes from day to night in the span of minutes. A rowdy night club spilling dancers clad in black, glow-accented outfits onto a sun-lit street. The blue glow of a public data kiosk projecting tomorrow's night schedule and market changes.",
-    "wealth_level": 2,
-    "crime_level": 1,
-    "tech_level": 2,
-    "weird_level": 1,
-    "notables": {
-      "saren-galia": {
-        "name": "Saren Galia",
-        "description": "Data broker and bookie. When you can't pay your debts, you become her informant. (paranoid, fast, connected)"
-      },
-      "lotus": {
-        "name": "Lotus",
-        "description": "Fashionista and taste- maker, dressed in elaborate costumes. Secretly a high- powered fixer. Has been known to take charity cases when the cause appeals to her. (popular, passionate, meticulous)"
-      },
-      "jet-woolfe": {
-        "name": "Jet Woolfe",
-        "description": "Scarlet Wolf Assassin.  Can be hired at a price, but only takes off-world jobs. Travels with a large, blue-skinned alien animal of unknown origin. (aloof, confident, unforgiving)"
-      },
-      "sol-brighton": {
-        "name": "Sol Brighton",
-        "description": "Best lawyer in the sector. (cunning, connected, expensive)"
-      }
-    }
-  },
-  "shimaya": {
-    "name": "Shimaya",
-    "type": "planet",
-    "system": "brekk",
-    "description": "This desert planet is ravaged by electrical storms that occasionally clear colored sand off mineral deposits essential to space travel, or turn it to glass, giving a view to the ruins beneath. Teams race to capitalize on these events. There is a substantial civilian population, including the sector's preeminent educational institution, Khalud Academy.",
-    "rule": "Although only students and professors are technically allowed to use the Khalud Academy archives, any study rolls while using them take +1d.",
-    "scene": "Professors walking down the marble paths of the Academy. A market street with insistent vendors selling sandworm kebabs to hungry miners. Excavators packing furiously onto sand-skiffs, ready to take advantage of a storm- cleared deposit. The storm alert blaring citywide.",
-    "wealth_level": 2,
-    "crime_level": 1,
-    "tech_level": 2,
-    "weird_level": 0,
-    "notables": {
-      "hondo-suzuka": {
-        "name": "Hondo Suzuka",
-        "description": "HNN reporter seeking evidence of conspiracy at Khalud Academy, where several top students have vanished.  (ambitious, vigilant, charming)"
-      },
-      "ed-ursis": {
-        "name": "Ed Ursis",
-        "description": "Guild Engineer that works on the orbital array and the electrostatic generators it powers to keep the storms away from the capital. Collects colored glass statues. (dedicated, brilliant, overworked)"
-      },
-      "miranda-kasur": {
-        "name": "Miranda Kasur",
-        "description": "Minerals trader with a load of stolen goods she needs to move. In hiding after her first deal went wrong.  (scared, cunning, proud)"
-      },
-      "sahar": {
-        "name": "Sahar",
-        "description": "Strange-suited mystic that lives in the desert. (odd, blue-eyed, ancient)"
-      }
-    }
-  },
-  "aketi": {
-    "name": "Aketi",
-    "type": "planet",
-    "system": "brekk",
-    "description": "This verdant jungle world would be more settled, were it not for the incredibly hostile natural life. Between rapidly spreading carnivorous plants, seasonally rampaging beasts, and hyper-aggressive fish, only a few distinct types visit Aketi— researchers, poachers, and criminals hiding from the law.  The planet is labeled a Malklaith 'nature preserve.'",
-    "rule": "Nobody comes here who doesn't have to. The planet hates you, and jobs are hard to find. Even bounty hunters pass it by. When you lay low on Aketi, take +1d.",
-    "scene": "Heavily armed guards patrolling the tall walls of Base Camp One, nervously eyeing the jungle. Research crews packing for their next expedition across from poachers doing the same. A smuggler discussing arrangements with a client in a tent while a personal barista makes them drinks.",
-    "wealth_level": 0,
-    "crime_level": 3,
-    "tech_level": 1,
-    "weird_level": 1,
-    "notables": {
-      "razor": {
-        "name": "Razor",
-        "description": "A hunter mounting an expedition to catch the deadly Grand Phereniki for a rich client.  (callous, experienced, gambler)"
-      },
-      "zokar-pava": {
-        "name": "Zokar Pava",
-        "description": "Lost Legionnaire dealing in military-grade weapons. (cautious, meticulous, dissident)"
-      },
-      "intal-brel": {
-        "name": "Intal Brel",
-        "description": "Psy-blade-wielding Concordiat Knight. Travels with a nine-foot-tall xeno, an ex-priest, and an Urbot. Recently lost a party member and hopes to replace them. (religious, vigilant, honorable)"
-      },
-      "aha-ravann": {
-        "name": "Aha Ravann",
-        "description": "Base Camp One commander. Instituted a wall- mounted flamethrower measure that's kept the jungle at bay.  (tired, jaded, relentless)"
-      }
-    }
-  },
-  "amerath": {
-    "name": "Amerath",
-    "type": "planet",
-    "system": "iota",
-    "description": "With a lush biome, this planet has become well known for pharmaceuticals research and manufacturing. Many regions of the planet are well tended, and due to the comprehensive attentions of the Guild, the garden city of Rost is in perennial bloom. Warm, gentle rains come frequently. The deep forests hide some pirate lairs and Mendicant temples amid overgrown ruins.",
-    "rule": "While it's ruined and unsanctified, the Mendicants keep their temple and their mystics tend to any and all that request aid. Take +1d when you recover in their care.",
-    "scene": "Massive, person-sized flowers blooming along a vine- supported path through the trees. The sweet smell of honey in the air. Scientists having lunch at treetop cafés while reviewing project schedules. Sick pilgrims praying for a cure while waiting to travel to the old Mendicant temple deep in the forests.",
-    "wealth_level": 1,
-    "crime_level": 1,
-    "tech_level": 2,
-    "weird_level": 1,
-    "notables": {
-      "yon-lirak": {
-        "name": "Yon Lirak",
-        "description": "High-end drug dealer.  Runs a factory in Rost that never shuts down, producing synthetic narcotics for several major species. (experienced, ruthless, unforgiving)"
-      },
-      "ara-blaze": {
-        "name": "Ara Blaze",
-        "description": "Once a star athlete, now a preeminent pit fighter in the underground fight clubs. Ara has tried every performance- enhancing drug offered to her, and it has changed her. (ruthless, unforgiving, engineered)"
-      },
-      "uyen-al-vorron": {
-        "name": "Uyen Al-Vorron",
-        "description": "Famous Noble duelist from the religious House Vorron. Seeking to cultivate a plant for the new vineyard he's planning to grow on a moon near the Core. (armed, deadly, observant)"
-      }
-    }
-  },
-  "lithios": {
-    "name": "Lithios",
-    "type": "planet",
-    "system": "iota",
-    "description": "Ancient ice palaces dot the surface of this frozen planet, but the race to which they belong has long since passed. Entry to the palaces has been restricted after a string of mysterious explorer deaths. Orbital mirrors shine like artificial suns, keeping a few larger settlements warm and powering large mining rigs for extracting water and liquefied gases.",
-    "rule": "When you explore the ice palaces of Lithios, you must make a resolve resist if you don't want to heed the echoes urging you to wander into the frozen wastes alone.",
-    "scene": "A purple and green aurora shining over the freezing cold sky. Ice explorers whispering about the Yaru creche. Heated vapors escaping around Solitude Colony. Colonists in full parkas, riding large, many-eyed canids.  Farmers pulling gas-eels and ice-mushroom wine crates in sail-sporting snow skimmers.",
-    "wealth_level": 0,
-    "crime_level": 1,
-    "tech_level": 2,
-    "weird_level": 3,
-    "notables": {
-      "asha-munzen": {
-        "name": "Asha Munzen",
-        "description": "Ex-lover of the Governor, ice climber, mystic, and explorer of the ice palaces and gas caves. Only returns with visions, never artifacts.  Attempting to find the \"First Message.\" (mystic, ambitious, fit)"
-      },
-      "ren-laran": {
-        "name": "Ren Laran",
-        "description": "Xenobiologist attempting to revive an ancient xeno found frozen but alive in the ice, despite Hegemonic law forbidding it. Currently trying to sneak the xeno off-world. (bold, brilliant, confident)"
-      },
-      "raf-urich": {
-        "name": "Raf Urich",
-        "description": "Ice pirate, currently stranded on planet. Used his ship weapons to cut a berth in the ice. Has been hiding out, stealing parts to repair his ship.  (experienced, cautious, shrewd)"
-      }
-    }
-  },
-  "indri": {
-    "name": "Indri",
-    "type": "planet",
-    "system": "iota",
-    "description": "Over 25 percent of all goods manufactured in the Procyon Sector come from this incredibly industrialized planet. Thick, rust-colored clouds create dusk even during the day. From the warehouse-surrounded spaceport of Reves, one can view the impressive skyline of smokestacks and flames from gas burn-offs. Travel without protective gear is not advised.",
-    "rule": "The factories have caused massive air pollution; anyone spending any amount of time outside without proper equipment or xeno abilities gains level 2 harm ' Indri Lung'",
-    "scene": "Hovercar traffic reflecting adverts on buildings. Gas- masked pedestrians walking hurriedly down metal sidewalks with umbrellas treated to prevent acid rain damage.  Slow-moving containers being shuttled to warehouses. Storm clouds with multi-hued lightning rolling in.",
-    "wealth_level": 1,
-    "crime_level": 2,
-    "tech_level": 2,
-    "weird_level": 0,
-    "notables": {
-      "piro-locke": {
-        "name": "Piro Locke",
-        "description": "Owns a number of discreet, well-guarded storage spaces in orbit, and has a strict no-questions policy. If it's illegal, it's certainly stored by Locke.  (honorable, wealthy, confident)"
-      },
-      "zo-o-yun-ta-ri": {
-        "name": "Zo-o-yun-ta-ri",
-        "description": "Xeno weapons dealer known for prototypes and specialty armaments. Recently acquired an Ur ship weapon and plans to auction it under the cover of a storm. (xeno, connected, cautious, meticulous)"
-      },
-      "pasha-lensarr": {
-        "name": "Pasha 'The Roc' Lensarr",
-        "description": "Local head Ashen Knife. Known for a brutal approach to criminal organization. Wears custom- tailored suits that allow his wings to unfurl as needed. (xeno, fierce, ruthless, demanding)"
-      }
-    }
-  },
-  "mem": {
-    "name": "Mem",
-    "type": "planet",
-    "system": "holt",
-    "description": "This ocean planet was colonized by the Hegemony for almost a hundred years before aquatic xenos made themselves (and their planetary claims) known. Hegemonic forces broke the Memish military and incorporated them into the Hegemony. Exploration of Mem has proven difficult because of the free-standing gravity wells deep beneath the waves.",
-    "rule": "The deeps are littered with Ur sites and strange glows.  When in the deeps, using attune for long-term projects grants +1d. Low rolls may attract dangerous Way attention.",
-    "scene": "Hegemonic officials in sashes, talking with Memish labor bosses. See-through spires rising from the underwater government palace to open-air pavilions. Tourists embarking on submersibles to take in the local sea life. Scientists in exo-suits on deep-sea missions while the Memish watch from the waters.",
-    "wealth_level": 2,
-    "crime_level": 2,
-    "tech_level": 2,
-    "weird_level": 3,
-    "notables": {
-      "victor-kromyl": {
-        "name": "Victor Kromyl",
-        "description": "Planetary Governor. Seeks proof of Memish rebellion after a few subordinates vanished. Always with his Legion bodyguard. (vigilant, meticulous, paranoid)"
-      },
-      "espa-nur": {
-        "name": "Espa Nur",
-        "description": "Memish labor boss.  His scars are packed with deep- ocean bioluminescence. Reports to Kromyl on seditious behavior, but hides his knowledge of Memish occultism. (xeno, ambitious, cunning, treacherous)"
-      },
-      "wyndam-taru-zahn": {
-        "name": "Wyndam Taru-Zahn",
-        "description": "Biology researcher seeking a connection between the Mem and other planetary life, with little success.  Gathering an exploration of the ancient Mem city of Bok-Dar.  (wealthy, brilliant, passionate)"
-      }
-    }
-  },
-  "baftoma": {
-    "name": "Baftoma",
-    "type": "asteroid",
-    "system": "holt",
-    "description": "Resource exploitation by the Hegemony is comprehensive, and planets incapable of sustaining life are stripped to the core. Baftoma was once such a planet—now only scaffolding of rock remains, its broken form only used by folks hiding or dodging pursuit."
-  },
-  "warren": {
-    "name": "Warren",
-    "type": "planet",
-    "system": "holt",
-    "description": "Warren is one of the moons of Aleph and the home to an ecumenopolis—a city spanning the entire surface of the moon.  It's the capitol for the system, and the system Governor Ritam al'Malklaith makes his residence here. On Warren, you can find anything you need—for a price. Its high-rises are full of legitimate business dealings, and its streets far less so.",
-    "rule": "Warren is a wretched hive of villainy, yet also the Hegemonic seat of power in the system. You can take +1d to acquire assets here, if you also accept +2 heat.",
-    "scene": "A bustling street market with neon signs promising foods of all kinds in several languages. Hovercars streaming between towering buildings. The bass beat of a basement club playing the latest mix; patrons stumbling onto the street, singing. Socialites attending a gala at the Governor's mansion.",
-    "wealth_level": 2,
-    "crime_level": 3,
-    "tech_level": 2,
-    "weird_level": 1,
-    "notables": {
-      "ritam-al-malklaith": {
-        "name": "Ritam al'Malklaith",
-        "description": "Governor of the Rin system, in disgrace within House Malklaith. He seeks to improve his position in the House by acquiring illegal Ur artifacts. (callous, ambitious, strange)"
-      },
-      "liara-uriel": {
-        "name": "Liara Uriel",
-        "description": "Owner and operator of the Lock Luna, the most infamous bar in the undercity.  (cunning, unforgiving, popular)"
-      },
-      "rocco-applin": {
-        "name": "Rocco Applin",
-        "description": "Ship designer extraordinaire. Only makes one of each ship designed. (artistic, brilliant, aloof)"
-      },
-      "pasha-quolin": {
-        "name": "Pasha Qu-Olin",
-        "description": "Once a feared assassin among the Knives, now a Syndicate leader. Loves good food and pit fights. (sly, corpulent, sartorial, decadent)"
-      }
-    }
-  },
-  "aleph": {
-    "name": "Aleph",
-    "type": "planet",
-    "system": "rin",
-    "description": "Between the poisonous gases and tectonic instability, Aleph would be a planet to avoid if it weren't for its mineral stores.  Most of the wealth dug from the planet is taxed heavily by the Governor, leading to frequent unrest with the miners."
-  },
-  "vet": {
-    "name": "Vet",
-    "type": "planet",
-    "system": "rin",
-    "description": "Gas giant with rings. SB-176 orbits the planet"
-  },
-  "sb-176": {
-    "name": "SB-176",
-    "type": "space station",
-    "system": "rin",
-    "description": "You don't need a planet in order to mine. Or at least, you don't need ground. This combination 'mining' platform and space colony is responsible for extracting resources from Vet, the gas planet below. The mining rigs in the skies below—mostly manned by Urbots—send their goods to this central hub. Most of those are packaged and fired towards the Rin-Ecliptis gate.",
-    "rule": "Engagement rolls on SB-176 itself are always at -1d due to ever-present station monitoring. Any jobs run against Guilders here are considered to be on hostile turf.",
-    "scene": "Cold clacking of footsteps on the brilliantly clean main concourse. Whispers of politicos taking tea at a parlor. Children running down halls, laughing.  The hum of generators in the darkened side passages leading to the lower levels. Dingy workers shouting in the cramped quarters of the mining rigs.",
-    "wealth_level": 2,
-    "crime_level": 0,
-    "tech_level": 3,
-    "weird_level": 1,
-    "notables": {
-      "yast-jor": {
-        "name": "Yast Jor",
-        "description": "Guilder head of the outpost. Jor is known for getting things done, even if it means bending the rules. A thrill-seeker, he keeps a Guild-enhanced racing ship for rare days off.  (commanding, shrewd, bold)"
-      },
-      "kasumi-ortcutt": {
-        "name": "Kasumi Orcutt",
-        "description": "A mystic who claims to hear the voice of Vet, the gas giant the platform is mining. Trades information, including esoterica on the Ur.  (passionate, strange, religious)"
-      },
-      "espa-wu": {
-        "name": "Espa 'Bolt' Wu",
-        "description": "Labor organizer for the Guild miners. Rabble- rouser beloved by the workers.  Has been incarcerated numerous times for crimes both real and fabricated. (popular, dissident, ambitious)"
-      }
-    }
-  },
-  "the-cove": {
-    "name": "The Cove",
-    "type": "space station",
-    "system": "rin",
-    "description": "The Maelstrom pirates have made a station out of derelict freighters, cargo containers, and stolen scrap metal. They call this home 'the Cove.' Enterprising individuals can discover where it is located if they have the tenacity or contacts—though it moves about within the Ashtari Cloud. Only the best friends of pirates might be granted storm drives to better navigate with.",
-    "rule": "Conflicts at the Cove are rampant, but by Banshee's decree no murder is allowed.  Those needing to settle blood feuds resort to kidnapping and killing folks outside the Cloud.",
-    "scene": "Quick bets taken on an open brawl between two captains over slights. Blue- white sparks of maintenance workers welding on a new ship.  Fresh water misting over rows of hydroponics. A station-wide broadcast of the Banshee's latest conquest, followed by cheers throughout the halls.",
-    "wealth_level": 1,
-    "crime_level": 1,
-    "tech_level": 2,
-    "weird_level": 2,
-    "notables": {
-      "alanda-ryle": {
-        "name": "Pirate Queen Alanda 'The Banshee' Ryle",
-        "description": "A larger-than-life figure with a hatred for the Hegemony.  Tough and violent, she enforces a pirate code on those who would follow her. Once stranded her first lieutenant on a barren world for mutiny. (proud, demanding, honorable)"
-      },
-      "praxis-ivanov": {
-        "name": "Praxis Ivanov",
-        "description": "Merchant always willing to make a deal. His tentacles are tattooed with the story of his several-hundred- year life. (xeno, experienced, shrewd, loves to barter)"
-      },
-      "kai-quag": {
-        "name": "Kai Quag",
-        "description": "Mid-level Cobalt boss.  Arranges protection for Cobalt smuggling runs and meets with potential clients at the Cove.  (cautious, charming, confident)"
-      }
-    }
-  },
-  "brekk-iota-gate": {
-    "name": "Brekk to Iota Gate",
-    "type": "gate",
-    "description": "Stable gate between Holt and Rin"
-  },
-  "rin-iota-gate": {
-    "name": "Rin to Iota Gate",
-    "type": "gate",
-    "description": "Stable gate between Holt and Rin"
-  },
-  "holt-rin-gate": {
-    "name": "Holt to Rin Gate",
-    "type": "gate",
-    "description": "Stable gate between Holt and Rin"
-  },
-  "holt-hantu-gate": {
-    "name": "Holt to Hantu Gate",
-    "type": "gate",
-    "description": "The Hegemony has never been able to activate this jumpgate. Compared to other jumpgates it seems to be missing a few small but key pieces. It has been speculated that the Ur locked the gate and hid the keys somewhere, though it's anyone's guess as to why."
   }
 } 
